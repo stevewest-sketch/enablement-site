@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidekick Sales</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #0D0D0D;
+            background: #FFFFFF;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #009B00 0%, #007a00 100%);
+            color: white;
+            padding: 60px 40px;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .hero-image {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        
+        .hero-text h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .hero-text p {
+            font-size: 20px;
+            opacity: 0.95;
+            margin-bottom: 24px;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+        }
+		        .hero-video {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        
+        .btn-white {
+            background: white;
+            color: #009B00;
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-white:hover {
+            background: #8C69F0;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(140,105,240,0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            border: 2px solid white;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-outline:hover {
+            background: #8C69F0;
+            border-color: #8C69F0;
+            color: white;
+        }
+        
+        /* Quick Nav */
+        .quick-nav {
+            background: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-link {
+            background: #F3F3F3;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #0D0D0D;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            background: #8C69F0;
+            color: white;
+        }
+        
+        /* What Is Section - Black BG */
+        .what-is-section {
+            background: #0D0D0D;
+            color: white;
+            padding: 60px 40px;
+            margin-top: 0;
+        }
+        
+        .what-is-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+        }
+        
+        .what-is-section h2 {
+            font-size: 36px;
+            color: white;
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+        
+        .what-is-section p {
+            font-size: 18px;
+            color: #E5E5E5;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .key-capabilities {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .capability-card {
+            background: rgba(255,255,255,0.05);
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .capability-card h4 {
+            font-size: 18px;
+            color: white;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .capability-card p {
+            font-size: 15px;
+            color: #E5E5E5;
+            margin: 0;
+        }
+        
+        /* Launch Status */
+        .launch-status {
+            background: #C5B3F8;
+            padding: 32px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+        
+        .launch-status h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #0D0D0D;
+        }
+        
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .status-item {
+            padding: 10px;
+            background: #9B8AC7;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 13px;
+            color: #FFFFFF;
+        }
+        
+        .status-item.active {
+            background: #8C69F0;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .launch-status p {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #0D0D0D;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .content-grid.two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .content-card {
+            background: white;
+            border: 2px solid #F3F3F3;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.2s ease;
+        }
+        
+        .content-card:hover {
+            border-color: #8C69F0;
+            transform: translateY(-2px);
+        }
+        
+        .content-card h4 {
+            font-size: 18px;
+            color: #0D0D0D;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .content-card p {
+            font-size: 14px;
+            color: #4A4A4A;
+            margin-bottom: 16px;
+        }
+        
+        .content-link {
+            color: #8C69F0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .content-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: #C5B3F8;
+            padding: 50px 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 0;
+        }
+        
+        .cta-section h2 {
+            font-size: 32px;
+            color: #0D0D0D;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            color: #4A4A4A;
+            margin-bottom: 28px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+        
+        .btn-primary {
+            background: #8C69F0;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #7557d9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #8C69F0;
+            padding: 14px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: 2px solid #8C69F0;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: #8C69F0;
+            color: white;
+        }
+        
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-grid,
+            .content-grid.two-col {
+                grid-template-columns: 1fr;
+            }
+            
+            .key-capabilities {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-cta,
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .status-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero-text h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Hero -->
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">SIDEKICK SALES</div>
+                <h1>Sidekick Sales</h1>
+                <p>Sidekick Sales is an AI-powered shopping assistant that transforms browsers into buyers. It leverages Gladly's customer profiles and commerce integrations to answer questions in real time, enabling conversational commerce and recommendations at scale.</p>
+                <div class="hero-cta">
+                    <a href="#what-it-is" class="btn-white">Learn More</a>
+                    <a href="#content" class="btn-outline">View Resources</a>
+                </div>
+            </div>
+             <div class="hero-video">
+                <script src="https://fast.wistia.com/player.js" async></script>
+                <script src="https://fast.wistia.com/embed/62ev998jm3.js" async type="module"></script>
+                <style>wistia-player[media-id='62ev998jm3']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/62ev998jm3/swatch'); display: block; filter: blur(5px); padding-top:56.04%; }</style>
+                <wistia-player media-id="62ev998jm3" aspect="1.7843866171003717"></wistia-player>
+            </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Quick Nav -->
+    <div class="quick-nav">
+        <div class="nav-links">
+            <a href="#what-it-is" class="nav-link">What it is</a>
+            <a href="#content" class="nav-link">Content</a>
+            <a href="#demo" class="nav-link">Demo</a>
+            <a href="#enablement" class="nav-link">Product Enablement</a>
+        </div>
+    </div>
+    
+    <!-- What Is Section -->
+    <div id="what-it-is" class="what-is-section">
+        <div class="container">
+            <h2>What it is</h2>
+            <p>Sidekick Sales is an AI-powered shopping assistant that transforms browsers into buyers. It leverages Gladly's customer profiles and commerce integrations to suggest credible product answers, and recommendations in real time—helping shoppers buy with confidence and turning support into sales.</p>
+            
+            <p><strong>Why it matters:</strong> Online shopping often lacks personal touch, causing hesitation, cart abandonment, and missed upsell opportunities. Sidekick Sales removes the friction by answering pre-purchase questions instantly, recommending products with full context, increasing conversion rates, and proving the revenue impact of customer service.</p>
+            
+            <p><strong>Who it's for:</strong> B2C Businesses and eCommerce businesses with significant online traffic and revenue goals—especially those with pressure to grow revenue without increasing ad spend.</p>
+            
+            <div class="key-capabilities">
+                <div class="capability-card">
+                    <h4>Setup in minutes</h4>
+                    <p>Connects directly to Shopify or via Gladly integrations</p>
+                </div>
+                
+                <div class="capability-card">
+                    <h4>One lifelong conversation</h4>
+                    <p>Full ability provides rich product context and buyer history</p>
+                </div>
+                
+                <div class="capability-card">
+                    <h4>Real-time commerce assistance</h4>
+                    <p>Contextual assistance with up-to-date product catalog data</p>
+                </div>
+                
+                <div class="capability-card">
+                    <h4>Smart upsell & cross-sell</h4>
+                    <p>Increases average order value instantly</p>
+                </div>
+                
+                <div class="capability-card">
+                    <h4>Content aware flexibility</h4>
+                    <p>Seamlessly adapts recommendations when Sidekick delivers value</p>
+                </div>
+                
+                <div class="capability-card">
+                    <h4>Revenue impact reporting</h4>
+                    <p>Link support cost and revenue attribution</p>
+                </div>
+            </div>
+            
+            <!-- Launch Status -->
+            <div class="launch-status">
+                <h3>🚀 Launch Status</h3>
+                <div class="status-grid">
+                    <div class="status-item">Initial research</div>
+                    <div class="status-item">Added to roadmap</div>
+                    <div class="status-item">Discovery and design</div>
+                    <div class="status-item">Build in progress</div>
+                </div>
+                <div class="status-grid">
+                    <div class="status-item">Prototyping</div>
+                    <div class="status-item">Limited rollout</div>
+                    <div class="status-item">Broader rollout</div>
+                    <div class="status-item active">➡️ GA 🎉 ⬅️</div>
+                </div>
+                <p>Sidekick Sales is generally available for all customers.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Content Section -->
+    <div id="content" style="background: white; padding: 50px 40px;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="font-size: 32px; color: #0D0D0D; margin-bottom: 24px; font-weight: 700;">Content</h2>
+            <div class="content-grid">
+                <div class="content-card">
+                    <h4>Sidekick Sales Stories</h4>
+                    <p>Customer success stories and case studies</p>
+                    <a href="#" class="content-link">View Stories →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Sidekick Sales Quick Guide</h4>
+                    <p>Quick reference guide for sales teams</p>
+                    <a href="#" class="content-link">View Guide →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Deck Excerpt Recording</h4>
+                    <p>Presentation deck highlights and walkthrough</p>
+                    <a href="#" class="content-link">Watch Recording →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Sidekick Sales Video</h4>
+                    <p>Product overview and demo video</p>
+                    <a href="#" class="content-link">Watch Video →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Sidekick Quick Access</h4>
+                    <p>Fast access links and resources</p>
+                    <a href="#" class="content-link">Access →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Use Case PNGS</h4>
+                    <p>Visual examples of use cases</p>
+                    <a href="#" class="content-link">View Images →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Sidekick Sales Differential</h4>
+                    <p>Key differentiators and competitive advantages</p>
+                    <a href="#" class="content-link">View Differentials →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>September Roadmap Deck</h4>
+                    <p>Product roadmap and upcoming features</p>
+                    <a href="#" class="content-link">View Roadmap →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Demo Section -->
+    <div id="demo" style="background: #F3F3F3; padding: 50px 40px;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="font-size: 32px; color: #0D0D0D; margin-bottom: 24px; font-weight: 700;">Demo</h2>
+            <div class="content-grid" style="grid-template-columns: 1fr;">
+                <div class="content-card">
+                    <h4>Sidekick Sales Prototype</h4>
+                    <p>Interactive prototype demonstrating key features</p>
+                    <a href="#" class="content-link">Try Prototype →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Product Enablement Section -->
+    <div id="enablement" style="background: white; padding: 50px 40px;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="font-size: 32px; color: #0D0D0D; margin-bottom: 24px; font-weight: 700;">Product Enablement</h2>
+            <div class="content-grid">
+                <div class="content-card">
+                    <h4>Sidekick Sales Messaging</h4>
+                    <p>Key messaging and positioning guidance</p>
+                    <a href="#" class="content-link">View Messaging →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Sidekick Sales Command</h4>
+                    <p>Command center for sales operations</p>
+                    <a href="#" class="content-link">Access Command →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Sidekick Sales Market Avail</h4>
+                    <p>Market availability and regional information</p>
+                    <a href="#" class="content-link">View Availability →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Sidekick Sales Launch FAQ</h4>
+                    <p>Frequently asked questions about launch</p>
+                    <a href="#" class="content-link">View FAQ →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Foundational Training</h4>
+                    <p>Core training for Sidekick Sales</p>
+                    <a href="#" class="content-link">Start Training →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Tactical Training (Examples)</h4>
+                    <p>Hands-on tactical training examples</p>
+                    <a href="#" class="content-link">View Examples →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>GTM FAQ | Q2 launch</h4>
+                    <p>Go-to-market FAQ for Q2 launch</p>
+                    <a href="#" class="content-link">Read FAQ →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Sidekick Sales Training FAQ</h4>
+                    <p>Training-specific questions and answers</p>
+                    <a href="#" class="content-link">View FAQ →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CTA Section -->
+    <div style="background: white; padding: 50px 40px;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="cta-section">
+                <h2>Need Help With Sidekick Sales?</h2>
+                <p>Can't find what you're looking for? Reach out to the enablement team</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn-primary">Ask in #enablement-resources</a>
+                    <a href="#" class="btn-secondary">Browse All Products</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidekick Sales</title>
+    <style>
+        /* ========================================
+           GLADLY UNIFIED DESIGN SYSTEM
+           ======================================== */
+
+        /* --- BASE RESET & TYPOGRAPHY --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #0D0D0D;
+            background: #FFFFFF;
+        }
+
+        /* --- SCROLL OFFSET FOR ANCHORS --- */
+        :root {
+            --nav-offset: 96px;
+        }
+        
+        [id] {
+            scroll-margin-top: var(--nav-offset);
+        }
+
+        /* --- CONTAINERS --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 40px;
+        }
+
+        /* --- HERO WITH VIDEO --- */
+        .hero {
+            background: linear-gradient(135deg, #009B00 0%, #007a00 100%);
+            color: white;
+            padding: 60px 40px;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .hero-text p {
+            font-size: 20px;
+            opacity: 0.95;
+            margin-bottom: 24px;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .hero-video {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+        }
+
+        /* --- STICKY NAVIGATION --- */
+        .quick-nav {
+            background: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-link {
+            background: #F3F3F3;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #0D0D0D;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            background: #8C69F0;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* --- SECTIONS --- */
+        .section {
+            margin-bottom: 50px;
+            scroll-margin-top: var(--nav-offset);
+        }
+        
+        .section.gray-bg {
+            background: #F3F3F3;
+            padding: 50px 40px;
+            margin-left: -40px;
+            margin-right: -40px;
+        }
+        
+        .section.black-bg {
+            background: #0D0D0D;
+            color: white;
+            padding: 60px 40px;
+            margin: 0;
+        }
+        
+        .section h2 {
+            font-size: 32px;
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+        
+        .section.black-bg h2 {
+            color: white;
+        }
+        
+        .section p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        
+        .section.black-bg p {
+            color: #E5E5E5;
+            font-size: 18px;
+        }
+
+        /* --- CONTENT GRIDS --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .content-grid.two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        /* --- DEMO RESOURCE CARD --- */
+        .demo-card {
+            background: white;
+            border: 2px solid #F3F3F3;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        
+        .demo-card:hover {
+            border-color: #8C69F0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(140,105,240,0.15);
+        }
+        
+        .demo-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        
+        .demo-card h4 {
+            font-size: 18px;
+            color: #0D0D0D;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .demo-card p {
+            font-size: 14px;
+            color: #4A4A4A;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        
+        .demo-link {
+            color: #8C69F0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .demo-link:hover {
+            text-decoration: underline;
+        }
+
+        /* --- USE CASES --- */
+        .use-case-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .use-case-item {
+            background: white;
+            border-left: 4px solid #009B00;
+            padding: 20px;
+            border-radius: 4px;
+        }
+        
+        .use-case-item h4 {
+            font-size: 17px;
+            color: #0D0D0D;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .use-case-item p {
+            font-size: 14px;
+            color: #4A4A4A;
+            margin: 0;
+        }
+
+        /* --- LAUNCH STATUS --- */
+        .launch-status {
+            background: #C5B3F8;
+            padding: 32px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+        
+        .launch-status h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #0D0D0D;
+        }
+        
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .status-item {
+            padding: 10px;
+            background: #9B8AC7;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 13px;
+            color: #FFFFFF;
+        }
+        
+        .status-item.active {
+            background: #8C69F0;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .launch-status p {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #0D0D0D;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            display: inline-block;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+        
+        .btn-white {
+            background: white;
+            color: #009B00;
+        }
+        
+        .btn-white:hover {
+            background: #8C69F0;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(140,105,240,0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background: #8C69F0;
+            border-color: #8C69F0;
+            color: white;
+        }
+
+        /* --- CTA SECTION --- */
+        .cta-section {
+            background: #C5B3F8;
+            padding: 50px 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .cta-section h2 {
+            font-size: 32px;
+            color: #0D0D0D;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            color: #4A4A4A;
+            margin-bottom: 28px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+        
+        .btn-primary {
+            background: #8C69F0;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #7557d9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #8C69F0;
+            padding: 14px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: 2px solid #8C69F0;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: #8C69F0;
+            color: white;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-grid,
+            .content-grid.two-col,
+            .use-case-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-cta,
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .status-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero-text h1 {
+                font-size: 36px;
+            }
+            
+            .section.gray-bg {
+                margin-left: -20px;
+                margin-right: -20px;
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Hero -->
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">SIDEKICK SALES</div>
+                <h1>AI for Revenue Teams</h1>
+                <p>Empower sales and marketing with AI that engages prospects, qualifies leads, and drives revenue</p>
+                <div class="hero-cta">
+                    <a href="#overview" class="btn btn-white">Learn More</a>
+                    <a href="#demos" class="btn btn-outline">View Demos</a>
+                </div>
+            </div>
+            <div class="hero-video">
+                <!-- Replace with actual Sales demo video -->
+             <script src="https://fast.wistia.com/player.js" async></script><script src="https://fast.wistia.com/embed/85i16s6k7a.js" async type="module"></script><style>wistia-player[media-id='85i16s6k7a']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/85i16s6k7a/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style> <wistia-player media-id="85i16s6k7a" aspect="1.7777777777777777"></wistia-player>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Quick Nav -->
+    <div class="quick-nav">
+        <div class="nav-links">
+            <a href="#overview" class="nav-link">Overview</a>
+            <a href="#capabilities" class="nav-link">Capabilities</a>
+            <a href="#use-cases" class="nav-link">Use Cases</a>
+            <a href="#content" class="nav-link">Content</a>
+            <a href="#demos" class="nav-link">Demos</a>
+            <a href="#competitive" class="nav-link">Competitive</a>
+        </div>
+    </div>
+    
+    <!-- What Is Section - Black BG -->
+    <div id="overview" class="section black-bg">
+        <div class="container" style="padding: 0;">
+            <h2>What is Sidekick Sales?</h2>
+            <p>Sidekick Sales is AI designed specifically for revenue generation. It engages website visitors, qualifies leads, books meetings, and nurtures prospects through the sales funnel.</p>
+            <p>Unlike traditional chatbots that deflect, Sidekick Sales actively converts visitors into qualified opportunities and drives measurable revenue impact.</p>
+            
+            <!-- Launch Status -->
+            <div class="launch-status">
+                <h3>🚀 Launch Status</h3>
+                <div class="status-grid">
+                    <div class="status-item">Initial research</div>
+                    <div class="status-item">Added to roadmap</div>
+                    <div class="status-item active">➡️ Discovery and design ⬅️</div>
+                    <div class="status-item">Build in progress</div>
+                </div>
+                <div class="status-grid">
+                    <div class="status-item">Prototyping</div>
+                    <div class="status-item">Limited rollout</div>
+                    <div class="status-item">Broader rollout</div>
+                    <div class="status-item">Open Access</div>
+                </div>
+                <p>Product design phase. Gathering customer feedback on requirements and use cases.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="container">
+        
+        <!-- Capabilities Section -->
+        <div id="capabilities" class="section gray-bg">
+            <h2>Sales AI Capabilities</h2>
+            <div class="content-grid">
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">🎯</span>
+                    <h4>Lead Qualification</h4>
+                    <p>Automatically qualify prospects based on your ideal customer profile</p>
+                    <span class="demo-link">Learn More →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">📅</span>
+                    <h4>Meeting Scheduling</h4>
+                    <p>Book demos directly into AE calendars without back-and-forth</p>
+                    <span class="demo-link">See How →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">📈</span>
+                    <h4>Lead Nurturing</h4>
+                    <p>Engage prospects with personalized follow-ups and content</p>
+                    <span class="demo-link">View Examples →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Use Cases Section -->
+        <div id="use-cases" class="section">
+            <h2>Common Use Cases</h2>
+            <div class="use-case-list">
+                <div class="use-case-item">
+                    <h4>Website Conversion</h4>
+                    <p>Convert anonymous visitors into qualified leads 24/7</p>
+                </div>
+                
+                <div class="use-case-item">
+                    <h4>Demo Requests</h4>
+                    <p>Qualify and book product demos automatically</p>
+                </div>
+                
+                <div class="use-case-item">
+                    <h4>Event Follow-up</h4>
+                    <p>Engage trade show and webinar leads at scale</p>
+                </div>
+                
+                <div class="use-case-item">
+                    <h4>Pricing Inquiries</h4>
+                    <p>Provide custom pricing based on prospect needs</p>
+                </div>
+                
+                <div class="use-case-item">
+                    <h4>Content Recommendations</h4>
+                    <p>Share relevant case studies and resources</p>
+                </div>
+                
+                <div class="use-case-item">
+                    <h4>Pipeline Acceleration</h4>
+                    <p>Re-engage stalled deals and dormant accounts</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Content Library -->
+        <div id="content" class="section gray-bg">
+            <h2>Content & Resources</h2>
+            <div class="content-grid">
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">📄</span>
+                    <h4>Sales One-Pager</h4>
+                    <p>Quick overview for revenue teams</p>
+                    <span class="demo-link">Download PDF →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">💰</span>
+                    <h4>Revenue Impact Calculator</h4>
+                    <p>Calculate potential pipeline and revenue lift</p>
+                    <span class="demo-link">Use Calculator →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">📚</span>
+                    <h4>Best Practices Guide</h4>
+                    <p>Optimize AI for maximum conversion</p>
+                    <span class="demo-link">View Guide →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Demo Resources -->
+        <div id="demos" class="section">
+            <h2>Demo Materials</h2>
+            <div class="content-grid two-col">
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">💻</span>
+                    <h4>Interactive Demo</h4>
+                    <p>Experience Sidekick Sales on a live website</p>
+                    <span class="demo-link">Try Demo →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">📊</span>
+                    <h4>Performance Metrics</h4>
+                    <p>Real customer results and conversion rates</p>
+                    <span class="demo-link">View Metrics →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">🎬</span>
+                    <h4>Customer Success Stories</h4>
+                    <p>Video testimonials from revenue teams</p>
+                    <span class="demo-link">Watch Videos →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">🔧</span>
+                    <h4>Integration Guides</h4>
+                    <p>Connect with CRM, marketing automation, and calendaring</p>
+                    <span class="demo-link">View Guides →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Competitive Section -->
+        <div id="competitive" class="section gray-bg">
+            <h2>Competitive Intelligence</h2>
+            <div class="content-grid">
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">⚔️</span>
+                    <h4>vs. Traditional Chatbots</h4>
+                    <p>Why Sidekick Sales converts better</p>
+                    <span class="demo-link">View Comparison →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">🏆</span>
+                    <h4>Unique Differentiators</h4>
+                    <p>What sets us apart in the market</p>
+                    <span class="demo-link">Learn More →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">💬</span>
+                    <h4>Objection Handling</h4>
+                    <p>Address common sales concerns</p>
+                    <span class="demo-link">View Guide →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Ready to Drive More Revenue?</h2>
+            <p>See how Sidekick Sales can transform your pipeline</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn-primary">Schedule Demo</a>
+                <a href="#" class="btn-secondary">Calculate ROI</a>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- Anchor Fix Script for Google Sites -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function updateOffset() {
+                const nav = document.querySelector('.quick-nav');
+                if (nav) {
+                    const navHeight = nav.getBoundingClientRect().height + 16;
+                    document.documentElement.style.setProperty('--nav-offset', navHeight + 'px');
+                }
+            }
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start' 
+                        });
+                    }
+                });
+            });
+            
+            if (window.location.hash) {
+                setTimeout(() => {
+                    const targetId = window.location.hash.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ 
+                            behavior: 'auto', 
+                            block: 'start' 
+                        });
+                    }
+                }, 100);
+            }
+            
+            updateOffset();
+            window.addEventListener('resize', updateOffset);
+        });
+    </script>
+</body>
+</html>

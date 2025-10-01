@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revenue Enablement Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #009B00 0%, #007a00 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            opacity: 0.95;
+        }
+        
+        /* Quick Nav - Sticky */
+        .quick-nav {
+            background: white;
+            border-radius: 12px;
+            padding: 24px 32px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+        
+        .quick-nav h3 {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        
+        .nav-links {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 12px;
+        }
+        
+        .nav-link {
+            background: #f8f9fa;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-align: center;
+        }
+        
+        .nav-link:hover {
+            background: #009B00;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Task Section */
+        .task-section {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            scroll-margin-top: 120px;
+        }
+        
+        /* Alternate section backgrounds */
+        .task-section.gray-bg {
+            background: #F3F3F3;
+            box-shadow: none;
+        }
+        
+        .task-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid #CDEFCD;
+        }
+        
+        .task-icon {
+            font-size: 40px;
+        }
+        
+        .task-header-text h2 {
+            font-size: 26px;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        
+        .task-header-text p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Resource Grid - Always 3 columns */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        
+        /* Resource Grid - 2 column variant */
+        .resource-grid.two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .resource-card {
+            background: #FFFFFF;
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            border: 2px solid #F3F3F3;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .resource-card:hover {
+            background: #CDEFCD;
+            border-color: #009B00;
+            transform: translateY(-2px);
+        }
+        
+        .resource-card h4 {
+            font-size: 16px;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .resource-card p {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            flex-grow: 1;
+        }
+        
+        .resource-link {
+            color: #009B00;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .resource-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Team Toolkit Cards - 2 or 4 columns */
+        .toolkit-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .toolkit-card {
+            background: #FFFFFF;
+            padding: 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: all 0.2s ease;
+            border: 2px solid #F3F3F3;
+        }
+        
+        .toolkit-card:hover {
+            background: #CDEFCD;
+            border-color: #009B00;
+            transform: translateY(-2px);
+        }
+        
+        .toolkit-card h4 {
+            font-size: 17px;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        
+        .toolkit-card p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.4;
+        }
+        
+        @media (max-width: 900px) {
+            .resource-grid,
+            .resource-grid.two-col {
+                grid-template-columns: 1fr;
+            }
+            
+            .toolkit-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .quick-nav {
+                position: relative;
+                top: 0;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .task-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>Revenue Enablement</h1>
+            <p>Everything you need to prospect, demo, win, onboard, and expand accounts</p>
+        </div>
+        
+        <!-- Quick Navigation - Sticky -->
+        <div class="quick-nav">
+            <h3>Jump to:</h3>
+            <div class="nav-links">
+                <a href="#demo" class="nav-link">🎬 Demo Prep</a>
+                <a href="#competitive" class="nav-link">🥊 Competitive</a>
+                <a href="#business-case" class="nav-link">💰 Business Case</a>
+                <a href="#sales-plays" class="nav-link">📖 Sales Plays</a>
+                <a href="#training" class="nav-link">🎓 Training</a>
+                <a href="#teams" class="nav-link">👥 By Team</a>
+                <a href="#tools" class="nav-link">🔧 Tools</a>
+            </div>
+        </div>
+        
+        <!-- SECTION 1: Prepare for a Demo -->
+        <div id="demo" class="task-section">
+            <div class="task-header">
+                <span class="task-icon">🎬</span>
+                <div class="task-header-text">
+                    <h2>Prepare for a Demo</h2>
+                    <p>Get demo-ready in 15 minutes</p>
+                </div>
+            </div>
+            
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>Demo Decks</h4>
+                    <p>Full platform and product-specific presentations</p>
+                    <a href="https://sites.google.com/gladly.com/gladlyrevenablement/demo" class="resource-link">View Decks →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Demo Environments</h4>
+                    <p>Access demo instances and setup guides</p>
+                    <a href="https://sites.google.com/gladly.com/gladlyrevenablement/demo" class="resource-link">Access →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Demo Mockups</h4>
+                    <p>Visual mockups and conversation scripts</p>
+                    <a href="https://sites.google.com/gladly.com/gladlyrevenablement/demo" class="resource-link">View All →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SECTION 2: Handle Competitors -->
+        <div id="competitive" class="task-section gray-bg">
+            <div class="task-header">
+                <span class="task-icon">🥊</span>
+                <div class="task-header-text">
+                    <h2>Handle Competitors & Objections</h2>
+                    <p>Win competitive deals</p>
+                </div>
+            </div>
+            
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>Battle Cards</h4>
+                    <p>Head-to-head comparisons and differentiators</p>
+                    <a href="https://sites.google.com/gladly.com/gladlyrevenablement/competitors" class="resource-link">All Cards →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Positioning Guides</h4>
+                    <p>How to position against key competitors</p>
+                    <a href="https://sites.google.com/gladly.com/gladlyrevenablement/competitors" class="resource-link">View Guides →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Objection Handling</h4>
+                    <p>Common objections and proven responses</p>
+                    <a href="https://sites.google.com/gladly.com/gladlyrevenablement/content" class="resource-link">Responses →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SECTION 3: Build Business Case -->
+        <div id="business-case" class="task-section">
+            <div class="task-header">
+                <span class="task-icon">💰</span>
+                <div class="task-header-text">
+                    <h2>Build a Business Case</h2>
+                    <p>Quantify value and ROI</p>
+                </div>
+            </div>
+            
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>BVA Tool</h4>
+                    <p>Interactive business value assessment</p>
+                    <a href="https://sites.google.com/gladly.com/gladlyrevenablement/bva" class="resource-link">Access Tool →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>ROI Calculators</h4>
+                    <p>Calculate cost savings and efficiency gains</p>
+                    <a href="https://sites.google.com/gladly.com/gladlyrevenablement/bva" class="resource-link">Calculators →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Case Studies</h4>
+                    <p>Customer success stories with results</p>
+                    <a href="https://sites.google.com/gladly.com/gladlyrevenablement/center-of-excellence" class="resource-link">Browse →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SECTION 4: Execute Sales Plays -->
+        <div id="sales-plays" class="task-section gray-bg">
+            <div class="task-header">
+                <span class="task-icon">📖</span>
+                <div class="task-header-text">
+                    <h2>Execute Sales Plays</h2>
+                    <p>Playbooks for every stage</p>
+                </div>
+            </div>
+            
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>Sales Plays</h4>
+                    <p>Quick wins and territory strategies</p>
+                    <a href="https://sites.google.com/gladly.com/gladlyrevenablement/playbooks" class="resource-link">View Plays →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Expansion Playbooks</h4>
+                    <p>Upsell and cross-sell strategies</p>
+                    <a href="https://sites.google.com/gladly.com/gladlyrevenablement/playbooks" class="resource-link">Expansion →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Implementation</h4>
+                    <p>Onboarding and kickoff frameworks</p>
+                    <a href="https://sites.google.com/gladly.com/gladlyrevenablement/playbooks" class="resource-link">View Guide →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SECTION 5: Get Trained -->
+        <div id="training" class="task-section">
+            <div class="task-header">
+                <span class="task-icon">🎓</span>
+                <div class="task-header-text">
+                    <h2>Get Trained & Certified</h2>
+                    <p>Build your skills</p>
+                </div>
+            </div>
+            
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>Certifications</h4>
+                    <p>Product and sales methodology certifications</p>
+                    <a href="https://sites.google.com/gladly.com/gladlyrevenablement/revenue-enablement/certifications" class="resource-link">Get Certified →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Product Training</h4>
+                    <p>Deep dives on all Gladly products</p>
+                    <a href="https://sites.google.com/gladly.com/gladlyrevenablement/technical-enablement" class="resource-link">Training Hub →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Onboarding</h4>
+                    <p>New hire training and ramp plans</p>
+                    <a href="https://sites.google.com/gladly.com/gladlyrevenablement/revenue-enablement" class="resource-link">Start Here →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SECTION 6: By Team -->
+        <div id="teams" class="task-section gray-bg">
+            <div class="task-header">
+                <span class="task-icon">👥</span>
+                <div class="task-header-text">
+                    <h2>Resources by Team</h2>
+                    <p>Curated toolkits for your role</p>
+                </div>
+            </div>
+            
+            <div class="toolkit-grid">
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/team-toolkits/sales-team" class="toolkit-card">
+                    <h4>💼 Sales Team</h4>
+                    <p>AE & SDR resources, discovery guides, objection handling</p>
+                </a>
+                
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/team-toolkits/sc-team" class="toolkit-card">
+                    <h4>🎯 Solutions Consulting</h4>
+                    <p>Technical demos, POV frameworks, architecture guides</p>
+                </a>
+                
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/team-toolkits/csm-team" class="toolkit-card">
+                    <h4>🤝 Customer Success</h4>
+                    <p>Onboarding, QBRs, expansion, and renewal strategies</p>
+                </a>
+                
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/team-toolkits/marketing-team" class="toolkit-card">
+                    <h4>📣 Marketing</h4>
+                    <p>Campaign materials, messaging, content library</p>
+                </a>
+            </div>
+        </div>
+        
+        <!-- SECTION 7: Tools & Templates -->
+        <div id="tools" class="task-section">
+            <div class="task-header">
+                <span class="task-icon">🔧</span>
+                <div class="task-header-text">
+                    <h2>Tools & Templates</h2>
+                    <p>Quick access to everything else</p>
+                </div>
+            </div>
+            
+            <div class="resource-grid two-col">
+                <div class="resource-card">
+                    <h4>Templates</h4>
+                    <p>Email templates, proposals, and frameworks</p>
+                    <a href="https://sites.google.com/gladly.com/gladlyrevenablement/templates" class="resource-link">View All →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>RevOps Tools</h4>
+                    <p>Salesforce dashboards and reporting</p>
+                    <a href="https://sites.google.com/gladly.com/gladlyrevenablement/revops-tools" class="resource-link">Access Tools →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Content Library</h4>
+                    <p>All decks, one-pagers, and collateral</p>
+                    <a href="https://sites.google.com/gladly.com/gladlyrevenablement/content" class="resource-link">Browse →</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Product Pages</h4>
+                    <p>Sidekick, Hero, and Customer AI resources</p>
+                    <a href="https://sites.google.com/gladly.com/gladlyrevenablement/product" class="resource-link">All Products →</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

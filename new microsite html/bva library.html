@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BVA Tools</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #0D0D0D;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #8C69F0 0%, #7557d9 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            opacity: 0.95;
+        }
+        
+        /* Category Section */
+        .category-section {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .category-section.gray-bg {
+            background: #F3F3F3;
+            box-shadow: none;
+        }
+        
+        /* Section Header */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid #E8E0F8;
+        }
+        
+        .section-icon {
+            font-size: 40px;
+        }
+        
+        .section-header-text h2 {
+            font-size: 26px;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        
+        .section-header-text p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        
+        .content-grid.two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .content-card {
+            background: #FFFFFF;
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            border: 2px solid #F3F3F3;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .content-card:hover {
+            background: #E8E0F8;
+            border-color: #8C69F0;
+            transform: translateY(-2px);
+        }
+        
+        .content-card h4 {
+            font-size: 16px;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .content-card p {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            flex-grow: 1;
+        }
+        
+        .content-link {
+            color: #8C69F0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        
+        .content-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 900px) {
+            .content-grid,
+            .content-grid.two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- Hero -->
+        <div class="hero">
+            <h1>Business Value Assessment</h1>
+            <p>ROI calculators, value frameworks, and tools to quantify Gladly's impact</p>
+        </div>
+        
+        <!-- ROI Calculators -->
+        <div class="category-section">
+            <div class="section-header">
+                <span class="section-icon">💰</span>
+                <div class="section-header-text">
+                    <h2>ROI Calculators</h2>
+                    <p>Interactive tools to quantify cost savings and efficiency gains</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="#" class="content-card">
+                    <h4>Sidekick ROI Calculator</h4>
+                    <p>Calculate cost savings from AI automation and resolution rates</p>
+                    <span class="content-link">Use Calculator →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Platform Migration ROI</h4>
+                    <p>Compare costs of switching from legacy platforms to Gladly</p>
+                    <span class="content-link">Use Calculator →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Agent Efficiency Calculator</h4>
+                    <p>Measure productivity gains with Hero and Sidekick combined</p>
+                    <span class="content-link">Use Calculator →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- BVA Templates -->
+        <div class="category-section gray-bg">
+            <div class="section-header">
+                <span class="section-icon">📋</span>
+                <div class="section-header-text">
+                    <h2>BVA Templates & Frameworks</h2>
+                    <p>Structured templates for building business cases</p>
+                </div>
+            </div>
+            
+            <div class="content-grid two-col">
+                <a href="#" class="content-card">
+                    <h4>Full BVA Template</h4>
+                    <p>Comprehensive business value assessment framework with all metrics and assumptions</p>
+                    <span class="content-link">Download Template →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Executive Summary Template</h4>
+                    <p>One-page summary template for presenting ROI to executives</p>
+                    <span class="content-link">Download Template →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Discovery Question Framework</h4>
+                    <p>Questions to ask during discovery to gather data for BVA</p>
+                    <span class="content-link">View Framework →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Value Realization Timeline</h4>
+                    <p>Template showing phased value delivery over implementation timeline</p>
+                    <span class="content-link">Download Template →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Industry Benchmarks -->
+        <div class="category-section">
+            <div class="section-header">
+                <span class="section-icon">📊</span>
+                <div class="section-header-text">
+                    <h2>Industry Benchmarks & Data</h2>
+                    <p>Reference data for building credible ROI models</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="#" class="content-card">
+                    <h4>AI Resolution Benchmarks</h4>
+                    <p>Industry data on typical AI resolution rates by vertical</p>
+                    <span class="content-link">View Data →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Contact Center Cost Metrics</h4>
+                    <p>Average costs per interaction, agent salaries, and overhead by industry</p>
+                    <span class="content-link">View Metrics →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Platform Comparison Costs</h4>
+                    <p>TCO comparison data for Gladly vs. competitors</p>
+                    <span class="content-link">View Comparison →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Customer ROI Examples -->
+        <div class="category-section gray-bg">
+            <div class="section-header">
+                <span class="section-icon">⭐</span>
+                <div class="section-header-text">
+                    <h2>Customer ROI Examples</h2>
+                    <p>Real customer results and business case studies</p>
+                </div>
+            </div>
+            
+            <div class="content-grid two-col">
+                <a href="#" class="content-card">
+                    <h4>Beauty Retailer: $2.1M Annual Savings</h4>
+                    <p>Detailed ROI breakdown from Sidekick implementation showing 87% resolution rate impact</p>
+                    <span class="content-link">View Case Study →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Outdoor Brand: 40% Efficiency Gain</h4>
+                    <p>Agent productivity improvements and cost reduction analysis</p>
+                    <span class="content-link">View Case Study →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Fashion E-commerce: 6-Month Payback</h4>
+                    <p>Fast time-to-value with platform migration from Zendesk</p>
+                    <span class="content-link">View Case Study →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Travel Company: $850K Cost Avoidance</h4>
+                    <p>Avoided hiring 12 additional agents through AI automation</p>
+                    <span class="content-link">View Case Study →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Training & Resources -->
+        <div class="category-section">
+            <div class="section-header">
+                <span class="section-icon">🎓</span>
+                <div class="section-header-text">
+                    <h2>Training & Resources</h2>
+                    <p>Learn how to build and present business cases effectively</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="#" class="content-card">
+                    <h4>BVA Workshop Recording</h4>
+                    <p>Live training session on using BVA tools and building business cases</p>
+                    <span class="content-link">Watch Recording →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>ROI Presentation Guide</h4>
+                    <p>Best practices for presenting financial justification to executives</p>
+                    <span class="content-link">View Guide →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Common Objections & Responses</h4>
+                    <p>How to handle pushback on ROI assumptions and calculations</p>
+                    <span class="content-link">View Responses →</span>
+                </a>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
