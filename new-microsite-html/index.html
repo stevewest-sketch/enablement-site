@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gladly Revenue Enablement</title>
+    <link rel="stylesheet" href="assets/nav-fixed.css">
+    <link rel="stylesheet" href="assets/search.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 72px;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .header p {
+            font-size: 20px;
+            color: #666;
+        }
+
+        /* Search Bar */
+        .search-section {
+            background: transparent;
+            padding: 0;
+            margin-bottom: 60px;
+        }
+
+        .search-box {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 16px 24px;
+            font-size: 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 50px;
+            transition: all 0.2s;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #34a853;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .search-help {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .search-help a {
+            color: #34a853;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .search-help a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            font-size: 28px;
+            color: #1a1a1a;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        
+        .section-subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 32px;
+        }
+        
+        /* Team Toolkits */
+        .team-toolkits {
+            margin-bottom: 60px;
+        }
+        
+        .toolkit-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .toolkit-card {
+            background: white;
+            border-radius: 12px;
+            padding: 32px 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            text-align: center;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .toolkit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #ccc;
+            transition: all 0.3s ease;
+        }
+        
+        .toolkit-card.sales::before {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        }
+        
+        .toolkit-card.csm::before {
+            background: linear-gradient(135deg, #8C69F0 0%, #7557d9 100%);
+        }
+        
+        .toolkit-card.sc::before {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+        }
+        
+        .toolkit-card.marketing::before {
+            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+        }
+        
+        .toolkit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        
+        .toolkit-card:hover::before {
+            height: 100%;
+            opacity: 0.05;
+        }
+        
+        .toolkit-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            display: block;
+        }
+        
+        .toolkit-card h3 {
+            font-size: 22px;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .toolkit-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.4;
+        }
+        
+        /* Quick Tasks */
+        .quick-tasks {
+            margin-bottom: 60px;
+        }
+        
+        .task-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        
+        .task-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #f3f3f3;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .task-card:hover {
+            background: #f1f9f3;
+            border-color: #34a853;
+            transform: translateX(4px);
+        }
+        
+        .task-icon {
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+        
+        .task-card h4 {
+            font-size: 16px;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+        
+        /* Products Grid */
+        .products-section {
+            margin-bottom: 60px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        
+        .product-card {
+            background: white;
+            padding: 24px 20px;
+            border-radius: 8px;
+            border: 2px solid #f3f3f3;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+        
+        .product-card:hover {
+            background: #f1f9f3;
+            border-color: #34a853;
+            transform: translateY(-2px);
+        }
+        
+        .product-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        
+        .product-card h4 {
+            font-size: 15px;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+        
+        /* What's New */
+        .whats-new {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 50px;
+        }
+        
+        .whats-new-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #34a853;
+        }
+        
+        .whats-new-header h2 {
+            font-size: 28px;
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .new-badge {
+            background: #34a853;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .update-item {
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .update-item:last-child {
+            border-bottom: none;
+        }
+        
+        .update-date {
+            font-size: 13px;
+            color: #888;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .update-title {
+            font-size: 18px;
+            color: #1a1a1a;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .update-title span {
+            margin-right: 8px;
+        }
+        
+        .update-description {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+        
+        .update-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .update-link {
+            color: #34a853;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .update-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Popular Resources */
+        .popular-resources {
+            margin-bottom: 50px;
+        }
+        
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        
+        .resource-card {
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            border: 2px solid #f3f3f3;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .resource-card:hover {
+            background: #f1f9f3;
+            border-color: #34a853;
+            transform: translateY(-2px);
+        }
+        
+        .resource-icon {
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+        
+        .resource-card h4 {
+            font-size: 16px;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+        
+        /* Help Section */
+        .help-section {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .help-section h3 {
+            font-size: 20px;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+        
+        .help-section p {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .help-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .help-button {
+            background: #34a853;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s ease;
+            display: inline-block;
+        }
+        
+        .help-button:hover {
+            background: #2d8e47;
+        }
+        
+        .help-button.secondary {
+            background: white;
+            color: #34a853;
+            border: 2px solid #34a853;
+        }
+        
+        .help-button.secondary:hover {
+            background: #f1f9f3;
+        }
+        
+        @media (max-width: 1024px) {
+            .toolkit-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .task-grid,
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .toolkit-grid,
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+
+        <!-- Header -->
+        <div class="header">
+            <h1>The GTM Hub</h1>
+            <p>Your central hub for selling, supporting, and growing with Gladly</p>
+        </div>
+        
+        <!-- Search -->
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" id="site-search" placeholder="Search for battle cards, templates, demos, product info...">
+                <div id="search-results" class="search-results"></div>
+            </div>
+        </div>
+        
+        <!-- Team Toolkits -->
+        <div class="team-toolkits">
+            <h2 class="section-title">Start with Your Role</h2>
+            <p class="section-subtitle">Everything you need, organized for your job</p>
+            
+            <div class="toolkit-grid">
+                <a href="enablement/toolkits/sales/index.html" class="toolkit-card sales">
+                    <span class="toolkit-icon">💼</span>
+                    <h3>Sales Toolkit</h3>
+                    <p>Demos, battle cards, plays, and sales materials</p>
+                </a>
+
+                <a href="enablement/toolkits/csm/index.html" class="toolkit-card csm">
+                    <span class="toolkit-icon">🎯</span>
+                    <h3>CSM Toolkit</h3>
+                    <p>QBRs, adoption, value tools, and renewal resources</p>
+                </a>
+
+                <a href="enablement/toolkits/success/index.html" class="toolkit-card sc">
+                    <span class="toolkit-icon">🔧</span>
+                    <h3>SC Toolkit</h3>
+                    <p>Demo environments, technical docs, and POC materials</p>
+                </a>
+
+                <a href="enablement/toolkits/marketing/index.html" class="toolkit-card marketing">
+                    <span class="toolkit-icon">📣</span>
+                    <h3>Marketing Toolkit</h3>
+                    <p>Campaigns, content, templates, and brand assets</p>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Quick Tasks -->
+        <div class="quick-tasks">
+            <h2 class="section-title">What do you need to do today?</h2>
+            
+            <div class="task-grid">
+                <a href="enablement/demo/index.html" class="task-card">
+                    <span class="task-icon">🎬</span>
+                    <div>
+                        <h4>Prepare for Demo</h4>
+                    </div>
+                </a>
+
+                <a href="https://docs.google.com/presentation/d/11EMqR6s3KOlnRafjzgITBmt4QyUFgvlC2zRxfvsmydU/edit?slide=id.g35df72a2580_0_132#slide=id.g35df72a2580_0_132" class="task-card" target="_blank">
+                    <span class="task-icon">📊</span>
+                    <div>
+                        <h4>Run a QBR</h4>
+                    </div>
+                </a>
+
+                <a href="enablement/competitive/index.html" class="task-card">
+                    <span class="task-icon">⚔️</span>
+                    <div>
+                        <h4>Handle Competitor</h4>
+                    </div>
+                </a>
+
+                <a href="enablement/bva/index.html" class="task-card">
+                    <span class="task-icon">💰</span>
+                    <div>
+                        <h4>Build Business Case</h4>
+                    </div>
+                </a>
+
+                <a href="coe/index.html" class="task-card">
+                    <span class="task-icon">🚀</span>
+                    <div>
+                        <h4>Drive Adoption</h4>
+                    </div>
+                </a>
+
+                <a href="enablement/training/index.html" class="task-card">
+                    <span class="task-icon">🎓</span>
+                    <div>
+                        <h4>Access Training</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Products -->
+        <div class="products-section">
+            <h2 class="section-title">Product Knowledge</h2>
+            <p class="section-subtitle">Learn about our products and features</p>
+            
+            <div class="product-grid">
+                <a href="product/sidekick-standalone/index.html" class="product-card">
+                    <span class="product-icon">🤖</span>
+                    <h4>Sidekick Standalone</h4>
+                </a>
+
+                <a href="product/sidekick-voice/index.html" class="product-card">
+                    <span class="product-icon">📞</span>
+                    <h4>Sidekick Voice</h4>
+                </a>
+
+                <a href="product/sidekick-email/index.html" class="product-card">
+                    <span class="product-icon">✉️</span>
+                    <h4>Sidekick Email</h4>
+                </a>
+
+                <a href="product/sidekick-sales/index.html" class="product-card">
+                    <span class="product-icon">💵</span>
+                    <h4>Sidekick Sales</h4>
+                </a>
+
+                <a href="product/customer-ai/index.html" class="product-card">
+                    <span class="product-icon">🧠</span>
+                    <h4>Customer AI</h4>
+                </a>
+
+                <a href="product/guides-journeys/index.html" class="product-card">
+                    <span class="product-icon">🗺️</span>
+                    <h4>Guides & Journeys</h4>
+                </a>
+
+                <a href="product/app-platform/index.html" class="product-card">
+                    <span class="product-icon">🔌</span>
+                    <h4>App Platform</h4>
+                </a>
+            </div>
+        </div>
+        
+        <!-- What's New -->
+        <div class="whats-new">
+            <div class="whats-new-header">
+                <h2>
+                    <span>🆕</span> What's New
+                    <span class="new-badge">Oct 2025</span>
+                </h2>
+            </div>
+            
+            <div class="update-item">
+                <div class="update-date">OCTOBER 1, 2025</div>
+                <div class="update-title">
+                    <span>📦</span> Conversation Reviewer Enhancements
+                </div>
+                <div class="update-description">
+                    Improve visibility into Sidekick's response reasoning to help customers make targeted improvements.
+                </div>
+                <div class="update-links">
+                    <a href="#" class="update-link">→ Product Guide</a>
+                    <a href="#" class="update-link">→ Training Materials</a>
+                </div>
+            </div>
+            
+            <div class="update-item">
+                <div class="update-date">OCTOBER 1, 2025</div>
+                <div class="update-title">
+                    <span>🎯</span> Guide-Level Advice
+                </div>
+                <div class="update-description">
+                    Customize advice at the individual guide level to support tailored tone and coaching.
+                </div>
+                <div class="update-links">
+                    <a href="#" class="update-link">→ Documentation</a>
+                    <a href="#" class="update-link">→ Demo Setup</a>
+                </div>
+            </div>
+            
+            <div class="update-item">
+                <div class="update-date">SEPTEMBER 28, 2025</div>
+                <div class="update-title">
+                    <span>💰</span> Cost Tracking for Sidekick Sales
+                </div>
+                <div class="update-description">
+                    Track costs and explore optimizations as Sidekick Sales scales.
+                </div>
+                <div class="update-links">
+                    <a href="#" class="update-link">→ Feature Overview</a>
+                    <a href="#" class="update-link">→ Customer FAQ</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Popular Resources -->
+        <div class="popular-resources">
+            <h2 class="section-title">Most Useful Resources</h2>
+            
+            <div class="resource-grid">
+                <a href="coe/index.html" class="resource-card">
+                    <span class="resource-icon">🎯</span>
+                    <div>
+                        <h4>Center of Excellence</h4>
+                    </div>
+                </a>
+
+                <a href="enablement/competitive/index.html" class="resource-card">
+                    <span class="resource-icon">⚔️</span>
+                    <div>
+                        <h4>Competitive Battle Cards</h4>
+                    </div>
+                </a>
+
+                <a href="enablement/demo/index.html" class="resource-card">
+                    <span class="resource-icon">🎬</span>
+                    <div>
+                        <h4>Demo Hub</h4>
+                    </div>
+                </a>
+
+                <a href="enablement/bva/index.html" class="resource-card">
+                    <span class="resource-icon">💰</span>
+                    <div>
+                        <h4>ROI & BVA Tools</h4>
+                    </div>
+                </a>
+
+                <a href="enablement/playbooks/index.html" class="resource-card">
+                    <span class="resource-icon">📖</span>
+                    <div>
+                        <h4>Sales Playbooks</h4>
+                    </div>
+                </a>
+
+                <a href="resources/templates/index.html" class="resource-card">
+                    <span class="resource-icon">📋</span>
+                    <div>
+                        <h4>Templates Library</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Help Section -->
+        <div class="help-section">
+            <h3>💡 Can't find what you need?</h3>
+            <p>Ask in Slack - the team will help you find it</p>
+            <div class="help-actions">
+                <a href="https://gladly.slack.com/archives/C06T8V6TJUA" class="help-button">#enablement-resources</a>
+                <a href="#" class="help-button secondary">Browse All Content</a>
+            </div>
+        </div>
+
+        </div>
+    </div>
+
+    <script src="assets/nav.js"></script>
+    <script src="assets/search.js"></script>
+    <script>
+        initNav('index.html');
+        initSearch('site-search', 'search-results', 'index.html');
+    </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+/* Simple left nav that doesn't break existing layouts */
+.left-nav {
+    width: 280px;
+    background: white;
+    height: 100vh;
+    border-right: 1px solid #e5e7eb;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    padding: 24px 0;
+    z-index: 1001;
+    box-sizing: border-box;
+}
+
+.nav-logo {
+    padding: 0 24px 24px;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 16px;
+}
+
+.nav-logo h2 {
+    font-size: 20px;
+    color: #1a1a1a;
+    font-weight: 700;
+}
+
+.nav-section {
+    margin-bottom: 8px;
+}
+
+.nav-parent-container {
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+    transition: background 0.2s;
+}
+
+.nav-parent-container:hover {
+    background: #f3f4f6;
+}
+
+.nav-parent-link {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.nav-parent-link.active {
+    color: #34a853;
+}
+
+.nav-no-link {
+    cursor: default;
+}
+
+.nav-parent-solo {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 12px 24px;
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: background 0.2s;
+    cursor: pointer;
+}
+
+.nav-parent-solo:hover {
+    background: #f3f4f6;
+}
+
+.nav-parent-solo.active {
+    background: #f1f9f3;
+    color: #34a853;
+}
+
+.nav-text {
+    flex: 1;
+}
+
+.nav-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    font-size: 14px;
+    transition: transform 0.2s;
+    cursor: pointer;
+    user-select: none;
+}
+
+.nav-arrow.open {
+    transform: rotate(90deg);
+}
+
+.nav-children {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.nav-children.open {
+    max-height: 600px;
+}
+
+.nav-child {
+    display: block;
+    padding: 8px 24px 8px 48px;
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.nav-child:hover {
+    background: #f9fafb;
+    color: #34a853;
+}
+
+.nav-child.active {
+    background: #f1f9f3;
+    color: #34a853;
+    font-weight: 600;
+}
+
+/* Add padding to body to account for fixed nav */
+body {
+    padding-left: 280px !important;
+    box-sizing: border-box;
+    margin: 0 !important;
+}
+
+/* Reset any inline styles that might interfere */
+html {
+    margin: 0 !important;
+}
+
+html[style] {
+    margin: 0 !important;
+}

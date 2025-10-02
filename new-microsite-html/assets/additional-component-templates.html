@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Additional Component Templates</title>
+    <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #0D0D0D;
+            background: #f8f9fa;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .component-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        h1 { margin-bottom: 30px; }
+        h2 { margin-bottom: 20px; border-bottom: 2px solid #E8E0F8; padding-bottom: 10px; }
+        h3 { margin: 20px 0 15px 0; }
+        
+        pre {
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+        
+        /* COMPETITOR CARD */
+        .competitor-card {
+            background: white;
+            border: 2px solid #F3F3F3;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .competitor-card:hover {
+            border-color: #009B00;
+            box-shadow: 0 4px 12px rgba(0,155,0,0.15);
+            transform: translateY(-2px);
+        }
+        
+        .competitor-header {
+            background: #0D0D0D;
+            color: white;
+            padding: 24px;
+            text-align: center;
+        }
+        
+        .competitor-header h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: white;
+        }
+        
+        .competitor-category {
+            font-size: 13px;
+            color: #AAAAAA;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .competitor-body {
+            padding: 24px;
+        }
+        
+        .competitor-body h4 {
+            font-size: 15px;
+            color: #4A4A4A;
+            margin-bottom: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .competitor-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .competitor-list li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 14px;
+            color: #0D0D0D;
+            line-height: 1.5;
+        }
+        
+        .competitor-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #009B00;
+            font-weight: bold;
+        }
+        
+        .competitor-actions {
+            display: flex;
+            gap: 12px;
+            padding-top: 16px;
+            border-top: 1px solid #F3F3F3;
+        }
+        
+        /* DEMO RESOURCE CARD */
+        .demo-card {
+            background: white;
+            border: 2px solid #F3F3F3;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        
+        .demo-card:hover {
+            border-color: #8C69F0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(140,105,240,0.15);
+        }
+        
+        .demo-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        
+        .demo-card h4 {
+            font-size: 18px;
+            color: #0D0D0D;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .demo-card p {
+            font-size: 14px;
+            color: #4A4A4A;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        
+        .demo-link {
+            color: #8C69F0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .demo-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* PLAYBOOK CARD */
+        .playbook-card {
+            background: white;
+            border: 2px solid #F3F3F3;
+            border-radius: 8px;
+            padding: 28px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .playbook-card:hover {
+            border-color: #8C69F0;
+            box-shadow: 0 4px 12px rgba(140,105,240,0.15);
+            transform: translateY(-2px);
+        }
+        
+        .playbook-icon {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+        
+        .playbook-card h3 {
+            font-size: 20px;
+            color: #0D0D0D;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .playbook-card p {
+            font-size: 14px;
+            color: #4A4A4A;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        
+        .playbook-meta {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #F3F3F3;
+        }
+        
+        .meta-item {
+            font-size: 12px;
+            color: #AAAAAA;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .playbook-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* PRODUCT FEATURE CARD */
+        .product-card {
+            background: white;
+            border: 2px solid #F3F3F3;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            cursor: pointer;
+        }
+        
+        .product-card:hover {
+            border-color: #009B00;
+            box-shadow: 0 4px 12px rgba(0,155,0,0.15);
+            transform: translateY(-2px);
+        }
+        
+        .product-card h3 {
+            font-size: 20px;
+            color: #0D0D0D;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .product-card p {
+            font-size: 14px;
+            color: #4A4A4A;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        
+        .product-badge {
+            display: inline-block;
+            background: #CDEFCD;
+            color: #009B00;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .product-badge.purple {
+            background: #C5B3F8;
+            color: #8C69F0;
+        }
+        
+        /* UNIFIED BUTTONS */
+        .btn {
+            padding: 10px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            flex: 1;
+            border: 2px solid transparent;
+            cursor: pointer;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: #009B00;
+            color: white;
+            border-color: #009B00;
+        }
+        
+        .btn-primary:hover {
+            background: #007a00;
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #009B00;
+            border: 2px solid #009B00;
+        }
+        
+        .btn-secondary:hover {
+            background: #009B00;
+            color: white;
+        }
+        
+        .btn-purple {
+            background: #8C69F0;
+            color: white;
+        }
+        
+        .btn-purple:hover {
+            background: #7557d9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Additional Component Templates</h1>
+        
+        <!-- Competitor Cards -->
+        <div class="component-section">
+            <h2>1. Competitor Cards</h2>
+            <div class="content-grid">
+                <div class="competitor-card">
+                    <div class="competitor-header">
+                        <h3>Zendesk</h3>
+                        <div class="competitor-category">CCaaS / Helpdesk</div>
+                    </div>
+                    <div class="competitor-body">
+                        <h4>Key Differentiators</h4>
+                        <ul class="competitor-list">
+                            <li>Radically personal vs. ticket-based</li>
+                            <li>Single conversation thread vs. fragmented tickets</li>
+                            <li>AI resolution vs. AI containment</li>
+                            <li>Built-in voice vs. add-on</li>
+                        </ul>
+                        
+                        <div class="competitor-actions">
+                            <a href="#" class="btn btn-primary">Battle Card</a>
+                            <a href="#" class="btn btn-secondary">Positioning</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="competitor-card">
+                    <div class="competitor-header">
+                        <h3>Salesforce Service Cloud</h3>
+                        <div class="competitor-category">CRM / Service Platform</div>
+                    </div>
+                    <div class="competitor-body">
+                        <h4>Key Differentiators</h4>
+                        <ul class="competitor-list">
+                            <li>Purpose-built for service vs. sales-first CRM</li>
+                            <li>Modern UI vs. complex Lightning</li>
+                            <li>Outcomes Velocity vs. Einstein metrics</li>
+                            <li>Faster implementation (weeks vs. months)</li>
+                        </ul>
+                        
+                        <div class="competitor-actions">
+                            <a href="#" class="btn btn-primary">Battle Card</a>
+                            <a href="#" class="btn btn-secondary">Positioning</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>HTML Template:</h3>
+            <pre><code>&lt;div class="competitor-card"&gt;
+    &lt;div class="competitor-header"&gt;
+        &lt;h3&gt;[COMPETITOR NAME]&lt;/h3&gt;
+        &lt;div class="competitor-category"&gt;[CATEGORY]&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="competitor-body"&gt;
+        &lt;h4&gt;Key Differentiators&lt;/h4&gt;
+        &lt;ul class="competitor-list"&gt;
+            &lt;li&gt;[DIFFERENTIATOR 1]&lt;/li&gt;
+            &lt;li&gt;[DIFFERENTIATOR 2]&lt;/li&gt;
+            &lt;li&gt;[DIFFERENTIATOR 3]&lt;/li&gt;
+        &lt;/ul&gt;
+        
+        &lt;div class="competitor-actions"&gt;
+            &lt;a href="#" class="btn btn-primary"&gt;Battle Card&lt;/a&gt;
+            &lt;a href="#" class="btn btn-secondary"&gt;Positioning&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        
+        <!-- Demo Resource Cards -->
+        <div class="component-section">
+            <h2>2. Demo Resource Cards</h2>
+            <div class="content-grid">
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">🎬</span>
+                    <h4>Platform Overview Demo</h4>
+                    <p>Full platform walkthrough covering Hero and Sidekick together</p>
+                    <span class="demo-link">View Demo →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">💻</span>
+                    <h4>Demo Environment</h4>
+                    <p>Access live demo instances with sample data</p>
+                    <span class="demo-link">Access Environment →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">📝</span>
+                    <h4>Demo Scripts</h4>
+                    <p>Conversation scripts and visual mockups for walkthroughs</p>
+                    <span class="demo-link">View Scripts →</span>
+                </a>
+            </div>
+            
+            <h3>HTML Template:</h3>
+            <pre><code>&lt;a href="#" class="demo-card"&gt;
+    &lt;span class="demo-icon"&gt;[EMOJI]&lt;/span&gt;
+    &lt;h4&gt;[DEMO TITLE]&lt;/h4&gt;
+    &lt;p&gt;[DESCRIPTION]&lt;/p&gt;
+    &lt;span class="demo-link"&gt;[ACTION] →&lt;/span&gt;
+&lt;/a&gt;</code></pre>
+        </div>
+        
+        <!-- Playbook Cards -->
+        <div class="component-section">
+            <h2>3. Playbook Cards</h2>
+            <div class="content-grid">
+                <div class="playbook-card">
+                    <div class="playbook-icon">⚡</div>
+                    <h3>Quick Win Plays</h3>
+                    <p>Tactical plays for immediate pipeline acceleration and fast close opportunities</p>
+                    <div class="playbook-meta">
+                        <span class="meta-item">📄 8 pages</span>
+                        <span class="meta-item">⏱️ Updated Oct 2024</span>
+                    </div>
+                    <div class="playbook-actions">
+                        <a href="#" class="btn btn-purple">Open Playbook</a>
+                    </div>
+                </div>
+                
+                <div class="playbook-card">
+                    <div class="playbook-icon">🎯</div>
+                    <h3>Land & Expand</h3>
+                    <p>Start with a department, expand to enterprise-wide adoption</p>
+                    <div class="playbook-meta">
+                        <span class="meta-item">📄 12 pages</span>
+                        <span class="meta-item">⏱️ Updated Sep 2024</span>
+                    </div>
+                    <div class="playbook-actions">
+                        <a href="#" class="btn btn-purple">Open Playbook</a>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>HTML Template:</h3>
+            <pre><code>&lt;div class="playbook-card"&gt;
+    &lt;div class="playbook-icon"&gt;[EMOJI]&lt;/div&gt;
+    &lt;h3&gt;[PLAYBOOK TITLE]&lt;/h3&gt;
+    &lt;p&gt;[DESCRIPTION]&lt;/p&gt;
+    &lt;div class="playbook-meta"&gt;
+        &lt;span class="meta-item"&gt;📄 [PAGE COUNT] pages&lt;/span&gt;
+        &lt;span class="meta-item"&gt;⏱️ Updated [DATE]&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="playbook-actions"&gt;
+        &lt;a href="#" class="btn btn-purple"&gt;Open Playbook&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        
+        <!-- Product Feature Cards -->
+        <div class="component-section">
+            <h2>4. Product Feature Cards</h2>
+            <div class="content-grid">
+                <a href="#" class="product-card">
+                    <h3>Sidekick Standalone</h3>
+                    <p>AI agent that integrates with your existing helpdesk (Zendesk, Salesforce, Kustomer, etc.)</p>
+                    <span class="product-badge">GA</span>
+                </a>
+                
+                <a href="#" class="product-card">
+                    <h3>Sidekick Voice</h3>
+                    <p>AI phone agent for voice calls and IVR automation</p>
+                    <span class="product-badge purple">BETA</span>
+                </a>
+            </div>
+            
+            <h3>HTML Template:</h3>
+            <pre><code>&lt;a href="#" class="product-card"&gt;
+    &lt;h3&gt;[PRODUCT NAME]&lt;/h3&gt;
+    &lt;p&gt;[DESCRIPTION]&lt;/p&gt;
+    &lt;span class="product-badge"&gt;[STATUS]&lt;/span&gt;
+&lt;/a&gt;</code></pre>
+        </div>
+    </div>
+</body>
+</html>

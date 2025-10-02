@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gladly Unified CSS Framework</title>
+    <style>
+        /* ========================================
+           GLADLY UNIFIED DESIGN SYSTEM
+           Version 1.0
+           ======================================== */
+
+        /* --- BASE RESET & TYPOGRAPHY --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #0D0D0D;
+            background: #f8f9fa;
+        }
+
+        /* --- SCROLL OFFSET FOR ANCHORS (Google Sites iframe fix) --- */
+        :root {
+            --nav-offset: 96px;
+        }
+        
+        [id] {
+            scroll-margin-top: var(--nav-offset);
+        }
+
+        /* --- CONTAINERS --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- HERO SECTIONS --- */
+        .hero {
+            color: white;
+            padding: 60px 40px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        /* Hero color variants */
+        .hero.green { background: linear-gradient(135deg, #009B00 0%, #007a00 100%); }
+        .hero.purple { background: linear-gradient(135deg, #8C69F0 0%, #7557d9 100%); }
+        .hero.orange { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        /* --- STICKY NAVIGATION --- */
+        .quick-nav {
+            background: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-link {
+            background: #F3F3F3;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #0D0D0D;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            background: #8C69F0;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* --- SECTIONS --- */
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            scroll-margin-top: var(--nav-offset);
+        }
+        
+        .section.gray-bg {
+            background: #F3F3F3;
+            box-shadow: none;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid #E8E0F8;
+        }
+        
+        .section-icon {
+            font-size: 40px;
+        }
+        
+        .section-header-text h2 {
+            font-size: 26px;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        
+        .section-header-text p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* --- CONTENT GRIDS --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        
+        .content-grid.two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .content-grid.four-col {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        /* --- STANDARD CONTENT CARD --- */
+        .content-card {
+            background: #FFFFFF;
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            border: 2px solid #F3F3F3;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        
+        .content-card:hover {
+            background: #E8E0F8;
+            border-color: #8C69F0;
+            transform: translateY(-2px);
+        }
+        
+        .content-card h4 {
+            font-size: 16px;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .content-card p {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            flex-grow: 1;
+        }
+        
+        .content-link {
+            color: #8C69F0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        
+        .content-link:hover {
+            text-decoration: underline;
+        }
+
+        /* --- TRAINING CARD (Standardized) --- */
+        .training-card {
+            background: white;
+            border: 2px solid #F3F3F3;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            cursor: pointer;
+        }
+        
+        .training-card:hover {
+            border-color: #009B00;
+            box-shadow: 0 4px 12px rgba(0,155,0,0.15);
+            transform: translateY(-2px);
+        }
+        
+        .training-header {
+            background: #0D0D0D;
+            color: white;
+            padding: 20px;
+        }
+        
+        .training-date {
+            font-size: 13px;
+            color: #AAAAAA;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        
+        .training-header h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+        
+        .training-product {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        
+        .training-body {
+            padding: 20px;
+        }
+        
+        .training-body p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        
+        .training-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #F3F3F3;
+        }
+        
+        .training-link {
+            color: #009B00;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .training-link:hover {
+            text-decoration: underline;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            display: inline-block;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: #8C69F0;
+            color: white;
+            border-color: #8C69F0;
+        }
+        
+        .btn-primary:hover {
+            background: #7557d9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #8C69F0;
+            border: 2px solid #8C69F0;
+        }
+        
+        .btn-secondary:hover {
+            background: #8C69F0;
+            color: white;
+        }
+        
+        .btn-green {
+            background: #009B00;
+            color: white;
+        }
+        
+        .btn-green:hover {
+            background: #007a00;
+        }
+
+        /* --- CTA SECTION --- */
+        .cta-section {
+            background: #C5B3F8;
+            padding: 50px 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .cta-section h2 {
+            font-size: 32px;
+            color: #0D0D0D;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            color: #4A4A4A;
+            margin-bottom: 28px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .content-grid,
+            .content-grid.two-col,
+            .content-grid.four-col {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+    
+    <!-- ANCHOR FIX SCRIPT FOR GOOGLE SITES IFRAME -->
+    <script>
+        // Universal anchor fix for Google Sites iframe
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update offset based on actual nav height
+            function updateOffset() {
+                const nav = document.querySelector('.quick-nav');
+                if (nav) {
+                    const navHeight = nav.getBoundingClientRect().height + 16;
+                    document.documentElement.style.setProperty('--nav-offset', navHeight + 'px');
+                }
+            }
+            
+            // Handle anchor clicks
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start' 
+                        });
+                    }
+                });
+            });
+            
+            // Check for hash on load
+            if (window.location.hash) {
+                setTimeout(() => {
+                    const targetId = window.location.hash.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ 
+                            behavior: 'auto', 
+                            block: 'start' 
+                        });
+                    }
+                }, 100);
+            }
+            
+            updateOffset();
+            window.addEventListener('resize', updateOffset);
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Gladly Unified Design System</h1>
+        <p>This CSS framework provides consistent styling across all enablement pages.</p>
+        
+        <section class="section">
+            <h2>How to Use</h2>
+            <ol>
+                <li>Copy the CSS and JavaScript from the &lt;style&gt; and &lt;script&gt; tags above</li>
+                <li>Include them in every HTML page</li>
+                <li>Use the standardized class names for consistent components</li>
+            </ol>
+        </section>
+        
+        <section class="section gray-bg">
+            <h2>Component Examples</h2>
+            
+            <h3>Standard Content Card</h3>
+            <div class="content-grid">
+                <a href="#" class="content-card">
+                    <h4>Example Card</h4>
+                    <p>This is a standard content card with hover effect</p>
+                    <span class="content-link">Learn More →</span>
+                </a>
+            </div>
+            
+            <h3 style="margin-top: 30px;">Training Card</h3>
+            <div class="content-grid">
+                <a href="#" class="training-card">
+                    <div class="training-header">
+                        <div class="training-date">December 15, 2024</div>
+                        <h3>Example Training Session</h3>
+                        <span class="training-product">All Products</span>
+                    </div>
+                    <div class="training-body">
+                        <p>This is a standardized training card that looks the same across all pages</p>
+                        <div class="training-meta">
+                            <span>60 min</span>
+                            <span>Recording + Deck</span>
+                        </div>
+                        <span class="training-link">View Materials →</span>
+                    </div>
+                </a>
+            </div>
+            
+            <h3 style="margin-top: 30px;">Buttons</h3>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                <button class="btn btn-primary">Primary Button</button>
+                <button class="btn btn-secondary">Secondary Button</button>
+                <button class="btn btn-green">Green Button</button>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

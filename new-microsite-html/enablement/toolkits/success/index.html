@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SC Toolkit</title>
+    <link rel="stylesheet" href="../../../assets/nav-fixed.css">
+    <link rel="stylesheet" href="../../../assets/search.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #0D0D0D;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            opacity: 0.95;
+        }
+        
+        /* Search Section */
+        .search-section {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .search-box {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 16px 24px;
+            font-size: 16px;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #10B981;
+            box-shadow: 0 0 0 3px rgba(16,185,129,0.1);
+        }
+        
+        .search-suggestions {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 14px;
+            color: #6B7280;
+        }
+        
+        .search-suggestions span {
+            color: #10B981;
+            cursor: pointer;
+            margin: 0 8px;
+        }
+        
+        .search-suggestions span:hover {
+            text-decoration: underline;
+        }
+        
+        /* Category Section */
+        .category-section {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .category-section.gray-bg {
+            background: #F3F3F3;
+            box-shadow: none;
+        }
+        
+        /* Section Header */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid #D1FAE5;
+        }
+        
+        .section-icon {
+            font-size: 40px;
+        }
+        
+        .section-header-text h2 {
+            font-size: 26px;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        
+        .section-header-text p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        
+        .content-grid.two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .content-grid.four-col {
+            grid-template-columns: repeat(4, 1fr);
+        }
+        
+        .content-card {
+            background: #FFFFFF;
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            border: 2px solid #F3F3F3;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .content-card:hover {
+            background: #D1FAE5;
+            border-color: #10B981;
+            transform: translateY(-2px);
+        }
+        
+        .content-card h4 {
+            font-size: 16px;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .content-card p {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            flex-grow: 1;
+        }
+        
+        .content-link {
+            color: #10B981;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        
+        .content-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Quick Link Cards */
+        .quick-link-card {
+            background: #FFFFFF;
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            border: 2px solid #F3F3F3;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .quick-link-card:hover {
+            background: #D1FAE5;
+            border-color: #10B981;
+            transform: translateY(-2px);
+        }
+        
+        .quick-link-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+        
+        .quick-link-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #0D0D0D;
+        }
+        
+        @media (max-width: 900px) {
+            .content-grid,
+            .content-grid.two-col,
+            .content-grid.four-col {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- Hero -->
+        <div class="hero">
+            <h1>SC Toolkit</h1>
+            <p>Win deals with technical expertise and compelling demonstrations</p>
+        </div>
+        
+        <!-- Search Section -->
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" id="site-search" placeholder="Search for demo materials, technical docs, or competitive intel...">
+                <div id="search-results" class="search-results"></div>
+            </div>
+            <div class="search-suggestions">
+                Try: <span>"Zendesk migration"</span> <span>"voice demo"</span> <span>"technical FAQ"</span>
+            </div>
+        </div>
+        
+        <!-- Quick Access -->
+        <div class="category-section gray-bg">
+            <div class="section-header">
+                <span class="section-icon">⚡</span>
+                <div class="section-header-text">
+                    <h2>Quick Access</h2>
+                    <p>Your most-used resources and demo environments</p>
+                </div>
+            </div>
+            
+            <div class="content-grid four-col">
+                <a href="#" class="quick-link-card">
+                    <div class="quick-link-icon">🎬</div>
+                    <div class="quick-link-title">Demo Environments</div>
+                </a>
+                
+                <a href="#" class="quick-link-card">
+                    <div class="quick-link-icon">📐</div>
+                    <div class="quick-link-title">Solution Architecture</div>
+                </a>
+                
+                <a href="#" class="quick-link-card">
+                    <div class="quick-link-icon">🔧</div>
+                    <div class="quick-link-title">Technical Docs</div>
+                </a>
+                
+                <a href="#" class="quick-link-card">
+                    <div class="quick-link-icon">⚔️</div>
+                    <div class="quick-link-title">Competitive Intel</div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Demo Resources -->
+        <div class="category-section">
+            <div class="section-header">
+                <span class="section-icon">🎬</span>
+                <div class="section-header-text">
+                    <h2>Demo Resources</h2>
+                    <p>Presentations, environments, and scripts for compelling demos</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="#" class="content-card">
+                    <h4>Demo Microsite</h4>
+                    <p>Central hub for all demo decks, scripts, and environments</p>
+                    <span class="content-link">Access Hub →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Setup Instruction Guide</h4>
+                    <p>How to configure and access demo environments for prospects</p>
+                    <span class="content-link">View Guide →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Demo Script Library</h4>
+                    <p>Pre-written scripts for WISMO, returns, voice, and sales demos</p>
+                    <span class="content-link">Browse Scripts →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Platform Demo Deck</h4>
+                    <p>Full walkthrough of Hero + Sidekick together</p>
+                    <span class="content-link">View Deck →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Sidekick Standalone Demo</h4>
+                    <p>Demo deck for prospects using existing helpdesk platforms</p>
+                    <span class="content-link">View Deck →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Discovery-to-Demo Framework</h4>
+                    <p>Tailor your demo based on discovery insights and use cases</p>
+                    <span class="content-link">View Framework →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Technical Resources -->
+        <div class="category-section gray-bg">
+            <div class="section-header">
+                <span class="section-icon">🔧</span>
+                <div class="section-header-text">
+                    <h2>Technical Resources</h2>
+                    <p>Architecture diagrams, security docs, and integration specs</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="#" class="content-card">
+                    <h4>Solution Architecture Guide</h4>
+                    <p>System architecture, data flows, and infrastructure overview</p>
+                    <span class="content-link">View Guide →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Security & Compliance</h4>
+                    <p>Security whitepaper, certifications, and compliance documentation</p>
+                    <span class="content-link">Access Docs →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Integration Specifications</h4>
+                    <p>API docs, integration patterns, and technical requirements</p>
+                    <span class="content-link">View Specs →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Platform Migration Guide</h4>
+                    <p>Technical playbooks for migrating from Zendesk, Salesforce, etc.</p>
+                    <span class="content-link">View Guide →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Technical FAQ Library</h4>
+                    <p>Answers to common technical objections and questions</p>
+                    <span class="content-link">Browse FAQs →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Implementation Timelines</h4>
+                    <p>Typical deployment schedules and milestone templates</p>
+                    <span class="content-link">View Timelines →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Proof of Value -->
+        <div class="category-section">
+            <div class="section-header">
+                <span class="section-icon">🧪</span>
+                <div class="section-header-text">
+                    <h2>Proof of Value & POCs</h2>
+                    <p>Structure successful proof of concepts and pilots</p>
+                </div>
+            </div>
+            
+            <div class="content-grid two-col">
+                <a href="#" class="content-card">
+                    <h4>POC Planning Guide</h4>
+                    <p>Framework for scoping and structuring proof of concept engagements</p>
+                    <span class="content-link">View Guide →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Success Criteria Template</h4>
+                    <p>Define measurable outcomes and evaluation criteria for POCs</p>
+                    <span class="content-link">Use Template →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>POC Environment Setup</h4>
+                    <p>How to provision and configure trial environments for prospects</p>
+                    <span class="content-link">View Instructions →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>POC Readout Template</h4>
+                    <p>Present POC results and business impact to stakeholders</p>
+                    <span class="content-link">Use Template →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Competitive Intelligence -->
+        <div class="category-section gray-bg">
+            <div class="section-header">
+                <span class="section-icon">⚔️</span>
+                <div class="section-header-text">
+                    <h2>Competitive Intelligence</h2>
+                    <p>Battle cards and positioning against key competitors</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="#" class="content-card">
+                    <h4>Zendesk Battle Card</h4>
+                    <p>Positioning, technical differentiators, and objection handling</p>
+                    <span class="content-link">View Card →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Salesforce Service Cloud</h4>
+                    <p>How to win against Einstein and Service Cloud implementations</p>
+                    <span class="content-link">View Card →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Kustomer Battle Card</h4>
+                    <p>Key differentiators and competitive positioning strategies</p>
+                    <span class="content-link">View Card →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Intercom Positioning</h4>
+                    <p>Win against chat-focused solutions with full platform value</p>
+                    <span class="content-link">View Card →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Voice AI Competitors</h4>
+                    <p>Positioning vs. PolyAI, Replicant, and other voice-only solutions</p>
+                    <span class="content-link">View Card →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>AI Startup Landscape</h4>
+                    <p>Sierra, Decagon, and other AI-native competitor positioning</p>
+                    <span class="content-link">View Card →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Discovery & Scoping -->
+        <div class="category-section">
+            <div class="section-header">
+                <span class="section-icon">🔍</span>
+                <div class="section-header-text">
+                    <h2>Discovery & Scoping</h2>
+                    <p>Qualify opportunities and uncover technical requirements</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="#" class="content-card">
+                    <h4>Discovery Question Bank</h4>
+                    <p>Technical and business discovery questions by use case</p>
+                    <span class="content-link">View Questions →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Technical Qualification</h4>
+                    <p>Framework for assessing technical fit and implementation complexity</p>
+                    <span class="content-link">View Framework →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Scoping Worksheet</h4>
+                    <p>Capture requirements, integrations, and success criteria</p>
+                    <span class="content-link">Use Worksheet →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Integration Discovery</h4>
+                    <p>Questions to uncover CRM, e-commerce, and other integrations</p>
+                    <span class="content-link">View Guide →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Strategic Discovery Playbook</h4>
+                    <p>Uncover business outcomes and executive priorities</p>
+                    <span class="content-link">View Playbook →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Use Case Mapping</h4>
+                    <p>Match customer needs to Gladly capabilities and features</p>
+                    <span class="content-link">View Framework →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Training & Certification -->
+        <div class="category-section gray-bg">
+            <div class="section-header">
+                <span class="section-icon">🎓</span>
+                <div class="section-header-text">
+                    <h2>Training & Certification</h2>
+                    <p>Build expertise and stay current on products</p>
+                </div>
+            </div>
+            
+            <div class="content-grid two-col">
+                <a href="#" class="content-card">
+                    <h4>SC Certification Program</h4>
+                    <p>Complete training path for Solutions Consultant certification</p>
+                    <span class="content-link">Start Training →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Product Deep Dives</h4>
+                    <p>Technical training on Customer AI, Sidekick products, and Hero platform</p>
+                    <span class="content-link">Browse Training →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Demo Training Recordings</h4>
+                    <p>Learn demo best practices from top-performing SCs</p>
+                    <span class="content-link">Watch Recordings →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>SC Onboarding Path</h4>
+                    <p>New hire curriculum covering products, tools, and processes</p>
+                    <span class="content-link">View Path →</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../../../assets/nav.js"></script>
+    <script src="../../../assets/search.js"></script>
+    <script>
+        initNav('enablement/toolkits/success/index.html');
+        initSearch('site-search', 'search-results', 'enablement/toolkits/success/index.html');
+    </script>
+</body>
+</html>

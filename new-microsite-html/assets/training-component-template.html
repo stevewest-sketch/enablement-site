@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Components Template</title>
+    <style>
+        /* Include the unified CSS here */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #0D0D0D;
+            background: #f8f9fa;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+        
+        .component-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+            color: #0D0D0D;
+            font-size: 24px;
+            border-bottom: 2px solid #E8E0F8;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            margin: 20px 0 15px 0;
+            color: #333;
+            font-size: 18px;
+        }
+        
+        pre {
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }
+        
+        code {
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        /* STANDARDIZED TRAINING CARD */
+        .training-card {
+            background: white;
+            border: 2px solid #F3F3F3;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            cursor: pointer;
+        }
+        
+        .training-card:hover {
+            border-color: #009B00;
+            box-shadow: 0 4px 12px rgba(0,155,0,0.15);
+            transform: translateY(-2px);
+        }
+        
+        .training-header {
+            background: #0D0D0D;
+            color: white;
+            padding: 20px;
+        }
+        
+        .training-date {
+            font-size: 13px;
+            color: #AAAAAA;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        
+        .training-header h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            line-height: 1.3;
+            color: white;
+            margin-top: 0;
+        }
+        
+        .training-product {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        
+        .training-body {
+            padding: 20px;
+        }
+        
+        .training-body p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        
+        .training-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #F3F3F3;
+        }
+        
+        .training-link {
+            color: #009B00;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .training-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Training Component Templates</h1>
+        <p>Copy and paste these standardized components into your HTML pages.</p>
+        
+        <!-- Example Components -->
+        <div class="component-section">
+            <h2>Live Training Card Examples</h2>
+            <div class="content-grid">
+                <!-- Example 1 -->
+                <a href="#" class="training-card">
+                    <div class="training-header">
+                        <div class="training-date">December 15, 2024</div>
+                        <h3>Sidekick Standalone Deep Dive</h3>
+                        <span class="training-product">Sidekick Standalone</span>
+                    </div>
+                    <div class="training-body">
+                        <p>Comprehensive overview of Sidekick Standalone capabilities, integration patterns, and go-to-market strategies</p>
+                        <div class="training-meta">
+                            <span>60 min</span>
+                            <span>Recording + Deck</span>
+                        </div>
+                        <span class="training-link">View Materials →</span>
+                    </div>
+                </a>
+                
+                <!-- Example 2 -->
+                <a href="#" class="training-card">
+                    <div class="training-header">
+                        <div class="training-date">December 10, 2024</div>
+                        <h3>Competitive Positioning Workshop</h3>
+                        <span class="training-product">All Products</span>
+                    </div>
+                    <div class="training-body">
+                        <p>Learn how to position Gladly against key competitors with battle cards and objection handling</p>
+                        <div class="training-meta">
+                            <span>45 min</span>
+                            <span>Recording Only</span>
+                        </div>
+                        <span class="training-link">View Materials →</span>
+                    </div>
+                </a>
+                
+                <!-- Example 3 -->
+                <a href="#" class="training-card">
+                    <div class="training-header">
+                        <div class="training-date">December 5, 2024</div>
+                        <h3>BVA Tool Training</h3>
+                        <span class="training-product">Sales Tools</span>
+                    </div>
+                    <div class="training-body">
+                        <p>Master the Business Value Assessment tool to quantify ROI and build compelling business cases</p>
+                        <div class="training-meta">
+                            <span>30 min</span>
+                            <span>Recording + Template</span>
+                        </div>
+                        <span class="training-link">View Materials →</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- HTML Template -->
+        <div class="component-section">
+            <h2>HTML Template for Training Card</h2>
+            <h3>Copy this code for each training card:</h3>
+            <pre><code>&lt;!-- Training Card Template --&gt;
+&lt;a href="#" class="training-card"&gt;
+    &lt;div class="training-header"&gt;
+        &lt;div class="training-date"&gt;[DATE]&lt;/div&gt;
+        &lt;h3&gt;[TRAINING TITLE]&lt;/h3&gt;
+        &lt;span class="training-product"&gt;[PRODUCT NAME]&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="training-body"&gt;
+        &lt;p&gt;[DESCRIPTION]&lt;/p&gt;
+        &lt;div class="training-meta"&gt;
+            &lt;span&gt;[DURATION]&lt;/span&gt;
+            &lt;span&gt;[MATERIALS]&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;span class="training-link"&gt;View Materials →&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/a&gt;</code></pre>
+            
+            <h3>To use in a grid layout:</h3>
+            <pre><code>&lt;div class="content-grid"&gt;
+    &lt;!-- Add multiple training cards here --&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        
+        <!-- CSS Requirements -->
+        <div class="component-section">
+            <h2>Required CSS</h2>
+            <p>Make sure to include this CSS in your page's &lt;style&gt; tag:</p>
+            <pre><code>/* Training Card Styles */
+.training-card {
+    background: white;
+    border: 2px solid #F3F3F3;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    cursor: pointer;
+}
+
+.training-card:hover {
+    border-color: #009B00;
+    box-shadow: 0 4px 12px rgba(0,155,0,0.15);
+    transform: translateY(-2px);
+}
+
+.training-header {
+    background: #0D0D0D;
+    color: white;
+    padding: 20px;
+}
+
+.training-date {
+    font-size: 13px;
+    color: #AAAAAA;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.training-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    line-height: 1.3;
+}
+
+.training-product {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.training-body {
+    padding: 20px;
+}
+
+.training-body p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.training-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #F3F3F3;
+}
+
+.training-link {
+    color: #009B00;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.training-link:hover {
+    text-decoration: underline;
+}</code></pre>
+        </div>
+        
+        <!-- Anchor Fix Script -->
+        <div class="component-section">
+            <h2>Anchor Fix Script for Google Sites</h2>
+            <p>Add this script to every page with anchor navigation:</p>
+            <pre><code>&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+    // Update offset based on actual nav height
+    function updateOffset() {
+        const nav = document.querySelector('.quick-nav');
+        if (nav) {
+            const navHeight = nav.getBoundingClientRect().height + 16;
+            document.documentElement.style.setProperty('--nav-offset', navHeight + 'px');
+        }
+    }
+    
+    // Handle anchor clicks
+    document.querySelectorAll('a[href^="#"]').forEach(anchor =&gt; {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                targetElement.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }
+        });
+    });
+    
+    updateOffset();
+    window.addEventListener('resize', updateOffset);
+});
+&lt;/script&gt;</code></pre>
+        </div>
+    </div>
+</body>
+</html>

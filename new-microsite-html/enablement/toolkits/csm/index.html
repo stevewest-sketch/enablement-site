@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSM Toolkit</title>
+    <link rel="stylesheet" href="../../../assets/nav-fixed.css">
+    <link rel="stylesheet" href="../../../assets/search.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #0D0D0D;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #8C69F0 0%, #6B4BC9 100%);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Search Section */
+        .search-section {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .search-box {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 16px 24px;
+            font-size: 16px;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #8C69F0;
+            box-shadow: 0 0 0 3px rgba(140,105,240,0.1);
+        }
+        
+        .search-suggestions {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 14px;
+            color: #6B7280;
+        }
+        
+        .search-suggestions span {
+            color: #8C69F0;
+            cursor: pointer;
+            margin: 0 8px;
+        }
+        
+        .search-suggestions span:hover {
+            text-decoration: underline;
+        }
+        
+        /* Section Title */
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #0D0D0D;
+        }
+        
+        .section-subtitle {
+            font-size: 16px;
+            color: #6B7280;
+            margin-bottom: 32px;
+        }
+        
+        /* Primary Actions Grid */
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 50px;
+        }
+        
+        .action-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            border: 2px solid #F3F3F3;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .action-card:hover {
+            transform: translateY(-4px);
+            border-color: #8C69F0;
+            box-shadow: 0 12px 24px rgba(140,105,240,0.15);
+        }
+        
+        .action-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        .action-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            font-weight: 700;
+            color: #0D0D0D;
+        }
+        
+        .action-card p {
+            font-size: 14px;
+            color: #6B7280;
+            line-height: 1.5;
+        }
+        
+        /* Quick Links Section */
+        .quick-links {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        
+        .link-card {
+            padding: 20px;
+            background: #F9FAFB;
+            border-radius: 8px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        
+        .link-card:hover {
+            background: #E8E0F8;
+            transform: translateY(-2px);
+        }
+        
+        .link-card-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+        
+        .link-card-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #0D0D0D;
+        }
+        
+        /* Browse Section */
+        .browse-section {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .browse-categories {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        
+        .browse-category {
+            padding: 24px;
+            border: 2px solid #F3F3F3;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        
+        .browse-category:hover {
+            border-color: #8C69F0;
+            background: #FAFAFA;
+        }
+        
+        .browse-category h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #0D0D0D;
+        }
+        
+        .browse-category ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .browse-category li {
+            margin-bottom: 8px;
+        }
+        
+        .browse-category a {
+            color: #8C69F0;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .browse-category a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 900px) {
+            .actions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .links-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .browse-categories {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="hero">
+            <h1>CSM Toolkit</h1>
+            <p>Drive value, expansion, and advocacy with your customers</p>
+        </div>
+        
+        <!-- Search Section -->
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" id="site-search" placeholder="Search for resources, tools, or strategies...">
+                <div id="search-results" class="search-results"></div>
+            </div>
+            <div class="search-suggestions">
+                Try: <span>"ROI calculator"</span> <span>"QBR template"</span> <span>"adoption playbook"</span>
+            </div>
+        </div>
+        
+        <!-- Primary Actions -->
+        <div class="section-title">What do you need to do?</div>
+        <div class="section-subtitle">Start with your task to get curated resources</div>
+        
+        <div class="actions-grid">
+            <a href="#" class="action-card">
+                <div class="action-icon">📊</div>
+                <h3>Prepare QBR</h3>
+                <p>Templates, best practices, and data storytelling guides for strategic reviews</p>
+            </a>
+            
+            <a href="#" class="action-card">
+                <div class="action-icon">💰</div>
+                <h3>Build Business Case</h3>
+                <p>ROI calculators, value frameworks, and executive-ready materials</p>
+            </a>
+            
+            <a href="#" class="action-card">
+                <div class="action-icon">🚀</div>
+                <h3>Drive Adoption</h3>
+                <p>Activation strategies, maturity models, and change management guides</p>
+            </a>
+            
+            <a href="#" class="action-card">
+                <div class="action-icon">📈</div>
+                <h3>Expand Account</h3>
+                <p>Channel expansion playbooks, upsell strategies, and positioning materials</p>
+            </a>
+            
+            <a href="#" class="action-card">
+                <div class="action-icon">⚠️</div>
+                <h3>Manage Risk</h3>
+                <p>Renewal strategies, escalation protocols, and save plays</p>
+            </a>
+            
+            <a href="#" class="action-card">
+                <div class="action-icon">🎯</div>
+                <h3>Evangelize AI</h3>
+                <p>Sidekick positioning, Outcomes Velocity framework, and demo resources</p>
+            </a>
+        </div>
+        
+        <!-- Quick Links -->
+        <div class="quick-links">
+            <div class="section-title">Quick Access</div>
+            
+            <div class="links-grid">
+                <a href="#" class="link-card">
+                    <div class="link-card-icon">🆕</div>
+                    <div class="link-card-title">What's New</div>
+                </a>
+                
+                <a href="#" class="link-card">
+                    <div class="link-card-icon">⭐</div>
+                    <div class="link-card-title">Most Popular</div>
+                </a>
+                
+                <a href="#" class="link-card">
+                    <div class="link-card-icon">📌</div>
+                    <div class="link-card-title">Center of Excellence</div>
+                </a>
+                
+                <a href="#" class="link-card">
+                    <div class="link-card-icon">🗺️</div>
+                    <div class="link-card-title">FY27 Vision</div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Browse Section -->
+        <div class="browse-section">
+            <div class="section-title">Browse All Resources</div>
+            <div class="section-subtitle">Explore by customer journey, product, or content type</div>
+            
+            <div class="browse-categories">
+                
+                <div class="browse-category">
+                    <h4>🎯 By Customer Stage</h4>
+                    <ul>
+                        <li><a href="#">Onboarding & Activation</a></li>
+                        <li><a href="#">Adoption & Value Realization</a></li>
+                        <li><a href="#">Expansion & Upsell</a></li>
+                        <li><a href="#">Renewal & Retention</a></li>
+                        <li><a href="#">Advocacy & References</a></li>
+                    </ul>
+                </div>
+                
+                <div class="browse-category">
+                    <h4>📱 By Product</h4>
+                    <ul>
+                        <li><a href="#">Sidekick Standalone</a></li>
+                        <li><a href="#">Sidekick Voice</a></li>
+                        <li><a href="#">Sidekick Email</a></li>
+                        <li><a href="#">Sidekick Sales</a></li>
+                        <li><a href="#">Full Platform (Hero + Sidekick)</a></li>
+                    </ul>
+                </div>
+                
+                <div class="browse-category">
+                    <h4>📄 By Resource Type</h4>
+                    <ul>
+                        <li><a href="#">QBR Templates</a></li>
+                        <li><a href="#">Success Plans</a></li>
+                        <li><a href="#">ROI & Value Tools</a></li>
+                        <li><a href="#">Adoption Playbooks</a></li>
+                        <li><a href="#">Customer Stories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="browse-category">
+                    <h4>🏢 By Customer Segment</h4>
+                    <ul>
+                        <li><a href="#">Enterprise Accounts</a></li>
+                        <li><a href="#">Mid-Market</a></li>
+                        <li><a href="#">SMB (New!)</a></li>
+                        <li><a href="#">PAYG Customers</a></li>
+                        <li><a href="#">Platform Migrations</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const anchorLinks = document.querySelectorAll('a[href^="#"]');
+        
+        anchorLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    const navHeight = 80;
+                    const targetPosition = targetSection.offsetTop - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    });
+    </script>
+
+    <script src="../../../assets/nav.js"></script>
+    <script src="../../../assets/search.js"></script>
+    <script>
+        initNav('enablement/toolkits/csm/index.html');
+        initSearch('site-search', 'search-results', 'enablement/toolkits/csm/index.html');
+    </script>
+</body>
+</html>
