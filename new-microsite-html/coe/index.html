@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Center of Excellence</title>
+    <link rel="stylesheet" href="../assets/nav-fixed.css">
+    <link rel="stylesheet" href="../assets/anchor-nav.css">
+    <style>
+        /* ========================================
+           GLADLY UNIFIED DESIGN SYSTEM
+           ======================================== */
+
+        /* --- BASE RESET & TYPOGRAPHY --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #0D0D0D;
+            background: #FFFFFF;
+        }
+
+        /* --- SCROLL OFFSET FOR ANCHORS --- */
+        :root {
+            --nav-offset: 96px;
+        }
+        
+        [id] {
+            scroll-margin-top: var(--nav-offset);
+        }
+
+        /* --- CONTAINERS --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 40px;
+        }
+
+        /* --- HERO SECTIONS --- */
+        .hero {
+            background: linear-gradient(135deg, #8C69F0 0%, #7557d9 100%);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- STICKY NAVIGATION --- */
+        /* Anchor nav styles now in anchor-nav.css */
+
+        /* --- SECTIONS --- */
+        .section {
+            margin-bottom: 50px;
+            scroll-margin-top: var(--nav-offset);
+        }
+        
+        .section.white-bg {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .section.gray-bg {
+            background: #F3F3F3;
+            padding: 50px 40px;
+            margin-left: -40px;
+            margin-right: -40px;
+        }
+        
+        /* Section Headers with Icons */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid #E8E0F8;
+        }
+        
+        .section-icon {
+            font-size: 40px;
+        }
+        
+        .section-header-text h2 {
+            font-size: 26px;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        
+        .section-header-text p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Gray section headers */
+        .section.gray-bg h2 {
+            font-size: 32px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .section.gray-bg > p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 32px;
+        }
+
+        /* --- CONTENT GRIDS --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .content-grid.two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        /* --- DEMO RESOURCE CARD --- */
+        .demo-card {
+            background: white;
+            border: 2px solid #F3F3F3;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .demo-card:hover {
+            border-color: #8C69F0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(140,105,240,0.15);
+        }
+        
+        .demo-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        
+        .demo-card h4 {
+            font-size: 18px;
+            color: #0D0D0D;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .demo-card p {
+            font-size: 14px;
+            color: #4A4A4A;
+            margin-bottom: 16px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        
+        .demo-card strong {
+            color: #0D0D0D;
+        }
+        
+        .content-meta {
+            font-size: 12px;
+            color: #888;
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .demo-link {
+            color: #8C69F0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .demo-link:hover {
+            text-decoration: underline;
+        }
+
+        /* --- CTA SECTION --- */
+        .cta-section {
+            background: #C5B3F8;
+            padding: 50px 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .cta-section h2 {
+            font-size: 32px;
+            color: #0D0D0D;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            color: #4A4A4A;
+            margin-bottom: 28px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+        
+        .btn-primary {
+            background: #8C69F0;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            border: 2px solid #8C69F0;
+        }
+        
+        .btn-primary:hover {
+            background: #7557d9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #8C69F0;
+            padding: 14px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: 2px solid #8C69F0;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: #8C69F0;
+            color: white;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .content-grid,
+            .content-grid.two-col {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .section.gray-bg {
+                margin-left: -20px;
+                margin-right: -20px;
+                padding: 40px 20px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Hero -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Center of Excellence</h1>
+            <p>Customer wins, best practices, and proof points that drive Sidekick success</p>
+        </div>
+    </div>
+    
+    <!-- Quick Navigation -->
+    <div class="quick-nav">
+        <div class="nav-links">
+            <a href="#proof" class="nav-link">📊 Proof Points</a>
+            <a href="#practices" class="nav-link">💡 Best Practices</a>
+            <a href="#wins" class="nav-link">🎯 Customer Wins</a>
+            <a href="#performance" class="nav-link">📈 Performance</a>
+            <a href="#submit" class="nav-link">📝 Submit</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        
+        <!-- Core Proof Points -->
+        <div id="proof" class="section white-bg">
+            <div class="section-header">
+                <span class="section-icon">📊</span>
+                <div class="section-header-text">
+                    <h2>Core Proof Points</h2>
+                    <p>Your most important reference materials</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">🏆</span>
+                    <h4>Proof Point Repository</h4>
+                    <p><strong>Customer proof points: only use externally approved stats for written or verbal use!</strong> All proof points are tagged with permission status.</p>
+                    <span class="demo-link">Access Repository →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">💬</span>
+                    <h4>Social Proof Templates</h4>
+                    <p>Customer stories and testimonials to drive credibility</p>
+                    <span class="demo-link">View Templates →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">📈</span>
+                    <h4>Performance Dashboards</h4>
+                    <p>Sidekick metrics and reporting references</p>
+                    <span class="demo-link">Access Dashboards →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Best Practices -->
+        <div id="practices" class="section gray-bg">
+            <h2>Best Practices</h2>
+            <p>Strategies from successful Sidekick deployments</p>
+            
+            <div class="content-grid">
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">💡</span>
+                    <h4>Best Practices Hub</h4>
+                    <p>Centralized playbooks, strategies, and frameworks to drive adoption, efficiency, and ROI from our Design, PS, TAM, product and engineering teams</p>
+                    <span class="demo-link">Access Hub →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">🔧</span>
+                    <h4>A+R Operational Tooling</h4>
+                    <p>Best practices for operational excellence</p>
+                    <div class="content-meta">
+                        <span>Updated Sep 18, 2025</span>
+                    </div>
+                    <span class="demo-link">View Guide →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">📊</span>
+                    <h4>Gladly Reports and Insights</h4>
+                    <p>Reporting best practices and data analysis</p>
+                    <div class="content-meta">
+                        <span>Updated Sep 2, 2025</span>
+                    </div>
+                    <span class="demo-link">View Reports →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">📈</span>
+                    <h4>Real CX Metrics</h4>
+                    <p>Measuring customer experience effectively</p>
+                    <div class="content-meta">
+                        <span>Updated Aug 7, 2025</span>
+                    </div>
+                    <span class="demo-link">View Metrics →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">📚</span>
+                    <h4>Implementation Guides</h4>
+                    <p>Step-by-step deployment and adoption strategies</p>
+                    <span class="demo-link">Browse Guides →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">🎯</span>
+                    <h4>Optimization Playbooks</h4>
+                    <p>Proven tactics for improving AI performance</p>
+                    <span class="demo-link">View Playbooks →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Recent Customer Wins -->
+        <div id="wins" class="section white-bg">
+            <div class="section-header">
+                <span class="section-icon">🎯</span>
+                <div class="section-header-text">
+                    <h2>Recent Customer Wins</h2>
+                    <p>Latest success stories from the field</p>
+                </div>
+            </div>
+            
+            <div class="content-grid two-col">
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">⭐</span>
+                    <h4>Customer Wins Repository</h4>
+                    <p>Real-world anecdotes, innovative implementations, and success stories from customers using Sidekick. Submit your wins via Slack using /coe.</p>
+                    <span class="demo-link">View All Wins →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">🔌</span>
+                    <h4>Retailer API Integration</h4>
+                    <p>Creative front-end API workaround enabling advanced automation</p>
+                    <span class="demo-link">Read More →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">👤</span>
+                    <h4>Dedicated AI Specialist Role</h4>
+                    <p>Leading retailer creates new role to optimize Sidekick</p>
+                    <span class="demo-link">Read More →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">💄</span>
+                    <h4>Beauty Retailer Feedback</h4>
+                    <p>Customer quote: "Stepping into the future" of CX with Gladly</p>
+                    <span class="demo-link">Read More →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Performance Dashboards -->
+        <div id="performance" class="section gray-bg">
+            <h2>Sidekick Performance</h2>
+            <p>Dashboards and tracking references</p>
+            
+            <div class="content-grid">
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">📊</span>
+                    <h4>Sidekick Guides Dashboard</h4>
+                    <p>Performance tracking for Sidekick Guides implementations</p>
+                    <span class="demo-link">View Dashboard →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">💡</span>
+                    <h4>Sidekick Answers Dashboard</h4>
+                    <p>Metrics and insights for Sidekick Answers usage</p>
+                    <span class="demo-link">View Dashboard →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">💰</span>
+                    <h4>Sidekick Sales Resolutions</h4>
+                    <p>Resolution tracking and performance metrics</p>
+                    <span class="demo-link">View Dashboard →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Submit Your Wins -->
+        <div id="submit" class="section white-bg">
+            <div class="section-header">
+                <span class="section-icon">📝</span>
+                <div class="section-header-text">
+                    <h2>Submit Your Wins</h2>
+                    <p>Share customer success stories with the team</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">💬</span>
+                    <h4>Use /coe in Slack</h4>
+                    <p>Quick submission form to share wins, metrics, and customer feedback</p>
+                    <span class="demo-link">Learn How →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">📋</span>
+                    <h4>Submission Tips</h4>
+                    <p>Guidelines for submitting high-quality proof points</p>
+                    <span class="demo-link">View Tips →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">✅</span>
+                    <h4>Approval Process</h4>
+                    <p>How submissions are reviewed and approved for external use</p>
+                    <span class="demo-link">View Process →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Questions About CoE?</h2>
+            <p>Contact the enablement team for help with proof points and best practices</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn-primary">Ask in #enablement-resources</a>
+                <a href="#" class="btn-secondary">View Documentation</a>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- Anchor Fix Script for Google Sites -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function updateOffset() {
+                const nav = document.querySelector('.quick-nav');
+                if (nav) {
+                    const navHeight = nav.getBoundingClientRect().height + 16;
+                    document.documentElement.style.setProperty('--nav-offset', navHeight + 'px');
+                }
+            }
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start' 
+                        });
+                    }
+                });
+            });
+            
+            if (window.location.hash) {
+                setTimeout(() => {
+                    const targetId = window.location.hash.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ 
+                            behavior: 'auto', 
+                            block: 'start' 
+                        });
+                    }
+                }, 100);
+            }
+            
+            updateOffset();
+            window.addEventListener('resize', updateOffset);
+        });
+    </script>
+
+    <script src="../assets/nav.js"></script>
+    <script>
+        initNav('coe/index.html');
+    </script>
+</body>
+</html>

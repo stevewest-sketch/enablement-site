@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="assets/nav-fixed.css">
+</head>
+<body>
+    <h1 style="margin-left: 300px; padding: 20px;">Test Page</h1>
+    <script src="assets/nav.js"></script>
+    <script>
+        initNav('index.html');
+        
+        // Debug
+        setTimeout(() => {
+            console.log('Nav sections:', document.querySelectorAll('.nav-section').length);
+            console.log('Nav arrows:', document.querySelectorAll('.nav-arrow').length);
+        }, 100);
+    </script>
+</body>
+</html>

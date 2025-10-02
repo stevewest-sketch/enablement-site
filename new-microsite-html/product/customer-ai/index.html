@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gladly Customer AI</title>
+    <link rel="stylesheet" href="../../assets/nav-fixed.css">
+    <link rel="stylesheet" href="../../assets/anchor-nav.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #0D0D0D;
+            background: #FFFFFF;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #009B00 0%, #007a00 100%);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .hero-video {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        
+        .hero-text h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .hero-text p {
+            font-size: 20px;
+            opacity: 0.95;
+            margin-bottom: 24px;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .btn-white {
+            background: white;
+            color: #009B00;
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-white:hover {
+            background: #8C69F0;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(140,105,240,0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            border: 2px solid white;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-outline:hover {
+            background: #8C69F0;
+            border-color: #8C69F0;
+            color: white;
+        }
+        
+        /* Quick Nav */
+        .quick-nav {
+            background: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-link {
+            background: #F3F3F3;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #0D0D0D;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            background: #8C69F0;
+            color: white;
+        }
+        
+        /* What Is Section - Black BG */
+        .what-is-section {
+            background: #0D0D0D;
+            color: white;
+            padding: 60px 40px;
+            margin-top: 0;
+        }
+        
+        .what-is-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+        }
+        
+        .what-is-section h2 {
+            font-size: 36px;
+            color: white;
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+        
+        .what-is-section p {
+            font-size: 18px;
+            color: #E5E5E5;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .key-capabilities {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .capability-card {
+            background: rgba(255,255,255,0.05);
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .capability-card h4 {
+            font-size: 18px;
+            color: white;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .capability-card p {
+            font-size: 15px;
+            color: #E5E5E5;
+            margin: 0;
+        }
+        
+        /* Launch Status */
+        .launch-status {
+            background: #C5B3F8;
+            padding: 32px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+        
+        .launch-status h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #0D0D0D;
+        }
+        
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .status-item {
+            padding: 10px;
+            background: #9B8AC7;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 13px;
+            color: #FFFFFF;
+        }
+        
+        .status-item.active {
+            background: #8C69F0;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .launch-status p {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #0D0D0D;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .content-grid.two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .content-card {
+            background: white;
+            border: 2px solid #F3F3F3;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.2s ease;
+        }
+        
+        .content-card:hover {
+            border-color: #8C69F0;
+            transform: translateY(-2px);
+        }
+        
+        .content-card h4 {
+            font-size: 18px;
+            color: #0D0D0D;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .content-card p {
+            font-size: 14px;
+            color: #4A4A4A;
+            margin-bottom: 16px;
+        }
+        
+        .content-link {
+            color: #8C69F0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .content-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: #C5B3F8;
+            padding: 50px 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 0;
+        }
+        
+        .cta-section h2 {
+            font-size: 32px;
+            color: #0D0D0D;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            color: #4A4A4A;
+            margin-bottom: 28px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+        
+        .btn-primary {
+            background: #8C69F0;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #7557d9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #8C69F0;
+            padding: 14px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: 2px solid #8C69F0;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: #8C69F0;
+            color: white;
+        }
+        
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-grid,
+            .content-grid.two-col {
+                grid-template-columns: 1fr;
+            }
+            
+            .key-capabilities {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-cta,
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .status-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero-text h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Hero -->
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">CUSTOMER AI</div>
+                <h1>Gladly Customer AI</h1>
+                <p>Gladly is Customer AI—the per-user intelligence layer that makes radically efficient, radically personal customer experiences possible, allowing AI to understand customers, predict needs, and teams through AI-powered customer intelligence.</p>
+                <div class="hero-cta">
+                    <a href="#what-it-is" class="btn-white">Learn More</a>
+                    <a href="#content" class="btn-outline">View Resources</a>
+                </div>
+            </div>
+            <div class="hero-video">
+                <div style="background: #F3F3F3; aspect-ratio: 16/9; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #666;">
+                    Customer AI Video Placeholder
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Quick Nav -->
+    <div class="quick-nav">
+        <div class="nav-links">
+            <a href="#what-it-is" class="nav-link">What it is</a>
+            <a href="#quick-links-sales" class="nav-link">Quick Links for Sales</a>
+            <a href="#quick-links-csam" class="nav-link">Quick Links for CS/AM</a>
+            <a href="#videos" class="nav-link">Customer AI Videos</a>
+            <a href="#shareable" class="nav-link">Shareable Content</a>
+            <a href="#pr" class="nav-link">PR</a>
+            <a href="#enablement" class="nav-link">Enablement</a>
+        </div>
+    </div>
+    
+    <!-- What Is Section -->
+    <div id="what-it-is" class="what-is-section">
+        <div class="container">
+            <h2>What is Gladly?</h2>
+            <p>Gladly is Customer AI—a per-user intelligence layer that makes radically efficient, radically personal experiences possible, allowing AI agents and human teams to understand customers, predict needs, and provide a seamless experience. It unifies customer conversations, commerce, AI, and support teams through AI-powered customer intelligence.</p>
+            
+            <p><strong>Why it matters:</strong> Most platforms treat customer data as isolated tickets rather than continuous relationships. Gladly's Customer AI creates a persistent intelligence layer that powers all interactions, enabling both AI agents and human teams to deliver personalized service at scale with full customer context.</p>
+            
+            <p><strong>Who it's for:</strong> B2C Businesses with high-touch customer relationships, ecommerce platforms, and brands prioritizing customer experience over transactional support.</p>
+            
+            <div class="key-capabilities">
+                <div class="capability-card">
+                    <h4>Customer-Centered Platform</h4>
+                    <p>All interactions organized by customer, not tickets</p>
+                </div>
+                
+                <div class="capability-card">
+                    <h4>AI-Powered Resolution and Support</h4>
+                    <p>Automate resolutions while assisting human agents</p>
+                </div>
+                
+                <div class="capability-card">
+                    <h4>Real-Time Customer Context</h4>
+                    <p>Complete conversation and purchase history instantly available</p>
+                </div>
+                
+                <div class="capability-card">
+                    <h4>Omnichannel Continuity</h4>
+                    <p>Seamless experience across all communication channels</p>
+                </div>
+                
+                <div class="capability-card">
+                    <h4>Commerce Integration</h4>
+                    <p>Direct integration with order management and catalogs</p>
+                </div>
+                
+                <div class="capability-card">
+                    <h4>Trusted Access & Configuration</h4>
+                    <p>Secure, compliant access to customer intelligence</p>
+                </div>
+            </div>
+            
+            <!-- Launch Status -->
+            <div class="launch-status">
+                <h3>🚀 Launch Status</h3>
+                <div class="status-grid">
+                    <div class="status-item">Initial research</div>
+                    <div class="status-item">Added to roadmap</div>
+                    <div class="status-item">Discovery and design</div>
+                    <div class="status-item">Build in progress</div>
+                </div>
+                <div class="status-grid">
+                    <div class="status-item">Prototyping</div>
+                    <div class="status-item">Limited rollout</div>
+                    <div class="status-item">Broader rollout</div>
+                    <div class="status-item active">➡️ Open Access 🎉 ⬅️</div>
+                </div>
+                <p>Customer AI is the foundational intelligence layer powering all Gladly products and is available to all customers.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Quick Links for Sales -->
+    <div id="quick-links-sales" style="background: white; padding: 50px 40px;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="font-size: 32px; color: #0D0D0D; margin-bottom: 24px; font-weight: 700;">Quick Links For Sales</h2>
+            <div class="content-grid two-col">
+                <div class="content-card">
+                    <h4>Launch video</h4>
+                    <p>Product launch overview and announcement</p>
+                    <a href="#" class="content-link">Watch Video →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Customer AI Video</h4>
+                    <p>Detailed product walkthrough and capabilities</p>
+                    <a href="#" class="content-link">Watch Video →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Customer AI one-pager</h4>
+                    <p>Quick reference sheet for sales conversations</p>
+                    <a href="#" class="content-link">View One-Pager →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>New customer stories</h4>
+                    <p>Latest customer success stories and testimonials</p>
+                    <a href="#" class="content-link">View Stories →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Cluadia photos</h4>
+                    <p>Visual assets and brand imagery</p>
+                    <a href="#" class="content-link">View Photos →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Quick Links for CS/AM -->
+    <div id="quick-links-csam" style="background: #F3F3F3; padding: 50px 40px;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="font-size: 32px; color: #0D0D0D; margin-bottom: 24px; font-weight: 700;">Quick Links For CS/AM</h2>
+            <div class="content-grid two-col">
+                <div class="content-card">
+                    <h4>Sidekick Sales usage</h4>
+                    <p>Usage guidelines and best practices</p>
+                    <a href="#" class="content-link">View Guide →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Rollout to Customers for CSMs</h4>
+                    <p>Customer rollout strategy and materials</p>
+                    <a href="#" class="content-link">View Strategy →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>New customer assets</h4>
+                    <p>Latest onboarding and training materials</p>
+                    <a href="#" class="content-link">Access Assets →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Claudia videos</h4>
+                    <p>Video resources for customer presentations</p>
+                    <a href="#" class="content-link">Watch Videos →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Customer AI Videos -->
+    <div id="videos" style="background: white; padding: 50px 40px;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="font-size: 32px; color: #0D0D0D; margin-bottom: 24px; font-weight: 700;">Customer AI Videos</h2>
+            <div class="content-grid two-col">
+                <div class="content-card">
+                    <h4>Gladly Demo Walk</h4>
+                    <p>Complete platform demonstration</p>
+                    <a href="#" class="content-link">Watch Demo →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Gladly Launch Video</h4>
+                    <p>Official product launch announcement</p>
+                    <a href="#" class="content-link">Watch Launch →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Customer AI Video</h4>
+                    <p>Deep dive into AI capabilities</p>
+                    <a href="#" class="content-link">Watch Video →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Gladly AI Video w/ text</h4>
+                    <p>Captioned version for accessibility</p>
+                    <a href="#" class="content-link">Watch Video →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Customer AI Videos w/ tec</h4>
+                    <p>Technical deep-dive versions</p>
+                    <a href="#" class="content-link">Watch Videos →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Shareable Content -->
+    <div id="shareable" style="background: #F3F3F3; padding: 50px 40px;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="font-size: 32px; color: #0D0D0D; margin-bottom: 24px; font-weight: 700;">Shareable Content</h2>
+            <div class="content-grid two-col">
+                <div class="content-card">
+                    <h4>Gladly One Pager</h4>
+                    <p>One-page overview for quick reference</p>
+                    <a href="#" class="content-link">View One-Pager →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Customer AI One Pager</h4>
+                    <p>AI-focused one-page summary</p>
+                    <a href="#" class="content-link">View One-Pager →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>External Customer Branded</h4>
+                    <p>Branded materials for customer-facing use</p>
+                    <a href="#" class="content-link">View Materials →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Buyer's Guide or XLSX site</h4>
+                    <p>Comprehensive buyer's guide and resources</p>
+                    <a href="#" class="content-link">View Guide →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Email to Gladly on AI ...</h4>
+                    <p>Email templates for AI discussions</p>
+                    <a href="#" class="content-link">View Templates →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- PR Section -->
+    <div id="pr" style="background: white; padding: 50px 40px;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="font-size: 32px; color: #0D0D0D; margin-bottom: 24px; font-weight: 700;">PR</h2>
+            <div class="content-grid two-col">
+                <div class="content-card">
+                    <h4>WIRED article</h4>
+                    <p>Featured coverage in WIRED magazine</p>
+                    <a href="#" class="content-link">Read Article →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Fortune Access</h4>
+                    <p>Fortune magazine feature and analysis</p>
+                    <a href="#" class="content-link">Read Article →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Further News</h4>
+                    <p>Additional press coverage and mentions</p>
+                    <a href="#" class="content-link">View News →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Enablement Section -->
+    <div id="enablement" style="background: #F3F3F3; padding: 50px 40px;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="font-size: 32px; color: #0D0D0D; margin-bottom: 24px; font-weight: 700;">Enablement</h2>
+            <div class="content-grid two-col">
+                <div class="content-card">
+                    <h4>Customer AI Nametrix Training</h4>
+                    <p>Training session on AI capabilities</p>
+                    <a href="#" class="content-link">Start Training →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Connection of the Message to the</h4>
+                    <p>Messaging framework and guidelines</p>
+                    <a href="#" class="content-link">View Framework →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Rebranding FAQ</h4>
+                    <p>Frequently asked questions about rebrand</p>
+                    <a href="#" class="content-link">View FAQ →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>Sidekick AI Demo Integrations</h4>
+                    <p>Demo integration guides and examples</p>
+                    <a href="#" class="content-link">View Demos →</a>
+                </div>
+                
+                <div class="content-card">
+                    <h4>2025 GKO</h4>
+                    <p>Go-to-market kickoff materials</p>
+                    <a href="#" class="content-link">Access Materials →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CTA Section -->
+    <div style="background: white; padding: 50px 40px;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="cta-section">
+                <h2>Need Help With Customer AI?</h2>
+                <p>Can't find what you're looking for? Reach out to the enablement team</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn-primary">Ask in #enablement-resources</a>
+                    <a href="#" class="btn-secondary">Browse All Products</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../assets/nav.js"></script>
+    <script>
+        initNav('product/customer-ai/index.html');
+    </script>
+</body>
+</html>

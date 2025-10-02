@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Hub - Gladly Field Team</title>
+    <link rel="stylesheet" href="gladly-shared.css">
+    <link rel="stylesheet" href="../../assets/nav-fixed.css">
+    <style>
+        /* ========================================
+           GLADLY UNIFIED DESIGN SYSTEM
+           ======================================== */
+
+        /* --- BASE RESET & TYPOGRAPHY --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #0D0D0D;
+            background: #f8f9fa;
+        }
+
+        /* --- SCROLL OFFSET FOR ANCHORS --- */
+        :root {
+            --nav-offset: 96px;
+        }
+        
+        [id] {
+            scroll-margin-top: var(--nav-offset);
+        }
+
+        /* --- CONTAINERS --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- HERO SECTIONS --- */
+        .hero {
+            color: white;
+            padding: 60px 40px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .hero.green { background: linear-gradient(135deg, #009B00 0%, #007a00 100%); }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- SECTIONS --- */
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            scroll-margin-top: var(--nav-offset);
+        }
+
+        /* --- CONTENT GRIDS --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* --- TRAINING CARD (FIXED FOR INDIVIDUAL LINKS) --- */
+        .training-card {
+            background: white;
+            border: 2px solid #F3F3F3;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+            color: inherit;
+            display: block;
+            cursor: pointer;
+        }
+        
+        .training-card:hover {
+            border-color: #009B00;
+            box-shadow: 0 4px 12px rgba(0,155,0,0.15);
+            transform: translateY(-2px);
+        }
+        
+        .training-header {
+            background: #0D0D0D;
+            color: white;
+            padding: 20px;
+        }
+        
+        .training-date {
+            font-size: 13px;
+            color: #AAAAAA;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        
+        .training-header h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            line-height: 1.3;
+            color: white;
+        }
+        
+        .training-product {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        
+        .training-body {
+            padding: 20px;
+        }
+        
+        .training-body p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        
+        .training-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #F3F3F3;
+        }
+        
+        .training-link {
+            color: #009B00;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .training-link:hover {
+            text-decoration: underline;
+        }
+
+        /* --- FILTER SECTION --- */
+        .filter-section {
+            background: white;
+            border-radius: 12px;
+            padding: 24px 32px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .filter-header {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        
+        .filter-group {
+            margin-bottom: 20px;
+        }
+        
+        .filter-group:last-child {
+            margin-bottom: 0;
+        }
+        
+        .filter-label {
+            font-size: 14px;
+            color: #0D0D0D;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            background: #f8f9fa;
+            padding: 8px 18px;
+            border-radius: 6px;
+            border: 2px solid transparent;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #009B00;
+            color: white;
+            border-color: #009B00;
+        }
+
+        /* --- NO RESULTS --- */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+            display: none;
+        }
+        
+        .no-results h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .content-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Gladly Field Hub</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="v3-training-hub.html" class="nav-link active">Training</a>
+                <a href="v3-content-hub.html" class="nav-link">Content</a>
+                <a href="new comp.html" class="nav-link">Competitive</a>
+                <a href="playbooks page.html" class="nav-link">Playbooks</a>
+                <a href="prob hub.html" class="nav-link">Products</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <!-- Hero -->
+        <div class="hero green">
+            <h1>Training Hub</h1>
+            <p>Live session recordings, product trainings, and enablement materials</p>
+        </div>
+        
+        <!-- Filters -->
+        <div class="filter-section">
+            <div class="filter-header">Filter Training Sessions:</div>
+            
+            <div class="filter-group">
+                <span class="filter-label">By Product:</span>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter-type="product" data-filter="all">All Products</button>
+                    <button class="filter-btn" data-filter-type="product" data-filter="sidekick-standalone">Sidekick Standalone</button>
+                    <button class="filter-btn" data-filter-type="product" data-filter="sidekick-sales">Sidekick Sales</button>
+                    <button class="filter-btn" data-filter-type="product" data-filter="sidekick-voice">Sidekick Voice</button>
+                    <button class="filter-btn" data-filter-type="product" data-filter="sidekick-email">Sidekick Email</button>
+                    <button class="filter-btn" data-filter-type="product" data-filter="hero">Hero Platform</button>
+                    <button class="filter-btn" data-filter-type="product" data-filter="customer-ai">Customer AI</button>
+                </div>
+            </div>
+            
+            <!-- Placeholder for future filters -->
+            <!-- Uncomment and customize when needed:
+            <div class="filter-group">
+                <span class="filter-label">By Type:</span>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter-type="type" data-filter="all">All Types</button>
+                    <button class="filter-btn" data-filter-type="type" data-filter="product">Product Training</button>
+                    <button class="filter-btn" data-filter-type="type" data-filter="sales">Sales Training</button>
+                    <button class="filter-btn" data-filter-type="type" data-filter="competitive">Competitive</button>
+                </div>
+            </div>
+            -->
+        </div>
+        
+        <!-- Training Grid -->
+        <div class="content-grid" id="training-grid">
+              <!-- Training Card 6 -->
+            <div class="training-card" data-product="sidekick-sales">
+              <div class="training-header">
+                <div class="training-date">September 11, 2025</div>
+                  <h3>Sidekick Sales Launch Training</h3>
+                  <span class="training-product">Sidekick Sales</span>
+                </div>
+                <div class="training-body">
+                    <p>Deep dive on Sidekick Sales capabilities, use cases, and how to position for revenue generation</p>
+                    <div class="training-meta">
+                        <span>65 min</span>
+                        <span>Recording + Deck</span>
+                    </div>
+                    <!-- CUSTOMIZE THIS LINK -->
+                    <a href="https://drive.google.com/drive/folders/1HpX_xLFPJVlACOUl3IM9v5rB589JMFli?usp=drive_link" class="training-link">View Materials →</a>
+                </div>
+            </div>
+            
+            <!-- Training Card 1 - NOW A DIV WITH SEPARATE LINK -->
+            <div class="training-card" data-product="customer-ai">
+              <div class="training-header">
+                <div class="training-date">October 8, 2024</div>
+                <h3>Flip Competitive + SK Voice Roadmap</h3>
+                <span class="training-product">Customer AI</span> </div>
+              <div class="training-body">
+                <p>Understanding the intelligence layer that powers all Sidekick products and how to position it</p>
+                <div class="training-meta"> <span>45 min</span> <span>Recording + Deck</span> </div>
+                <!-- CUSTOMIZE THIS LINK -->
+                <a href="https://drive.google.com/drive/folders/1HpX_xLFPJVlACOUl3IM9v5rB589JMFli?usp=drive_link" class="training-link">View Materials →</a> </div>
+            </div>
+            <div class="training-card" data-product="sidekick-standalone">
+                <div class="training-header">
+                    <div class="training-date">August 28, 2025</div>
+                    <h3>Sidekick Standalone Land Grab</h3>
+                    <span class="training-product">Sidekick Standalone</span>
+                </div>
+                <div class="training-body">
+                    <p>Comprehensive overview of Sidekick Standalone capabilities, integration patterns, and go-to-market strategies</p>
+                    <div class="training-meta">
+                        <span>60 min</span>
+                        <span>Recording + Deck</span>
+                    </div>
+                    <!-- CUSTOMIZE THIS LINK -->
+                    <a href="https://drive.google.com/drive/folders/1iHvQKRgV62igGJOs78hiLFqWeJ7pQADb?usp=drive_link" class="training-link">View Materials →</a>
+                </div>
+            </div>
+            
+            <!-- Training Card 2 -->
+            <!-- Training Card 3 -->
+            <div class="training-card" data-product="sidekick-voice">
+              <div class="training-header">
+                <div class="training-date">August 21, 2025</div>
+                <h3>Sales Activities &amp; Sidekick Voice AMA</h3>
+                <span class="training-product">Sidekick Voice</span> </div>
+              <div class="training-body">
+                <p>Product launch overview, key features, demo walkthrough, and early customer feedback</p>
+                <div class="training-meta"> <span>55 min</span> <span>Recording + Deck + Demo</span> </div>
+                <!-- CUSTOMIZE THIS LINK -->
+                <a href="https://drive.google.com/drive/folders/1E2AScNwdHcEPceLLijcPVbMV3ur4CoV9" class="training-link">View Materials →</a> </div>
+            </div>
+          <div class="training-card" data-product="sidekick-voice">
+              <div class="training-header">
+                <div class="training-date">August 13, 2025</div>
+                <h3>SimpleSat Partnership Enablement</h3>
+                <span class="training-product">Sidekick Voice</span></div>
+              <div class="training-body">
+                <p>Product launch overview, key features, demo walkthrough, and early customer feedback</p>
+                <div class="training-meta"> <span>55 min</span> <span>Recording + Deck + Demo</span></div>
+                <!-- CUSTOMIZE THIS LINK -->
+                <a href="https://drive.google.com/drive/folders/1nzLYQOMUioW4tN6N9qb2KuCxKyjxp6G0" class="training-link">View Materials →</a></div>
+            </div>
+            <div class="training-card" data-product="all">
+              <div class="training-header">
+                <div class="training-date">july 17, 2025</div>
+                <h3>BVA SLA + New Gladly  Demo Walkthrough</h3>
+                <span class="training-product">All Products</span> </div>
+              <div class="training-body">
+                <p>How to use the BVA tool to quantify ROI and build compelling business cases for prospects</p>
+                <div class="training-meta"> <span>50 min</span> <span>Recording + Template</span> </div>
+                <!-- CUSTOMIZE THIS LINK -->
+                <a href="https://drive.google.com/drive/folders/1ln1XqawDwxRGg9o1AvjVKfTemyKNc_hb?usp=drive_link" class="training-link">View Materials →</a> </div>
+            </div>
+            <div class="training-card" data-product="all">
+              <div class="training-header">
+                <div class="training-date">July 10, 2025</div>
+                <h3>Field Demo Certification&nbsp;</h3>
+                <span class="training-product">All Products</span> </div>
+              <div class="training-body">
+                <p>Learn how to deliver compelling product demos that resonate with different buyer personas</p>
+                <div class="training-meta"> <span>45 min</span> <span>Recording + Guide</span> </div>
+                <!-- CUSTOMIZE THIS LINK -->
+                <a href="https://drive.google.com/drive/folders/1fprUSo0UDj0cee4BI85oPwrI8CKWlgbP" class="training-link">View Materials →</a> </div>
+            </div>
+            <div class="training-card" data-product="hero">
+              <div class="training-header">
+                <div class="training-date">july 3, 2025</div>
+                <h3>July All Hands</h3>
+                <span class="training-product">Hero Platform</span> </div>
+              <div class="training-body">
+                <p>Understanding the Hero agent workspace and how it complements Sidekick AI products</p>
+                <div class="training-meta"> <span>50 min</span> <span>Recording + Deck</span> </div>
+                <!-- CUSTOMIZE THIS LINK -->
+                <a href="https://drive.google.com/drive/folders/1HXrK9pAtoMhPLr41atfGzmOSD9aplgpV" class="training-link">View Materials →</a> </div>
+            </div>
+            <div class="training-card" data-product="all">
+                <div class="training-header">
+                    <div class="training-date">june 26,2025</div>
+                    <h3>Sidekick for Zendesk</h3>
+                    <span class="training-product">All Products</span>
+                </div>
+                <div class="training-body">
+                    <p>How to position Gladly against Zendesk in competitive situations with battle cards and objection handling</p>
+                    <div class="training-meta">
+                        <span>40 min</span>
+                        <span>Recording Only</span>
+                    </div>
+                    <!-- CUSTOMIZE THIS LINK -->
+                    <a href="https://drive.google.com/drive/folders/1IFwYsGN6lGSNfrY_djYE9Ad8laPVAQZv" class="training-link">View Materials →</a>
+                </div>
+            </div>
+            
+            <!-- Training Card 4 -->
+            <!-- Training Card 5 -->
+            <!-- Training Card 7 -->
+            <!-- Training Card 8 -->
+            <!-- Training Card 9 -->
+            <div class="training-card" data-product="all">
+                <div class="training-header">
+                    <div class="training-date">june 25, 2025</div>
+                    <h3>Apollo.io Enablement</h3>
+                    <span class="training-product">All Products</span>
+                </div>
+                <div class="training-body">
+                    <p>What's coming in Q3 and Q4 across all Gladly products with a focus on Sidekick enhancements</p>
+                    <div class="training-meta">
+                        <span>40 min</span>
+                        <span>Recording + Slides</span>
+                    </div>
+                    <!-- CUSTOMIZE THIS LINK -->
+                    <a href="https://www.google.com/url?q=https%3A%2F%2Fus-5287.app.gong.io%2Fe%2Fc-share%2F%3Ftkn%3D1tl7kn6trsm38i5gk6gvgcri1%26email_type%3Dexternal-invitation-sent%26xtid%3D3uwe6ri6ovh1tup14af&sa=D&sntz=1&usg=AOvVaw1NCW5YhCdWxuupen2vYu8O" class="training-link">View Materials →</a>
+                </div>
+            </div>
+            
+            <!-- ADD MORE TRAINING CARDS HERE USING THIS TEMPLATE:
+            
+            <div class="training-card" data-product="[PRODUCT-FILTER-VALUE]">
+                <div class="training-header">
+                    <div class="training-date">[DATE]</div>
+                    <h3>[TRAINING TITLE]</h3>
+                    <span class="training-product">[PRODUCT NAME]</span>
+                </div>
+                <div class="training-body">
+                    <p>[DESCRIPTION]</p>
+                    <div class="training-meta">
+                        <span>[DURATION]</span>
+                        <span>[MATERIALS TYPE]</span>
+                    </div>
+                    <a href="[YOUR-ACTUAL-LINK]" class="training-link">View Materials →</a>
+                </div>
+            </div>
+            
+            -->
+            
+        </div>
+        
+        <!-- No Results Message -->
+        <div class="no-results" id="no-results">
+            <h3>No training sessions found</h3>
+            <p>Try adjusting your filters to see more results</p>
+        </div>
+        
+    </div>
+    
+    <!-- Filter Functionality Script (Simplified) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const productFilters = document.querySelectorAll('[data-filter-type="product"]');
+            const trainingCards = document.querySelectorAll('.training-card');
+            const noResults = document.getElementById('no-results');
+            
+            let activeProduct = 'all';
+            
+            function filterCards() {
+                let visibleCount = 0;
+                
+                trainingCards.forEach(card => {
+                    const cardProduct = card.getAttribute('data-product');
+                    const productMatch = activeProduct === 'all' || cardProduct === activeProduct || cardProduct === 'all';
+                    
+                    if (productMatch) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide no results message
+                if (visibleCount === 0) {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            }
+            
+            productFilters.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    productFilters.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    activeProduct = this.getAttribute('data-filter');
+                    filterCards();
+                });
+            });
+        });
+    </script>
+    
+    <!-- Anchor Fix Script for Google Sites -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update offset based on actual nav height
+            function updateOffset() {
+                const nav = document.querySelector('.quick-nav');
+                if (nav) {
+                    const navHeight = nav.getBoundingClientRect().height + 16;
+                    document.documentElement.style.setProperty('--nav-offset', navHeight + 'px');
+                }
+            }
+            
+            // Handle anchor clicks
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start' 
+                        });
+                    }
+                });
+            });
+            
+            // Check for hash on load
+            if (window.location.hash) {
+                setTimeout(() => {
+                    const targetId = window.location.hash.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ 
+                            behavior: 'auto', 
+                            block: 'start' 
+                        });
+                    }
+                }, 100);
+            }
+            
+            updateOffset();
+            window.addEventListener('resize', updateOffset);
+        });
+    </script>
+
+    <script src="../../assets/nav.js"></script>
+    <script>
+        initNav('enablement/training/v3-index.html');
+    </script>
+</body>
+</html>
