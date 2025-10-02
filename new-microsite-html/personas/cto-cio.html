@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTO/CIO/CDO Persona - Technical Executive Buyers</title>
+    <link rel="stylesheet" href="../assets/nav-fixed.css">
+    <link rel="stylesheet" href="../assets/anchor-nav.css">
+    <link rel="stylesheet" href="../assets/search.css">
+    <style>
+        /* ========================================
+           GLADLY UNIFIED DESIGN SYSTEM
+           CTO/CIO/CDO PERSONA PAGE
+           ======================================== */
+
+        /* --- BASE RESET & TYPOGRAPHY --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #0D0D0D;
+            background: #FFFFFF;
+        }
+
+        /* --- SCROLL OFFSET FOR ANCHORS --- */
+        :root {
+            --nav-offset: 140px;
+        }
+
+        [id] {
+            scroll-margin-top: var(--nav-offset);
+        }
+
+        /* --- CONTAINERS --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 40px;
+        }
+
+        /* --- HERO SECTIONS --- */
+        .hero {
+            background: linear-gradient(135deg, #8C69F0 0%, #7557d9 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero-highlight {
+            background: rgba(255,255,255,0.15);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 18px;
+            font-style: italic;
+        }
+
+        /* --- SECTIONS --- */
+        .section {
+            margin-bottom: 50px;
+            scroll-margin-top: var(--nav-offset);
+        }
+
+        .section.white-bg {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .section.gray-bg {
+            background: #F3F3F3;
+            padding: 50px 40px;
+            margin-left: -40px;
+            margin-right: -40px;
+        }
+
+        .section.highlight-bg {
+            background: #E8E0F8;
+            padding: 40px;
+            border-radius: 12px;
+            border-left: 5px solid #8C69F0;
+        }
+
+        /* Section Headers with Icons */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid #E8E0F8;
+        }
+
+        .section-icon {
+            font-size: 40px;
+        }
+
+        .section-header-text h2 {
+            font-size: 28px;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .section-header-text p {
+            font-size: 15px;
+            color: #666;
+        }
+
+        /* --- CONTENT GRIDS --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .content-grid.two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .content-grid.four-col {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        /* --- DEMO RESOURCE CARD (Standard purple hover) --- */
+        .demo-card {
+            background: white;
+            border: 2px solid #F3F3F3;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .demo-card:hover {
+            border-color: #8C69F0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(140,105,240,0.15);
+        }
+
+        .demo-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .demo-card h4 {
+            font-size: 18px;
+            color: #0D0D0D;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .demo-card p {
+            font-size: 14px;
+            color: #4A4A4A;
+            margin-bottom: 16px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .demo-card .meta {
+            font-size: 13px;
+            color: #666;
+            margin-top: 8px;
+            padding-top: 12px;
+            border-top: 1px solid #F3F3F3;
+        }
+
+        .demo-link {
+            color: #8C69F0;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .demo-link:hover {
+            text-decoration: underline;
+        }
+
+        /* --- CONTENT CARD (Quick Reference) --- */
+        .content-card {
+            background: #FFFFFF;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #F3F3F3;
+            transition: all 0.2s ease;
+        }
+
+        .content-card:hover {
+            background: #E8E0F8;
+            border-color: #8C69F0;
+            transform: translateY(-2px);
+        }
+
+        .content-card h4 {
+            font-size: 16px;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .content-card ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content-card li {
+            font-size: 14px;
+            color: #4A4A4A;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .content-card li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #8C69F0;
+            font-weight: bold;
+        }
+
+        /* --- PERSONA OVERVIEW CARDS --- */
+        .persona-card {
+            background: white;
+            border: 3px solid #F3F3F3;
+            border-radius: 12px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .persona-card.cto {
+            border-top-color: #8C69F0;
+        }
+
+        .persona-card.cio {
+            border-top-color: #009B00;
+        }
+
+        .persona-card.cdo {
+            border-top-color: #F59E0B;
+        }
+
+        .persona-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .persona-card h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .persona-card.cto h3 { color: #8C69F0; }
+        .persona-card.cio h3 { color: #009B00; }
+        .persona-card.cdo h3 { color: #F59E0B; }
+
+        .persona-section {
+            margin-bottom: 16px;
+        }
+
+        .persona-section strong {
+            display: block;
+            font-size: 13px;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .persona-section p {
+            font-size: 15px;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        /* --- PLAYBOOK CARDS --- */
+        .playbook-card {
+            background: white;
+            border: 2px solid #F3F3F3;
+            border-left: 4px solid #8C69F0;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.2s ease;
+        }
+
+        .playbook-card:hover {
+            border-left-color: #009B00;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .playbook-card h4 {
+            font-size: 18px;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .playbook-card p {
+            font-size: 14px;
+            color: #4A4A4A;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .playbook-card ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .playbook-card li {
+            font-size: 14px;
+            color: #0D0D0D;
+            margin-bottom: 8px;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .playbook-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #009B00;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* --- TALK TRACK SECTION --- */
+        .talk-track {
+            background: linear-gradient(135deg, #0D0D0D 0%, #2D2D2D 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .talk-track:before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 120px;
+            color: rgba(255,255,255,0.1);
+            font-family: Georgia, serif;
+        }
+
+        .talk-track h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #8C69F0;
+            font-weight: 700;
+        }
+
+        .talk-track p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #FFFFFF;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- ALERT BOXES --- */
+        .alert-box {
+            padding: 24px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 5px solid;
+        }
+
+        .alert-box.warning {
+            background: #FFF3CD;
+            border-left-color: #F59E0B;
+        }
+
+        .alert-box.info {
+            background: #E8E0F8;
+            border-left-color: #8C69F0;
+        }
+
+        .alert-box h4 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .alert-box p {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        /* --- FILTER BUTTONS --- */
+        .filter-section {
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #F3F3F3;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover {
+            border-color: #8C69F0;
+            color: #8C69F0;
+        }
+
+        .filter-btn.active {
+            background: #8C69F0;
+            border-color: #8C69F0;
+            color: white;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .content-grid,
+            .content-grid.two-col,
+            .content-grid.four-col {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .filter-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Hero Section -->
+    <div class="hero">
+        <span class="hero-badge">🎯 Technical Executive Buyer Persona</span>
+        <h1>Selling to CTO/CIO/CDO</h1>
+        <p>Understanding and engaging technical leaders in AI conversations for Sidekick for Helpdesks</p>
+        <div class="hero-highlight">
+            AI is now corporate strategy — tech leaders control the budget
+        </div>
+    </div>
+
+    <!-- Quick Navigation -->
+    <div class="anchor-nav-container">
+        <nav class="anchor-nav">
+            <a href="#why-matters" class="anchor-nav-link">Why This Matters</a>
+            <a href="#personas" class="anchor-nav-link">Persona Overview</a>
+            <a href="#priorities" class="anchor-nav-link">Common Priorities</a>
+            <a href="#capabilities" class="anchor-nav-link">Key Capabilities</a>
+            <a href="#talk-track" class="anchor-nav-link">Talk Track</a>
+            <a href="#playbook" class="anchor-nav-link">Action Playbook</a>
+            <a href="#resources" class="anchor-nav-link">Resources</a>
+        </nav>
+    </div>
+
+    <!-- Why This Matters -->
+    <section id="why-matters" class="section">
+        <div class="section-header">
+            <span class="section-icon">🚨</span>
+            <div class="section-header-text">
+                <h2>Why This Matters</h2>
+                <p>Technical leaders are increasingly central to AI buying decisions</p>
+            </div>
+        </div>
+
+        <div class="content-grid two-col">
+            <div class="content-card">
+                <h4>Budget Control</h4>
+                <ul>
+                    <li>AI initiatives roll up to tech leadership</li>
+                    <li>CTOs/CIOs/CDOs have direct budget authority</li>
+                    <li>Strategic AI decisions require their approval</li>
+                    <li>We need to be in the conversation early</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h4>Competitive Reality</h4>
+                <ul>
+                    <li>Competitors are targeting these personas</li>
+                    <li>Tech leaders are showing up in our deals</li>
+                    <li>They're evaluating vendors proactively</li>
+                    <li>We can't afford to miss this audience</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h4>Our Advantage</h4>
+                <ul>
+                    <li>We have the capabilities they want</li>
+                    <li>Enterprise-grade security & compliance</li>
+                    <li>Transparent governance and controls</li>
+                    <li>Proven ROI and business impact</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h4>The Opportunity</h4>
+                <ul>
+                    <li>Elevate conversations to strategic level</li>
+                    <li>Build relationships with decision makers</li>
+                    <li>Accelerate deal cycles with buy-in</li>
+                    <li>Protect against competitive threats</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Persona Overview Grid -->
+    <section id="personas" class="section gray-bg">
+        <div class="section-header">
+            <span class="section-icon">👥</span>
+            <div class="section-header-text">
+                <h2>Persona Overview</h2>
+                <p>Understanding the three technical executive buyer types</p>
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <div class="persona-card cto">
+                <h3>CTO</h3>
+                <h4>Chief Technology Officer</h4>
+
+                <div class="persona-section">
+                    <strong>Primary Focus</strong>
+                    <p>Speed, Scale, Engineering Efficiency, Time-to-Market</p>
+                </div>
+
+                <div class="persona-section">
+                    <strong>Key Priorities</strong>
+                    <p>Technical architecture, innovation roadmap, scalability, developer productivity, technical debt reduction</p>
+                </div>
+
+                <div class="persona-section">
+                    <strong>Budget Authority</strong>
+                    <p>Direct control over AI and technology initiatives. Approves strategic platform decisions.</p>
+                </div>
+
+                <div class="persona-section">
+                    <strong>What They Care About</strong>
+                    <p>API quality, system integration, technical excellence, future-proof architecture</p>
+                </div>
+            </div>
+
+            <div class="persona-card cio">
+                <h3>CIO</h3>
+                <h4>Chief Information Officer</h4>
+
+                <div class="persona-section">
+                    <strong>Primary Focus</strong>
+                    <p>Cost/Risk Management, Vendor Consolidation, Predictable TCO</p>
+                </div>
+
+                <div class="persona-section">
+                    <strong>Key Priorities</strong>
+                    <p>Security, compliance, operational excellence, vendor management, IT efficiency, cost control</p>
+                </div>
+
+                <div class="persona-section">
+                    <strong>Budget Authority</strong>
+                    <p>IT budget ownership and vendor relationship management. Controls enterprise software spend.</p>
+                </div>
+
+                <div class="persona-section">
+                    <strong>What They Care About</strong>
+                    <p>ROI, security certifications, compliance, vendor reliability, total cost of ownership</p>
+                </div>
+            </div>
+
+            <div class="persona-card cdo">
+                <h3>CDO</h3>
+                <h4>Chief Digital Officer</h4>
+
+                <div class="persona-section">
+                    <strong>Primary Focus</strong>
+                    <p>Digital Experience, Omnichannel Innovation, Competitive Differentiation</p>
+                </div>
+
+                <div class="persona-section">
+                    <strong>Key Priorities</strong>
+                    <p>Customer experience transformation, digital channel optimization, innovation, competitive advantage</p>
+                </div>
+
+                <div class="persona-section">
+                    <strong>Budget Authority</strong>
+                    <p>Digital transformation initiatives and customer-facing technology investments.</p>
+                </div>
+
+                <div class="persona-section">
+                    <strong>What They Care About</strong>
+                    <p>Customer satisfaction, channel consistency, speed to market, measurable business outcomes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Common Priorities -->
+    <section id="priorities" class="section white-bg">
+        <div class="section-header">
+            <span class="section-icon">🎯</span>
+            <div class="section-header-text">
+                <h2>Universal Priorities</h2>
+                <p>What all three personas care about</p>
+            </div>
+        </div>
+
+        <div class="content-grid four-col">
+            <div class="content-card">
+                <h4>ROI & Impact</h4>
+                <ul>
+                    <li>Measurable business results</li>
+                    <li>Clear ROI metrics</li>
+                    <li>Fast time to value</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h4>Integration</h4>
+                <ul>
+                    <li>Easy tech stack integration</li>
+                    <li>Minimal IT resources required</li>
+                    <li>API-first architecture</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h4>Governance</h4>
+                <ul>
+                    <li>Control & transparency</li>
+                    <li>AI quality assurance</li>
+                    <li>Brand compliance</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h4>Security</h4>
+                <ul>
+                    <li>Enterprise-grade security</li>
+                    <li>Compliance certifications</li>
+                    <li>Data privacy protection</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Capabilities -->
+    <section id="capabilities" class="section">
+        <div class="section-header">
+            <span class="section-icon">⚡</span>
+            <div class="section-header-text">
+                <h2>Key Capabilities to Highlight</h2>
+                <p>Sidekick differentiators that resonate with technical leaders</p>
+            </div>
+        </div>
+
+        <div class="content-grid two-col">
+            <div class="demo-card">
+                <span class="demo-icon">🛡️</span>
+                <h4>AI Quality & Compliance Checks</h4>
+                <p><strong>What it is:</strong> Multi-layer verification system that checks every AI response before delivery</p>
+                <p><strong>Key features:</strong></p>
+                <ul style="margin: 12px 0; padding-left: 20px; font-size: 14px; color: #4A4A4A;">
+                    <li>Fact-checking against knowledge base</li>
+                    <li>Hallucination detection</li>
+                    <li>Brand compliance verification</li>
+                    <li>Policy enforcement on every interaction</li>
+                </ul>
+                <div class="meta">
+                    <strong>Why it matters:</strong> Prevents brand risk, legal exposure, and customer trust issues. CIOs and CTOs need to ensure AI doesn't create liability.
+                </div>
+            </div>
+
+            <div class="demo-card">
+                <span class="demo-icon">🔄</span>
+                <h4>Continuous AI Optimization (Journeys)</h4>
+                <p><strong>What it is:</strong> Self-improving AI system that identifies gaps and suggests optimizations automatically</p>
+                <p><strong>Key features:</strong></p>
+                <ul style="margin: 12px 0; padding-left: 20px; font-size: 14px; color: #4A4A4A;">
+                    <li>Performance dashboards identifying gaps</li>
+                    <li>AI-suggested improvements</li>
+                    <li>Continuous learning without manual work</li>
+                    <li>Real-time optimization recommendations</li>
+                </ul>
+                <div class="meta">
+                    <strong>Why it matters:</strong> Reduces ongoing optimization burden on IT and business teams. System gets smarter over time without constant intervention.
+                </div>
+            </div>
+
+            <div class="demo-card">
+                <span class="demo-icon">📊</span>
+                <h4>Reporting & Insights</h4>
+                <p><strong>What it is:</strong> Transparent analytics and BI integration for ROI tracking and performance monitoring</p>
+                <p><strong>Key features:</strong></p>
+                <ul style="margin: 12px 0; padding-left: 20px; font-size: 14px; color: #4A4A4A;">
+                    <li>Transparent ROI metrics</li>
+                    <li>BI export capabilities</li>
+                    <li>Adoption tracking</li>
+                    <li>Performance analytics</li>
+                </ul>
+                <div class="meta">
+                    <strong>Why it matters:</strong> Executives need data to prove ROI and make informed decisions. Transparent reporting enables data-driven optimization.
+                </div>
+            </div>
+
+            <div class="demo-card">
+                <span class="demo-icon">🔒</span>
+                <h4>Enterprise Security & Compliance</h4>
+                <p><strong>What it is:</strong> Enterprise-grade security infrastructure with industry-leading certifications</p>
+                <p><strong>Key features:</strong></p>
+                <ul style="margin: 12px 0; padding-left: 20px; font-size: 14px; color: #4A4A4A;">
+                    <li>SOC 2 Type 2 certified</li>
+                    <li>PCI DSS compliant</li>
+                    <li>AES-256 encryption, TLS 1.2</li>
+                    <li>GDPR-compliant DPA</li>
+                </ul>
+                <div class="meta">
+                    <strong>Why it matters:</strong> Security and compliance are table stakes for enterprise adoption. Strong posture accelerates procurement and reduces risk.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Talk Track -->
+    <section id="talk-track" class="section">
+        <div class="talk-track">
+            <h3>Positioning Statement for Technical Leaders</h3>
+            <p>
+                "Sidekick for Helpdesks delivers enterprise-grade AI that your CX team can control without constant IT involvement. Unlike traditional AI that requires engineering resources for every update, our no-code platform empowers business teams to manage content, monitor quality, and optimize performance — while maintaining the security, governance, and transparency you require. You get the innovation speed of a business-owned tool with the enterprise controls of an IT-managed system."
+            </p>
+        </div>
+
+        <div class="alert-box info">
+            <h4>💡 Pro Tip: Adapt Your Message</h4>
+            <p><strong>For CTOs:</strong> Emphasize technical architecture, API quality, and engineering efficiency gains</p>
+            <p><strong>For CIOs:</strong> Focus on ROI, vendor consolidation, security certifications, and TCO</p>
+            <p><strong>For CDOs:</strong> Highlight customer experience impact, omnichannel capabilities, and competitive differentiation</p>
+        </div>
+    </section>
+
+    <!-- Action Playbook -->
+    <section id="playbook" class="section gray-bg">
+        <div class="section-header">
+            <span class="section-icon">📋</span>
+            <div class="section-header-text">
+                <h2>Action Playbook</h2>
+                <p>What to do in different scenarios</p>
+            </div>
+        </div>
+
+        <div class="content-grid two-col">
+            <div class="playbook-card">
+                <h4>🔍 No Tech Leader Relationship Yet?</h4>
+                <p><strong>Situation:</strong> You're working with CX team but haven't connected with CTO/CIO/CDO</p>
+                <ul>
+                    <li>Send email + one-pager to your champion</li>
+                    <li>Ask them to forward to their tech leadership</li>
+                    <li>Position as: "Want to make sure your tech team knows what we're delivering"</li>
+                    <li>Use templates in Resources section below</li>
+                </ul>
+            </div>
+
+            <div class="playbook-card">
+                <h4>⚠️ Competitor Already in Conversations?</h4>
+                <p><strong>Situation:</strong> You hear a competitor is talking to their CTO/CIO/CDO</p>
+                <ul>
+                    <li>Escalate to your manager IMMEDIATELY</li>
+                    <li>Share one-pager with your champion</li>
+                    <li>Brief them on key talking points</li>
+                    <li>Request introduction to tech leadership</li>
+                    <li>Use competitive battle cards for positioning</li>
+                </ul>
+            </div>
+
+            <div class="playbook-card">
+                <h4>✅ Tech Leader in the Room?</h4>
+                <p><strong>Situation:</strong> CTO/CIO/CDO joins a call or meeting</p>
+                <ul>
+                    <li>Use the positioning talk track above</li>
+                    <li>Highlight 2-3 capabilities matching their priorities</li>
+                    <li>Focus on governance and control</li>
+                    <li>Offer security documentation and ROI data</li>
+                    <li>Schedule follow-up technical deep dive</li>
+                </ul>
+            </div>
+
+            <div class="playbook-card">
+                <h4>🎯 Tech Leader NOT in Room?</h4>
+                <p><strong>Situation:</strong> You're in CX conversations but tech leaders aren't involved yet</p>
+                <ul>
+                    <li>Share one-pager with your contact</li>
+                    <li>Suggest they forward to tech team</li>
+                    <li>Position as value-add, not requirement</li>
+                    <li>Offer to present to tech leadership</li>
+                    <li>Include ROI calculator and security docs</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="alert-box warning" style="margin-top: 30px;">
+            <h4>⚡ When to Escalate</h4>
+            <p><strong>Red Flag Situations:</strong></p>
+            <ul style="margin-top: 12px; padding-left: 20px;">
+                <li>Competitor mentioned in tech leadership conversations</li>
+                <li>Security or compliance concerns raised by IT</li>
+                <li>Budget approval stalled at tech leadership level</li>
+                <li>Integration or architecture questions you can't answer</li>
+            </ul>
+            <p style="margin-top: 16px;"><strong>What to do:</strong> Immediately escalate to your manager and Solutions Engineering team. Don't try to handle complex technical objections alone.</p>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section id="resources" class="section">
+        <div class="section-header">
+            <span class="section-icon">📚</span>
+            <div class="section-header-text">
+                <h2>Resources & Templates</h2>
+                <p>Everything you need to engage technical leaders</p>
+            </div>
+        </div>
+
+        <!-- Filter -->
+        <div class="filter-section">
+            <div class="filter-buttons">
+                <span class="filter-label">Filter by type:</span>
+                <button class="filter-btn active" data-filter="all">All Resources</button>
+                <button class="filter-btn" data-filter="templates">Templates</button>
+                <button class="filter-btn" data-filter="docs">Documentation</button>
+                <button class="filter-btn" data-filter="tools">Tools</button>
+            </div>
+        </div>
+
+        <div class="content-grid" id="resources-grid">
+            <!-- Templates -->
+            <a href="#" class="demo-card" data-category="templates">
+                <span class="demo-icon">📧</span>
+                <h4>Email Templates</h4>
+                <p>Pre-written emails for introducing Sidekick to CTO/CIO/CDO personas</p>
+                <span class="demo-link">View Templates →</span>
+            </a>
+
+            <a href="#" class="demo-card" data-category="docs">
+                <span class="demo-icon">📄</span>
+                <h4>Technical Executive One-Pager</h4>
+                <p>One-page overview designed specifically for technical leadership</p>
+                <span class="demo-link">Download PDF →</span>
+            </a>
+
+            <a href="#" class="demo-card" data-category="tools">
+                <span class="demo-icon">🧮</span>
+                <h4>ROI Calculator</h4>
+                <p>Interactive calculator for quantifying AI initiative ROI</p>
+                <span class="demo-link">Open Calculator →</span>
+            </a>
+
+            <a href="#" class="demo-card" data-category="docs">
+                <span class="demo-icon">🔒</span>
+                <h4>Security & Compliance Documentation</h4>
+                <p>Complete security overview, certifications, and compliance information</p>
+                <span class="demo-link">View Docs →</span>
+            </a>
+
+            <a href="#" class="demo-card" data-category="docs">
+                <span class="demo-icon">🏗️</span>
+                <h4>Integration Architecture Overview</h4>
+                <p>Technical architecture diagrams and integration patterns</p>
+                <span class="demo-link">View Architecture →</span>
+            </a>
+
+            <a href="#" class="demo-card" data-category="docs">
+                <span class="demo-icon">⭐</span>
+                <h4>Customer Success Stories</h4>
+                <p>Case studies highlighting ROI and technical implementation</p>
+                <span class="demo-link">Browse Stories →</span>
+            </a>
+
+            <a href="#" class="demo-card" data-category="docs">
+                <span class="demo-icon">💬</span>
+                <h4>Technical Objection Handling</h4>
+                <p>Common technical concerns and proven responses</p>
+                <span class="demo-link">View Guide →</span>
+            </a>
+
+            <a href="#" class="demo-card" data-category="docs">
+                <span class="demo-icon">🎯</span>
+                <h4>Competitive Differentiation</h4>
+                <p>How Sidekick compares to other AI solutions from a technical perspective</p>
+                <span class="demo-link">View Comparison →</span>
+            </a>
+
+            <a href="#" class="demo-card" data-category="tools">
+                <span class="demo-icon">❓</span>
+                <h4>Discovery Questions</h4>
+                <p>Strategic questions to ask technical leaders in discovery</p>
+                <span class="demo-link">View Questions →</span>
+            </a>
+
+            <a href="#" class="demo-card" data-category="templates">
+                <span class="demo-icon">📊</span>
+                <h4>Presentation Template</h4>
+                <p>Customizable deck for technical leadership presentations</p>
+                <span class="demo-link">Download PPT →</span>
+            </a>
+
+            <a href="#" class="demo-card" data-category="docs">
+                <span class="demo-icon">📈</span>
+                <h4>Business Value Framework</h4>
+                <p>Framework for articulating business value to executives</p>
+                <span class="demo-link">View Framework →</span>
+            </a>
+
+            <a href="#" class="demo-card" data-category="tools">
+                <span class="demo-icon">🚨</span>
+                <h4>Red Flags Checklist</h4>
+                <p>Warning signs that require escalation or SE involvement</p>
+                <span class="demo-link">View Checklist →</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Quick Reference -->
+    <section id="quick-ref" class="section highlight-bg">
+        <div class="section-header" style="border-bottom-color: #8C69F0;">
+            <span class="section-icon">⚡</span>
+            <div class="section-header-text">
+                <h2>Quick Reference</h2>
+                <p>Key points to remember</p>
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <div class="content-card">
+                <h4>🎯 Core Message</h4>
+                <ul>
+                    <li>Business-controlled AI with IT-grade security</li>
+                    <li>No-code platform reduces engineering burden</li>
+                    <li>Enterprise governance built-in</li>
+                    <li>Proven ROI with transparent metrics</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h4>📊 Key Metrics They Want</h4>
+                <ul>
+                    <li>Time to value / implementation speed</li>
+                    <li>ROI and cost savings</li>
+                    <li>Automation rate / deflection metrics</li>
+                    <li>Security certifications</li>
+                    <li>Integration complexity</li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h4>⚠️ Common Concerns</h4>
+                <ul>
+                    <li>"How do you prevent hallucinations?"</li>
+                    <li>"What's your security posture?"</li>
+                    <li>"How complex is integration?"</li>
+                    <li>"What ongoing IT resources required?"</li>
+                    <li>"How do we prove ROI?"</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- Anchor Fix Script -->
+<script src="../assets/nav.js"></script>
+<script src="../assets/search.js"></script>
+<script>
+// Anchor navigation fix for Google Sites iframe
+document.addEventListener('DOMContentLoaded', function() {
+    // Update offset based on actual nav height
+    function updateOffset() {
+        const nav = document.querySelector('.anchor-nav-container');
+        if (nav) {
+            const navHeight = nav.getBoundingClientRect().height + 100;
+            document.documentElement.style.setProperty('--nav-offset', navHeight + 'px');
+        }
+    }
+
+    // Handle anchor clicks
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Check for hash on load
+    if (window.location.hash) {
+        setTimeout(() => {
+            const targetId = window.location.hash.substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'auto',
+                    block: 'start'
+                });
+            }
+        }, 100);
+    }
+
+    updateOffset();
+    window.addEventListener('resize', updateOffset);
+});
+
+// Filter functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const resourceCards = document.querySelectorAll('#resources-grid .demo-card');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Update active state
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            const filter = this.getAttribute('data-filter');
+
+            // Filter cards
+            resourceCards.forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+});
+
+// Initialize navigation
+if (typeof initNav === 'function') {
+    initNav();
+}
+
+// Initialize search
+if (typeof initSearch === 'function') {
+    initSearch();
+}
+</script>
+
+</body>
+</html>
