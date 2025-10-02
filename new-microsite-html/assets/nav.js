@@ -23,7 +23,7 @@ function getNavHTML(currentPath) {
                 <a href="${getRelativePath(currentPath, 'enablement/training/index.html')}" class="nav-child ${isActive(currentPath, 'enablement/training') ? 'active' : ''}">Training</a>
                 <a href="${getRelativePath(currentPath, 'enablement/toolkits/index.html')}" class="nav-child ${isActive(currentPath, 'enablement/toolkits') ? 'active' : ''}">Team Toolkits</a>
                 <a href="${getRelativePath(currentPath, 'enablement/playbooks/index.html')}" class="nav-child ${isActive(currentPath, 'enablement/playbooks') ? 'active' : ''}">Playbooks</a>
-                <a href="${getRelativePath(currentPath, 'enablement/competitive/competitive.html')}" class="nav-child ${isActive(currentPath, 'enablement/competitive') ? 'active' : ''}">Competitive</a>
+                <a href="${getRelativePath(currentPath, 'enablement/competitive.html')}" class="nav-child ${isActive(currentPath, 'enablement/competitive') ? 'active' : ''}">Competitive</a>
                 <a href="${getRelativePath(currentPath, 'enablement/demo/index.html')}" class="nav-child ${isActive(currentPath, 'enablement/demo') ? 'active' : ''}">Demo</a>
             </div>
         </div>
