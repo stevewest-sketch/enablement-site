@@ -23,6 +23,7 @@ function getNavHTML(currentPath) {
                 <a href="${getRelativePath(currentPath, 'enablement/training/index.html')}" class="nav-child ${isActive(currentPath, 'enablement/training') ? 'active' : ''}">Training</a>
                 <a href="${getRelativePath(currentPath, 'enablement/toolkits/index.html')}" class="nav-child ${isActive(currentPath, 'enablement/toolkits') ? 'active' : ''}">Team Toolkits</a>
                 <a href="${getRelativePath(currentPath, 'enablement/playbooks/index.html')}" class="nav-child ${isActive(currentPath, 'enablement/playbooks') ? 'active' : ''}">Playbooks</a>
+                <a href="${getRelativePath(currentPath, 'enablement/competitive/competitive.html')}" class="nav-child ${isActive(currentPath, 'enablement/competitive') ? 'active' : ''}">Competitive</a>
                 <a href="${getRelativePath(currentPath, 'enablement/demo/index.html')}" class="nav-child ${isActive(currentPath, 'enablement/demo') ? 'active' : ''}">Demo</a>
             </div>
         </div>
@@ -56,6 +57,18 @@ function getNavHTML(currentPath) {
                 <a href="${getRelativePath(currentPath, 'coe/bva/index.html')}" class="nav-child ${isActive(currentPath, 'coe/bva') ? 'active' : ''}">BVA</a>
                 <a href="${getRelativePath(currentPath, 'coe/ai-best-practices/index.html')}" class="nav-child ${isActive(currentPath, 'coe/ai-best-practices') ? 'active' : ''}">AI Best Practices</a>
                 <a href="${getRelativePath(currentPath, 'coe/customer-wins/index.html')}" class="nav-child ${isActive(currentPath, 'coe/customer-wins') ? 'active' : ''}">Customer Wins</a>
+            </div>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-parent-container">
+                <span class="nav-arrow ${isParentActive(currentPath, 'personas') ? 'open' : ''}" data-nav-toggle>▶</span>
+                <div class="nav-parent-link nav-no-link">
+                    <span class="nav-text">Personas</span>
+                </div>
+            </div>
+            <div class="nav-children ${isParentActive(currentPath, 'personas') ? 'open' : ''}">
+                <a href="${getRelativePath(currentPath, 'personas/cto-cio.html')}" class="nav-child ${isActive(currentPath, 'personas/cto-cio') ? 'active' : ''}">CTO/CIO/CDO</a>
             </div>
         </div>
 
