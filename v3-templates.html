@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Gallery</title>
+    <style>
+        /* ========================================
+           GLADLY UNIFIED DESIGN SYSTEM
+           WITH FEATURED DECK COMPONENT
+           ======================================== */
+
+        /* --- BASE RESET & TYPOGRAPHY --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #0D0D0D;
+            background: #FFFFFF;
+        }
+
+        /* --- SCROLL OFFSET FOR ANCHORS --- */
+        :root {
+            --nav-offset: 96px;
+        }
+        
+        [id] {
+            scroll-margin-top: var(--nav-offset);
+        }
+
+        /* --- CONTAINERS --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 40px;
+        }
+
+        /* --- HERO SECTIONS --- */
+        .hero {
+            background: linear-gradient(135deg, #8C69F0 0%, #7557d9 100%);
+            color: white;
+            padding: 60px 40px;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- STICKY NAVIGATION --- */
+        .quick-nav {
+            background: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-link {
+            background: #F3F3F3;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #0D0D0D;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            background: #8C69F0;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* --- SECTIONS --- */
+        .section {
+            margin-bottom: 50px;
+            scroll-margin-top: var(--nav-offset);
+        }
+        
+        .section.white-bg {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .section.gray-bg {
+            background: #F3F3F3;
+            padding: 50px 40px;
+            margin-left: -40px;
+            margin-right: -40px;
+        }
+        
+        /* Section Headers with Icons */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid #E8E0F8;
+        }
+        
+        .section-icon {
+            font-size: 40px;
+        }
+        
+        .section-header-text h2 {
+            font-size: 26px;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        
+        .section-header-text p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* --- FEATURED DECK LAYOUT (NEW COMPONENT) --- */
+        .featured-deck-layout {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        
+        /* Featured Deck Card - Main */
+        .featured-deck {
+            background: white;
+            border: 3px solid #8C69F0;
+            border-radius: 8px;
+            padding: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .featured-deck:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(140,105,240,0.25);
+        }
+        
+        .deck-preview {
+            background: #F3F3F3;
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+            font-size: 14px;
+            font-weight: 600;
+            border-bottom: 2px solid #E8E0F8;
+        }
+        
+        .deck-content {
+            padding: 28px;
+        }
+        
+        .deck-content h3 {
+            font-size: 24px;
+            color: #0D0D0D;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .deck-content p {
+            font-size: 15px;
+            color: #4A4A4A;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+        
+        .deck-meta {
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: #8C69F0;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #7557d9;
+            transform: translateY(-2px);
+        }
+        
+        /* Featured Deck Sidebar */
+        .deck-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .deck-sidebar-card {
+            background: white;
+            border: 2px solid #F3F3F3;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .deck-sidebar-card:hover {
+            border-color: #8C69F0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(140,105,240,0.15);
+        }
+        
+        .deck-sidebar-card h4 {
+            font-size: 16px;
+            color: #0D0D0D;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .deck-sidebar-card p {
+            font-size: 13px;
+            color: #4A4A4A;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            flex-grow: 1;
+        }
+        
+        .deck-link {
+            color: #8C69F0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        
+        .deck-link:hover {
+            text-decoration: underline;
+        }
+
+        /* --- CONTENT GRIDS --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .content-grid.two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .content-grid.four-col {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        /* --- DEMO RESOURCE CARD (Standard) --- */
+        .demo-card {
+            background: white;
+            border: 2px solid #F3F3F3;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .demo-card:hover {
+            border-color: #8C69F0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(140,105,240,0.15);
+        }
+        
+        .demo-card h4 {
+            font-size: 16px;
+            color: #0D0D0D;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .demo-card p {
+            font-size: 13px;
+            color: #4A4A4A;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            flex-grow: 1;
+        }
+        
+        .demo-link {
+            color: #8C69F0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        
+        .demo-link:hover {
+            text-decoration: underline;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .featured-deck-layout,
+            .content-grid,
+            .content-grid.two-col,
+            .content-grid.four-col {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .section.gray-bg {
+                margin-left: -20px;
+                margin-right: -20px;
+                padding: 40px 20px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .deck-preview {
+                min-height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Hero -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Template Gallery</h1>
+            <p>Deck templates and slide inserts for your presentations</p>
+        </div>
+    </div>
+    
+    <!-- Quick Nav -->
+    <div class="quick-nav">
+        <div class="nav-links">
+            <a href="#brand-guidelines" class="nav-link">Brand Guidelines</a>
+            <a href="#pitch-decks" class="nav-link">Pitch Decks</a>
+            <a href="#product-decks" class="nav-link">Product Decks</a>
+            <a href="#security-rfx" class="nav-link">Security + RFX</a>
+            <a href="#implementation" class="nav-link">Implementation</a>
+            <a href="#feature-slides" class="nav-link">Feature Slides</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        
+        <!-- Brand Guidelines -->
+        <div id="brand-guidelines" class="section white-bg">
+            <div class="section-header">
+                <span class="section-icon">🎨</span>
+                <div class="section-header-text">
+                    <h2>Brand Guidelines</h2>
+                    <p>Branded templates and style guides</p>
+                </div>
+            </div>
+            
+            <div class="featured-deck-layout">
+                <a href="#" class="featured-deck">
+                    <div class="deck-preview">Preview: Brand Guidelines Deck</div>
+                    <div class="deck-content">
+                        <h3>Gladly Brand Guidelines Deck</h3>
+                        <p>Complete brand style guide including logos, colors, typography, imagery guidelines, and best practices for creating on-brand materials</p>
+                        <div class="deck-meta">45 slides • Updated Sep 2024</div>
+                        <span class="btn-primary">Open Deck</span>
+                    </div>
+                </a>
+                
+                <div class="deck-sidebar">
+                    <a href="#" class="deck-sidebar-card">
+                        <h4>Logo Assets</h4>
+                        <p>All logo variations and usage guidelines</p>
+                        <span class="deck-link">Download Assets →</span>
+                    </a>
+                    
+                    <a href="#" class="deck-sidebar-card">
+                        <h4>Color Palette</h4>
+                        <p>Official color codes and application examples</p>
+                        <span class="deck-link">View Palette →</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pitch Decks -->
+        <div id="pitch-decks" class="section gray-bg">
+            <div class="section-header">
+                <span class="section-icon">📊</span>
+                <div class="section-header-text">
+                    <h2>Pitch Decks</h2>
+                    <p>Full presentation templates for customer pitches</p>
+                </div>
+            </div>
+            
+            <div class="featured-deck-layout">
+                <a href="#" class="featured-deck">
+                    <div class="deck-preview">Preview: First Meeting Pitch Deck</div>
+                    <div class="deck-content">
+                        <h3>First Meeting Pitch Deck</h3>
+                        <p>Comprehensive first meeting template covering company overview, product capabilities, customer success stories, and next steps</p>
+                        <div class="deck-meta">32 slides • Updated Oct 2024</div>
+                        <span class="btn-primary">Open Deck</span>
+                    </div>
+                </a>
+                
+                <div class="deck-sidebar">
+                    <a href="#" class="deck-sidebar-card">
+                        <h4>Specialized Team Pitch</h4>
+                        <p>Pitch template for specialized team conversations</p>
+                        <span class="deck-link">Open Template →</span>
+                    </a>
+                    
+                    <a href="#" class="deck-sidebar-card">
+                        <h4>Custom Template w/o Hero</h4>
+                        <p>Customizable deck template without Hero content</p>
+                        <span class="deck-link">Open Template →</span>
+                    </a>
+                    
+                    <a href="#" class="deck-sidebar-card">
+                        <h4>Buyer Persona Pitch</h4>
+                        <p>Persona-specific pitch deck template</p>
+                        <span class="deck-link">Open Template →</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="content-grid four-col">
+                <a href="#" class="demo-card">
+                    <h4>First Day Experience</h4>
+                    <p>Day 1 pitch template</p>
+                    <span class="demo-link">View →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <h4>Pitch (no team section)</h4>
+                    <p>Streamlined pitch deck</p>
+                    <span class="demo-link">View →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Product Decks -->
+        <div id="product-decks" class="section white-bg">
+            <div class="section-header">
+                <span class="section-icon">📱</span>
+                <div class="section-header-text">
+                    <h2>Product Decks</h2>
+                    <p>Deep dive product presentation templates</p>
+                </div>
+            </div>
+            
+            <div class="featured-deck-layout">
+                <a href="#" class="featured-deck">
+                    <div class="deck-preview">Preview: Sidekick for Enterprise</div>
+                    <div class="deck-content">
+                        <h3>Sidekick for Enterprise</h3>
+                        <p>Enterprise-focused Sidekick presentation covering advanced features, security, scalability, and integration capabilities</p>
+                        <div class="deck-meta">38 slides • Updated Oct 2024</div>
+                        <span class="btn-primary">Open Deck</span>
+                    </div>
+                </a>
+                
+                <div class="deck-sidebar">
+                    <a href="#" class="deck-sidebar-card">
+                        <h4>Product Storytelling Deck</h4>
+                        <p>Narrative-driven product presentation</p>
+                        <span class="deck-link">Open Template →</span>
+                    </a>
+                    
+                    <a href="#" class="deck-sidebar-card">
+                        <h4>Zendesk Alternative</h4>
+                        <p>Competitive positioning against Zendesk</p>
+                        <span class="deck-link">Open Template →</span>
+                    </a>
+                    
+                    <a href="#" class="deck-sidebar-card">
+                        <h4>Deep Dive Roadmap Kit</h4>
+                        <p>Roadmap presentation template</p>
+                        <span class="deck-link">Open Template →</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Security + RFX -->
+        <div id="security-rfx" class="section gray-bg">
+            <div class="section-header">
+                <span class="section-icon">🔒</span>
+                <div class="section-header-text">
+                    <h2>Security + RFX Templates</h2>
+                    <p>Security presentations and RFP response templates</p>
+                </div>
+            </div>
+            
+            <div class="featured-deck-layout">
+                <a href="#" class="featured-deck">
+                    <div class="deck-preview">Preview: Security & SOC 2 Overview</div>
+                    <div class="deck-content">
+                        <h3>Architecture, Security, and SOC 2</h3>
+                        <p>Comprehensive security presentation covering system architecture, security controls, compliance certifications, and data protection</p>
+                        <div class="deck-meta">42 slides • Updated Oct 2024</div>
+                        <span class="btn-primary">Open Deck</span>
+                    </div>
+                </a>
+                
+                <div class="deck-sidebar">
+                    <a href="#" class="deck-sidebar-card">
+                        <h4>RFP Response Template</h4>
+                        <p>Standard template for responding to RFPs</p>
+                        <span class="deck-link">Open Template →</span>
+                    </a>
+                    
+                    <a href="#" class="deck-sidebar-card">
+                        <h4>RFI Response Template</h4>
+                        <p>Standard template for responding to RFIs</p>
+                        <span class="deck-link">Open Template →</span>
+                    </a>
+                    
+                    <a href="#" class="deck-sidebar-card">
+                        <h4>VSA Response Template</h4>
+                        <p>Vendor security assessment template</p>
+                        <span class="deck-link">Open Template →</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Implementation -->
+        <div id="implementation" class="section white-bg">
+            <div class="section-header">
+                <span class="section-icon">⚙️</span>
+                <div class="section-header-text">
+                    <h2>Implementation Decks</h2>
+                    <p>Customer onboarding and implementation templates</p>
+                </div>
+            </div>
+            
+            <div class="featured-deck-layout">
+                <a href="#" class="featured-deck">
+                    <div class="deck-preview">Preview: Customer Onboarding Kickoff</div>
+                    <div class="deck-content">
+                        <h3>Customer Onboarding Kickoff</h3>
+                        <p>Complete kickoff presentation covering implementation timeline, milestones, team introductions, and success criteria</p>
+                        <div class="deck-meta">28 slides • Updated Sep 2024</div>
+                        <span class="btn-primary">Open Deck</span>
+                    </div>
+                </a>
+                
+                <div class="deck-sidebar">
+                    <a href="#" class="deck-sidebar-card">
+                        <h4>90 Day Implementation</h4>
+                        <p>Phased implementation roadmap template</p>
+                        <span class="deck-link">Open Template →</span>
+                    </a>
+                    
+                    <a href="#" class="deck-sidebar-card">
+                        <h4>QBR Deck Template</h4>
+                        <p>Quarterly business review presentation</p>
+                        <span class="deck-link">Open Template →</span>
+                    </a>
+                    
+                    <a href="#" class="deck-sidebar-card">
+                        <h4>Success Renewal Deck</h4>
+                        <p>Renewal conversation template</p>
+                        <span class="deck-link">Open Template →</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Feature Slides -->
+        <div id="feature-slides" class="section gray-bg">
+            <div class="section-header">
+                <span class="section-icon">✨</span>
+                <div class="section-header-text">
+                    <h2>Feature Slides</h2>
+                    <p>Individual feature slides to insert into presentations</p>
+                </div>
+            </div>
+            
+            <div class="content-grid two-col">
+                <a href="#" class="demo-card">
+                    <h4>Auto Translate Feature Slides</h4>
+                    <p>Slides showcasing automatic translation capabilities</p>
+                    <span class="demo-link">View Slides →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <h4>E-Escalate Widget</h4>
+                    <p>Feature slides for escalation widget</p>
+                    <span class="demo-link">View Slides →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <h4>Assisted Auth Slides</h4>
+                    <p>Authentication feature presentation</p>
+                    <span class="demo-link">View Slides →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <h4>Product Storytelling Slides</h4>
+                    <p>Narrative feature presentations</p>
+                    <span class="demo-link">View Slides →</span>
+                </a>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- Anchor Fix Script for Google Sites -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function updateOffset() {
+                const nav = document.querySelector('.quick-nav');
+                if (nav) {
+                    const navHeight = nav.getBoundingClientRect().height + 16;
+                    document.documentElement.style.setProperty('--nav-offset', navHeight + 'px');
+                }
+            }
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start' 
+                        });
+                    }
+                });
+            });
+            
+            if (window.location.hash) {
+                setTimeout(() => {
+                    const targetId = window.location.hash.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ 
+                            behavior: 'auto', 
+                            block: 'start' 
+                        });
+                    }
+                }, 100);
+            }
+            
+            updateOffset();
+            window.addEventListener('resize', updateOffset);
+        });
+    </script>
+</body>
+</html>

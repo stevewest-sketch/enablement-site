@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revenue Enablement Hub</title>
+    <style>
+        /* ========================================
+           GLADLY UNIFIED DESIGN SYSTEM
+           ======================================== */
+
+        /* --- BASE RESET & TYPOGRAPHY --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #0D0D0D;
+            background: #FFFFFF;
+        }
+
+        /* --- SCROLL OFFSET FOR ANCHORS --- */
+        :root {
+            --nav-offset: 140px;
+        }
+        
+        [id] {
+            scroll-margin-top: var(--nav-offset);
+        }
+
+        /* --- CONTAINERS --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 40px;
+        }
+
+        /* --- HERO SECTIONS --- */
+        .hero {
+            background: linear-gradient(135deg, #009B00 0%, #007a00 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- STICKY NAVIGATION --- */
+        .quick-nav {
+            background: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+        
+        .quick-nav h3 {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-link {
+            background: #F3F3F3;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #0D0D0D;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            background: #8C69F0;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* --- SECTIONS --- */
+        .section {
+            margin-bottom: 50px;
+            scroll-margin-top: var(--nav-offset);
+        }
+        
+        .section.white-bg {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .section.gray-bg {
+            background: #F3F3F3;
+            padding: 50px 40px;
+            margin-left: -40px;
+            margin-right: -40px;
+        }
+        
+        /* Section Headers with Icons */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid #E8E0F8;
+        }
+        
+        .section-icon {
+            font-size: 40px;
+        }
+        
+        .section-header-text h2 {
+            font-size: 26px;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        
+        .section-header-text p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Gray section headers (no border) */
+        .section.gray-bg h2 {
+            font-size: 26px;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        /* --- CONTENT GRIDS --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .content-grid.two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .content-grid.four-col {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        /* --- DEMO RESOURCE CARD (Standard purple hover) --- */
+        .demo-card {
+            background: white;
+            border: 2px solid #F3F3F3;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .demo-card:hover {
+            border-color: #8C69F0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(140,105,240,0.15);
+        }
+        
+        .demo-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        
+        .demo-card h4 {
+            font-size: 18px;
+            color: #0D0D0D;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .demo-card p {
+            font-size: 14px;
+            color: #4A4A4A;
+            margin-bottom: 16px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        
+        .demo-link {
+            color: #8C69F0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .demo-link:hover {
+            text-decoration: underline;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .content-grid,
+            .content-grid.two-col,
+            .content-grid.four-col {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .section.gray-bg {
+                margin-left: -20px;
+                margin-right: -20px;
+                padding: 40px 20px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>Revenue Enablement</h1>
+            <p>Everything you need to prospect, demo, win, onboard, and expand accounts</p>
+        </div>
+        
+        <!-- Quick Navigation - Sticky -->
+        <div class="quick-nav">
+            <h3>Jump to:</h3>
+            <div class="nav-links">
+                <a href="#demo" class="nav-link">🎬 Demo Prep</a>
+                <a href="#competitive" class="nav-link">🥊 Competitive</a>
+                <a href="#business-case" class="nav-link">💰 Business Case</a>
+                <a href="#sales-plays" class="nav-link">📖 Sales Plays</a>
+                <a href="#training" class="nav-link">🎓 Training</a>
+                <a href="#teams" class="nav-link">👥 By Team</a>
+                <a href="#tools" class="nav-link">🔧 Tools</a>
+            </div>
+        </div>
+        
+        <!-- SECTION 1: Prepare for a Demo -->
+        <div id="demo" class="section white-bg">
+            <div class="section-header">
+                <span class="section-icon">🎬</span>
+                <div class="section-header-text">
+                    <h2>Prepare for a Demo</h2>
+                    <p>Get demo-ready in 15 minutes</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/demo" class="demo-card">
+                    <span class="demo-icon">📊</span>
+                    <h4>Demo Decks</h4>
+                    <p>Full platform and product-specific presentations</p>
+                    <span class="demo-link">View Decks →</span>
+                </a>
+                
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/demo" class="demo-card">
+                    <span class="demo-icon">💻</span>
+                    <h4>Demo Environments</h4>
+                    <p>Access demo instances and setup guides</p>
+                    <span class="demo-link">Access →</span>
+                </a>
+                
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/demo" class="demo-card">
+                    <span class="demo-icon">📝</span>
+                    <h4>Demo Mockups</h4>
+                    <p>Visual mockups and conversation scripts</p>
+                    <span class="demo-link">View All →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- SECTION 2: Handle Competitors -->
+        <div id="competitive" class="section gray-bg">
+            <div class="section-header">
+                <span class="section-icon">🥊</span>
+                <div class="section-header-text">
+                    <h2>Handle Competitors & Objections</h2>
+                    <p>Win competitive deals</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/competitors" class="demo-card">
+                    <span class="demo-icon">⚔️</span>
+                    <h4>Battle Cards</h4>
+                    <p>Head-to-head comparisons and differentiators</p>
+                    <span class="demo-link">All Cards →</span>
+                </a>
+                
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/competitors" class="demo-card">
+                    <span class="demo-icon">🎯</span>
+                    <h4>Positioning Guides</h4>
+                    <p>How to position against key competitors</p>
+                    <span class="demo-link">View Guides →</span>
+                </a>
+                
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/content" class="demo-card">
+                    <span class="demo-icon">💬</span>
+                    <h4>Objection Handling</h4>
+                    <p>Common objections and proven responses</p>
+                    <span class="demo-link">Responses →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- SECTION 3: Build Business Case -->
+        <div id="business-case" class="section white-bg">
+            <div class="section-header">
+                <span class="section-icon">💰</span>
+                <div class="section-header-text">
+                    <h2>Build a Business Case</h2>
+                    <p>Quantify value and ROI</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/bva" class="demo-card">
+                    <span class="demo-icon">📋</span>
+                    <h4>BVA Tool</h4>
+                    <p>Interactive business value assessment</p>
+                    <span class="demo-link">Access Tool →</span>
+                </a>
+                
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/bva" class="demo-card">
+                    <span class="demo-icon">🧮</span>
+                    <h4>ROI Calculators</h4>
+                    <p>Calculate cost savings and efficiency gains</p>
+                    <span class="demo-link">Calculators →</span>
+                </a>
+                
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/center-of-excellence" class="demo-card">
+                    <span class="demo-icon">⭐</span>
+                    <h4>Case Studies</h4>
+                    <p>Customer success stories with results</p>
+                    <span class="demo-link">Browse →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- SECTION 4: Execute Sales Plays -->
+        <div id="sales-plays" class="section gray-bg">
+            <div class="section-header">
+                <span class="section-icon">📖</span>
+                <div class="section-header-text">
+                    <h2>Execute Sales Plays</h2>
+                    <p>Playbooks for every stage</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/playbooks" class="demo-card">
+                    <span class="demo-icon">⚡</span>
+                    <h4>Sales Plays</h4>
+                    <p>Quick wins and territory strategies</p>
+                    <span class="demo-link">View Plays →</span>
+                </a>
+                
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/playbooks" class="demo-card">
+                    <span class="demo-icon">📈</span>
+                    <h4>Expansion Playbooks</h4>
+                    <p>Upsell and cross-sell strategies</p>
+                    <span class="demo-link">Expansion →</span>
+                </a>
+                
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/playbooks" class="demo-card">
+                    <span class="demo-icon">🚀</span>
+                    <h4>Implementation</h4>
+                    <p>Onboarding and kickoff frameworks</p>
+                    <span class="demo-link">View Guide →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- SECTION 5: Get Trained -->
+        <div id="training" class="section white-bg">
+            <div class="section-header">
+                <span class="section-icon">🎓</span>
+                <div class="section-header-text">
+                    <h2>Get Trained & Certified</h2>
+                    <p>Build your skills</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/revenue-enablement/certifications" class="demo-card">
+                    <span class="demo-icon">🏆</span>
+                    <h4>Certifications</h4>
+                    <p>Product and sales methodology certifications</p>
+                    <span class="demo-link">Get Certified →</span>
+                </a>
+                
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/technical-enablement" class="demo-card">
+                    <span class="demo-icon">📚</span>
+                    <h4>Product Training</h4>
+                    <p>Deep dives on all Gladly products</p>
+                    <span class="demo-link">Training Hub →</span>
+                </a>
+                
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/revenue-enablement" class="demo-card">
+                    <span class="demo-icon">🎯</span>
+                    <h4>Onboarding</h4>
+                    <p>New hire training and ramp plans</p>
+                    <span class="demo-link">Start Here →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- SECTION 6: By Team -->
+        <div id="teams" class="section gray-bg">
+            <div class="section-header">
+                <span class="section-icon">👥</span>
+                <div class="section-header-text">
+                    <h2>Resources by Team</h2>
+                    <p>Curated toolkits for your role</p>
+                </div>
+            </div>
+            
+            <div class="content-grid four-col">
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/team-toolkits/sales-team" class="demo-card">
+                    <span class="demo-icon">💼</span>
+                    <h4>Sales Team</h4>
+                    <p>AE & SDR resources, discovery guides, objection handling</p>
+                    <span class="demo-link">View Toolkit →</span>
+                </a>
+                
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/team-toolkits/sc-team" class="demo-card">
+                    <span class="demo-icon">🔧</span>
+                    <h4>Solutions Consulting</h4>
+                    <p>Technical demos, POV frameworks, architecture guides</p>
+                    <span class="demo-link">View Toolkit →</span>
+                </a>
+                
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/team-toolkits/csm-team" class="demo-card">
+                    <span class="demo-icon">🤝</span>
+                    <h4>Customer Success</h4>
+                    <p>Onboarding, QBRs, expansion, and renewal strategies</p>
+                    <span class="demo-link">View Toolkit →</span>
+                </a>
+                
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/team-toolkits/marketing-team" class="demo-card">
+                    <span class="demo-icon">📣</span>
+                    <h4>Marketing</h4>
+                    <p>Campaign materials, messaging, content library</p>
+                    <span class="demo-link">View Toolkit →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- SECTION 7: Tools & Templates -->
+        <div id="tools" class="section white-bg">
+            <div class="section-header">
+                <span class="section-icon">🔧</span>
+                <div class="section-header-text">
+                    <h2>Tools & Templates</h2>
+                    <p>Quick access to everything else</p>
+                </div>
+            </div>
+            
+            <div class="content-grid two-col">
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/templates" class="demo-card">
+                    <span class="demo-icon">📄</span>
+                    <h4>Templates</h4>
+                    <p>Email templates, proposals, and frameworks</p>
+                    <span class="demo-link">View All →</span>
+                </a>
+                
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/revops-tools" class="demo-card">
+                    <span class="demo-icon">📊</span>
+                    <h4>RevOps Tools</h4>
+                    <p>Salesforce dashboards and reporting</p>
+                    <span class="demo-link">Access Tools →</span>
+                </a>
+                
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/content" class="demo-card">
+                    <span class="demo-icon">📚</span>
+                    <h4>Content Library</h4>
+                    <p>All decks, one-pagers, and collateral</p>
+                    <span class="demo-link">Browse →</span>
+                </a>
+                
+                <a href="https://sites.google.com/gladly.com/gladlyrevenablement/product" class="demo-card">
+                    <span class="demo-icon">🤖</span>
+                    <h4>Product Pages</h4>
+                    <p>Sidekick, Hero, and Customer AI resources</p>
+                    <span class="demo-link">All Products →</span>
+                </a>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- Anchor Fix Script for Google Sites -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update offset based on actual nav height
+            function updateOffset() {
+                const nav = document.querySelector('.quick-nav');
+                if (nav) {
+                    const navHeight = nav.getBoundingClientRect().height + 16;
+                    document.documentElement.style.setProperty('--nav-offset', navHeight + 'px');
+                }
+            }
+            
+            // Handle anchor clicks
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start' 
+                        });
+                    }
+                });
+            });
+            
+            // Check for hash on load
+            if (window.location.hash) {
+                setTimeout(() => {
+                    const targetId = window.location.hash.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ 
+                            behavior: 'auto', 
+                            block: 'start' 
+                        });
+                    }
+                }, 100);
+            }
+            
+            updateOffset();
+            window.addEventListener('resize', updateOffset);
+        });
+    </script>
+</body>
+</html>

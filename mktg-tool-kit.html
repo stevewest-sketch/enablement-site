@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Toolkit</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #0D0D0D;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            opacity: 0.95;
+        }
+        
+        /* Search Section */
+        .search-section {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .search-box {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 16px 24px;
+            font-size: 16px;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #F59E0B;
+            box-shadow: 0 0 0 3px rgba(245,158,11,0.1);
+        }
+        
+        .search-suggestions {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 14px;
+            color: #6B7280;
+        }
+        
+        .search-suggestions span {
+            color: #F59E0B;
+            cursor: pointer;
+            margin: 0 8px;
+        }
+        
+        .search-suggestions span:hover {
+            text-decoration: underline;
+        }
+        
+        /* Category Section */
+        .category-section {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .category-section.gray-bg {
+            background: #F3F3F3;
+            box-shadow: none;
+        }
+        
+        /* Section Header */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid #FEF3C7;
+        }
+        
+        .section-icon {
+            font-size: 40px;
+        }
+        
+        .section-header-text h2 {
+            font-size: 26px;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        
+        .section-header-text p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        
+        .content-grid.two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .content-grid.four-col {
+            grid-template-columns: repeat(4, 1fr);
+        }
+        
+        .content-card {
+            background: #FFFFFF;
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            border: 2px solid #F3F3F3;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .content-card:hover {
+            background: #FEF3C7;
+            border-color: #F59E0B;
+            transform: translateY(-2px);
+        }
+        
+        .content-card h4 {
+            font-size: 16px;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .content-card p {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            flex-grow: 1;
+        }
+        
+        .content-link {
+            color: #F59E0B;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        
+        .content-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Quick Link Cards */
+        .quick-link-card {
+            background: #FFFFFF;
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            border: 2px solid #F3F3F3;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .quick-link-card:hover {
+            background: #FEF3C7;
+            border-color: #F59E0B;
+            transform: translateY(-2px);
+        }
+        
+        .quick-link-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+        
+        .quick-link-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #0D0D0D;
+        }
+        
+        @media (max-width: 900px) {
+            .content-grid,
+            .content-grid.two-col,
+            .content-grid.four-col {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- Hero -->
+        <div class="hero">
+            <h1>Marketing Toolkit</h1>
+            <p>Content, campaigns, and creative resources to drive awareness and pipeline</p>
+        </div>
+        
+        <!-- Search Section -->
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" placeholder="Search for campaigns, templates, or brand assets...">
+            </div>
+            <div class="search-suggestions">
+                Try: <span>"brand guidelines"</span> <span>"email templates"</span> <span>"social content"</span>
+            </div>
+        </div>
+        
+        <!-- Quick Access -->
+        <div class="category-section gray-bg">
+            <div class="section-header">
+                <span class="section-icon">⚡</span>
+                <div class="section-header-text">
+                    <h2>Quick Access</h2>
+                    <p>Your most-used resources and active campaigns</p>
+                </div>
+            </div>
+            
+            <div class="content-grid four-col">
+                <a href="#" class="quick-link-card">
+                    <div class="quick-link-icon">🎨</div>
+                    <div class="quick-link-title">Brand Guidelines</div>
+                </a>
+                
+                <a href="#" class="quick-link-card">
+                    <div class="quick-link-icon">📊</div>
+                    <div class="quick-link-title">Marketing Dashboard</div>
+                </a>
+                
+                <a href="#" class="quick-link-card">
+                    <div class="quick-link-icon">📸</div>
+                    <div class="quick-link-title">Asset Library</div>
+                </a>
+                
+                <a href="#" class="quick-link-card">
+                    <div class="quick-link-icon">🗓️</div>
+                    <div class="quick-link-title">Campaign Calendar</div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Campaigns & Programs -->
+        <div class="category-section">
+            <div class="section-header">
+                <span class="section-icon">🚀</span>
+                <div class="section-header-text">
+                    <h2>Campaigns & Programs</h2>
+                    <p>Active campaigns and marketing program resources</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="#" class="content-card">
+                    <h4>Active Campaign Hub</h4>
+                    <p>Current campaigns, messaging, and go-to-market assets</p>
+                    <span class="content-link">View Campaigns →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Land Grab Campaign</h4>
+                    <p>Materials for the Land Grab AI growth initiative</p>
+                    <span class="content-link">Access Assets →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Project 500 Materials</h4>
+                    <p>Resources supporting 500% YoY AI growth initiative</p>
+                    <span class="content-link">View Materials →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Demand Gen Programs</h4>
+                    <p>Lead generation campaigns, webinars, and nurture tracks</p>
+                    <span class="content-link">Browse Programs →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>ABM Campaign Materials</h4>
+                    <p>Account-based marketing plays and personalized content</p>
+                    <span class="content-link">View Materials →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Partner Marketing</h4>
+                    <p>Co-marketing materials and partner program resources</p>
+                    <span class="content-link">Access Hub →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Content & Messaging -->
+        <div class="category-section gray-bg">
+            <div class="section-header">
+                <span class="section-icon">✍️</span>
+                <div class="section-header-text">
+                    <h2>Content & Messaging</h2>
+                    <p>Messaging frameworks, content library, and storytelling resources</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="#" class="content-card">
+                    <h4>Messaging Framework</h4>
+                    <p>Core positioning, value props, and Outcomes Velocity narrative</p>
+                    <span class="content-link">View Framework →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Content Library</h4>
+                    <p>Blog posts, whitepapers, case studies, and thought leadership</p>
+                    <span class="content-link">Browse Library →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Customer Stories</h4>
+                    <p>Case studies, testimonials, and success story templates</p>
+                    <span class="content-link">View Stories →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Product Messaging</h4>
+                    <p>Positioning and messaging for each product line</p>
+                    <span class="content-link">View Messaging →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Industry Content</h4>
+                    <p>Vertical-specific messaging for retail, beauty, travel, healthcare</p>
+                    <span class="content-link">Browse Content →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Thought Leadership</h4>
+                    <p>Executive content, research reports, and industry insights</p>
+                    <span class="content-link">View Content →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Templates & Tools -->
+        <div class="category-section">
+            <div class="section-header">
+                <span class="section-icon">🛠️</span>
+                <div class="section-header-text">
+                    <h2>Templates & Tools</h2>
+                    <p>Ready-to-use templates for marketing execution</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="#" class="content-card">
+                    <h4>Email Templates</h4>
+                    <p>Nurture sequences, event invites, and promotional email templates</p>
+                    <span class="content-link">Browse Templates →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Landing Page Templates</h4>
+                    <p>Campaign landing pages, signup forms, and conversion pages</p>
+                    <span class="content-link">View Templates →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Social Media Templates</h4>
+                    <p>LinkedIn, Twitter/X templates and content calendar</p>
+                    <span class="content-link">Access Templates →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Presentation Templates</h4>
+                    <p>Webinar decks, event presentations, and speaking templates</p>
+                    <span class="content-link">View Templates →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>One-Pager Templates</h4>
+                    <p>Product sheets, solution briefs, and sales collateral templates</p>
+                    <span class="content-link">Browse Templates →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Video Scripts</h4>
+                    <p>Product demo scripts, customer testimonial guides, and video briefs</p>
+                    <span class="content-link">View Scripts →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Brand & Creative -->
+        <div class="category-section gray-bg">
+            <div class="section-header">
+                <span class="section-icon">🎨</span>
+                <div class="section-header-text">
+                    <h2>Brand & Creative Assets</h2>
+                    <p>Logos, design guidelines, and creative resources</p>
+                </div>
+            </div>
+            
+            <div class="content-grid two-col">
+                <a href="#" class="content-card">
+                    <h4>Brand Guidelines</h4>
+                    <p>Complete brand guide including logo usage, colors, typography, and voice</p>
+                    <span class="content-link">View Guidelines →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Logo & Asset Library</h4>
+                    <p>Company logos, product logos, icons, and brand marks in all formats</p>
+                    <span class="content-link">Download Assets →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Photography & Imagery</h4>
+                    <p>Brand photography, product shots, and stock image library</p>
+                    <span class="content-link">Browse Library →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Design Templates</h4>
+                    <p>Figma templates, presentation masters, and design systems</p>
+                    <span class="content-link">Access Templates →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Events & Webinars -->
+        <div class="category-section">
+            <div class="section-header">
+                <span class="section-icon">🎤</span>
+                <div class="section-header-text">
+                    <h2>Events & Webinars</h2>
+                    <p>Event marketing materials and webinar resources</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="#" class="content-card">
+                    <h4>Event Marketing Kit</h4>
+                    <p>Pre-event, during-event, and post-event marketing materials</p>
+                    <span class="content-link">View Kit →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Webinar Playbook</h4>
+                    <p>End-to-end guide for planning and executing webinars</p>
+                    <span class="content-link">View Playbook →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Trade Show Materials</h4>
+                    <p>Booth design, swag, collateral, and pre-show campaigns</p>
+                    <span class="content-link">Access Materials →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Virtual Event Platform</h4>
+                    <p>Setup guides and best practices for virtual events</p>
+                    <span class="content-link">View Guide →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Speaker Resources</h4>
+                    <p>Speaker briefs, talking points, and presentation tips</p>
+                    <span class="content-link">Access Resources →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Event Calendar</h4>
+                    <p>Upcoming events, speaking opportunities, and sponsorships</p>
+                    <span class="content-link">View Calendar →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Analytics & Reporting -->
+        <div class="category-section gray-bg">
+            <div class="section-header">
+                <span class="section-icon">📊</span>
+                <div class="section-header-text">
+                    <h2>Analytics & Reporting</h2>
+                    <p>Marketing metrics, dashboards, and performance tracking</p>
+                </div>
+            </div>
+            
+            <div class="content-grid two-col">
+                <a href="#" class="content-card">
+                    <h4>Marketing Dashboard</h4>
+                    <p>Real-time metrics on campaigns, pipeline, and attribution</p>
+                    <span class="content-link">Open Dashboard →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Campaign Performance</h4>
+                    <p>Track engagement, conversion, and ROI by campaign</p>
+                    <span class="content-link">View Reports →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Website Analytics</h4>
+                    <p>Traffic sources, page performance, and conversion analysis</p>
+                    <span class="content-link">Access Analytics →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Lead Quality Metrics</h4>
+                    <p>MQL-to-SQL conversion, lead scoring, and attribution reporting</p>
+                    <span class="content-link">View Metrics →</span>
+                </a>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

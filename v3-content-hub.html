@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Library - Gladly Field Team</title>
+    <link rel="stylesheet" href="gladly-shared.css">
+    <style>
+        /* ========================================
+           GLADLY UNIFIED DESIGN SYSTEM
+           ======================================== */
+
+        /* --- BASE RESET & TYPOGRAPHY --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #0D0D0D;
+            background: #FFFFFF;
+        }
+
+        /* --- SCROLL OFFSET FOR ANCHORS --- */
+        :root {
+            --nav-offset: 96px;
+        }
+        
+        [id] {
+            scroll-margin-top: var(--nav-offset);
+        }
+
+        /* --- CONTAINERS --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 40px;
+        }
+
+        /* --- HERO SECTIONS --- */
+        .hero {
+            background: linear-gradient(135deg, #8C69F0 0%, #7557d9 100%);
+            color: white;
+            padding: 60px 40px;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- STICKY NAVIGATION --- */
+        .quick-nav {
+            background: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-link {
+            background: #F3F3F3;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #0D0D0D;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            background: #8C69F0;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* --- SECTIONS (Unified Style) --- */
+        .section {
+            margin-bottom: 50px;
+            scroll-margin-top: var(--nav-offset);
+        }
+        
+        .section.white-bg {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .section.gray-bg {
+            background: #F3F3F3;
+            padding: 50px 40px;
+            margin-left: -40px;
+            margin-right: -40px;
+        }
+        
+        /* Section Headers with Icons */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid #E8E0F8;
+        }
+        
+        .section-icon {
+            font-size: 40px;
+        }
+        
+        .section-header-text h2 {
+            font-size: 26px;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        
+        .section-header-text p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Gray section headers (no border) */
+        .section.gray-bg h2 {
+            font-size: 32px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .section.gray-bg > p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 32px;
+        }
+
+        /* --- CONTENT GRIDS --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .content-grid.two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .content-grid.four-col {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        /* --- DEMO RESOURCE CARD (Standard purple hover) --- */
+        .demo-card {
+            background: white;
+            border: 2px solid #F3F3F3;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .demo-card:hover {
+            border-color: #8C69F0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(140,105,240,0.15);
+        }
+        
+        .demo-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        
+        .demo-card h4 {
+            font-size: 18px;
+            color: #0D0D0D;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .demo-card p {
+            font-size: 14px;
+            color: #4A4A4A;
+            margin-bottom: 16px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        
+        .content-meta {
+            font-size: 12px;
+            color: #888;
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .demo-link {
+            color: #8C69F0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .demo-link:hover {
+            text-decoration: underline;
+        }
+
+        /* --- COMPACT CARD (for one-pagers grid) --- */
+        .compact-card {
+            background: white;
+            border: 2px solid #F3F3F3;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .compact-card:hover {
+            border-color: #8C69F0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(140,105,240,0.15);
+        }
+        
+        .compact-card h4 {
+            font-size: 15px;
+            color: #0D0D0D;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        
+        .compact-card p {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        /* --- CTA SECTION --- */
+        .cta-section {
+            background: #C5B3F8;
+            padding: 50px 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .cta-section h2 {
+            font-size: 32px;
+            color: #0D0D0D;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            color: #4A4A4A;
+            margin-bottom: 28px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+        
+        .btn-primary {
+            background: #8C69F0;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            border: 2px solid #8C69F0;
+        }
+        
+        .btn-primary:hover {
+            background: #7557d9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #8C69F0;
+            padding: 14px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: 2px solid #8C69F0;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: #8C69F0;
+            color: white;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .content-grid,
+            .content-grid.two-col {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-grid.four-col {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .section.gray-bg {
+                margin-left: -20px;
+                margin-right: -20px;
+                padding: 40px 20px;
+            }
+            
+            .content-grid.four-col {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Gladly Field Hub</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="v3-training-hub.html" class="nav-link">Training</a>
+                <a href="v3-content-hub.html" class="nav-link active">Content</a>
+                <a href="new comp.html" class="nav-link">Competitive</a>
+                <a href="playbooks page.html" class="nav-link">Playbooks</a>
+                <a href="prob hub.html" class="nav-link">Products</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero (Purple to match BVA Library) -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Content Library</h1>
+            <p>All decks, one-pagers, collateral, and marketing materials in one place</p>
+        </div>
+    </div>
+    
+    <!-- Quick Nav (Unified sticky style) -->
+    <div class="quick-nav">
+        <div class="nav-links">
+            <a href="#product-decks" class="nav-link">Product Decks</a>
+            <a href="#one-pagers" class="nav-link">One-Pagers</a>
+            <a href="#industry" class="nav-link">Industry Materials</a>
+            <a href="#case-studies" class="nav-link">Case Studies</a>
+            <a href="#marketing" class="nav-link">Marketing</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        
+        <!-- Product Decks - White card with shadow -->
+        <div id="product-decks" class="section white-bg">
+            <div class="section-header">
+                <span class="section-icon">📊</span>
+                <div class="section-header-text">
+                    <h2>Product Presentations</h2>
+                    <p>Full product decks and demo presentations</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">🤖</span>
+                    <h4>Sidekick Overview Deck</h4>
+                    <p>Comprehensive presentation on all Sidekick capabilities</p>
+                    <div class="content-meta">
+                        <span>32 slides</span>
+                        <span>Updated Oct 2024</span>
+                    </div>
+                    <span class="demo-link">Download Deck →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">🦸</span>
+                    <h4>Hero Platform Deck</h4>
+                    <p>Agent workspace and platform capabilities</p>
+                    <div class="content-meta">
+                        <span>28 slides</span>
+                        <span>Updated Sep 2024</span>
+                    </div>
+                    <span class="demo-link">Download Deck →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">🧠</span>
+                    <h4>Customer AI Deep Dive</h4>
+                    <p>Intelligence layer powering all products</p>
+                    <div class="content-meta">
+                        <span>24 slides</span>
+                        <span>Updated Oct 2024</span>
+                    </div>
+                    <span class="demo-link">Download Deck →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- One-Pagers - Gray background section -->
+        <div id="one-pagers" class="section gray-bg">
+            <h2>One-Pagers & Product Sheets</h2>
+            <p>Quick reference materials and product overviews</p>
+            
+            <div class="content-grid four-col">
+                <a href="#" class="compact-card">
+                    <h4>Sidekick Standalone</h4>
+                    <p>1-page overview</p>
+                    <span class="demo-link">View →</span>
+                </a>
+                
+                <a href="#" class="compact-card">
+                    <h4>Sidekick Sales</h4>
+                    <p>1-page overview</p>
+                    <span class="demo-link">View →</span>
+                </a>
+                
+                <a href="#" class="compact-card">
+                    <h4>Sidekick Voice</h4>
+                    <p>1-page overview</p>
+                    <span class="demo-link">View →</span>
+                </a>
+                
+                <a href="#" class="compact-card">
+                    <h4>Sidekick Email</h4>
+                    <p>1-page overview</p>
+                    <span class="demo-link">View →</span>
+                </a>
+                
+                <a href="#" class="compact-card">
+                    <h4>Hero Platform</h4>
+                    <p>1-page overview</p>
+                    <span class="demo-link">View →</span>
+                </a>
+                
+                <a href="#" class="compact-card">
+                    <h4>Platform Overview</h4>
+                    <p>Complete solution</p>
+                    <span class="demo-link">View →</span>
+                </a>
+                
+                <a href="#" class="compact-card">
+                    <h4>Outcomes Velocity</h4>
+                    <p>Philosophy overview</p>
+                    <span class="demo-link">View →</span>
+                </a>
+                
+                <a href="#" class="compact-card">
+                    <h4>AI Comparison</h4>
+                    <p>Resolution vs containment</p>
+                    <span class="demo-link">View →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Industry Materials - White card with shadow -->
+        <div id="industry" class="section white-bg">
+            <div class="section-header">
+                <span class="section-icon">🏢</span>
+                <div class="section-header-text">
+                    <h2>Industry-Specific Materials</h2>
+                    <p>Tailored content for key verticals</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">🛍️</span>
+                    <h4>Retail & E-commerce</h4>
+                    <p>Industry deck with retail use cases and customer stories</p>
+                    <div class="content-meta">
+                        <span>20 slides</span>
+                        <span>Updated Oct 2024</span>
+                    </div>
+                    <span class="demo-link">Download Deck →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">💄</span>
+                    <h4>Beauty & Personal Care</h4>
+                    <p>Vertical-specific positioning and case studies</p>
+                    <div class="content-meta">
+                        <span>18 slides</span>
+                        <span>Updated Sep 2024</span>
+                    </div>
+                    <span class="demo-link">Download Deck →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">✈️</span>
+                    <h4>Travel & Hospitality</h4>
+                    <p>Industry challenges and Gladly solutions</p>
+                    <div class="content-meta">
+                        <span>22 slides</span>
+                        <span>Updated Aug 2024</span>
+                    </div>
+                    <span class="demo-link">Download Deck →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Case Studies - Gray background section -->
+        <div id="case-studies" class="section gray-bg">
+            <h2>Case Studies & Customer Stories</h2>
+            <p>Success stories with metrics and outcomes</p>
+            
+            <div class="content-grid two-col">
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">⭐</span>
+                    <h4>Leading Beauty Brand: 87% AI Resolution Rate</h4>
+                    <p>How a top beauty retailer achieved industry-leading resolution rates with Sidekick</p>
+                    <span class="demo-link">Read Case Study →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">🏔️</span>
+                    <h4>Outdoor Retailer: 40% Reduction in Handle Time</h4>
+                    <p>Efficiency gains through Sidekick Answers and Agent Assist</p>
+                    <span class="demo-link">Read Case Study →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">👗</span>
+                    <h4>Fashion E-commerce: $2M Cost Savings</h4>
+                    <p>ROI analysis from implementing full Gladly platform</p>
+                    <span class="demo-link">Read Case Study →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">🌍</span>
+                    <h4>Travel Company: 95% CSAT with AI</h4>
+                    <p>Maintaining high satisfaction while scaling with automation</p>
+                    <span class="demo-link">Read Case Study →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Marketing Collateral - White card with shadow -->
+        <div id="marketing" class="section white-bg">
+            <div class="section-header">
+                <span class="section-icon">📢</span>
+                <div class="section-header-text">
+                    <h2>Marketing Collateral</h2>
+                    <p>Brand materials and campaign assets</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">🎨</span>
+                    <h4>Brand Guidelines</h4>
+                    <p>Logos, colors, typography, and usage guidelines</p>
+                    <span class="demo-link">View Guidelines →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">📧</span>
+                    <h4>Email Templates</h4>
+                    <p>Branded email templates for campaigns</p>
+                    <span class="demo-link">View Templates →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">💬</span>
+                    <h4>Social Media Assets</h4>
+                    <p>LinkedIn, Twitter, and social sharing content</p>
+                    <span class="demo-link">View Assets →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Can't Find What You Need?</h2>
+            <p>Request custom content or ask the enablement team for help</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn-primary">Request Content</a>
+                <a href="#" class="btn-secondary">Browse All Files</a>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- Anchor Fix Script for Google Sites -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update offset based on actual nav height
+            function updateOffset() {
+                const nav = document.querySelector('.quick-nav');
+                if (nav) {
+                    const navHeight = nav.getBoundingClientRect().height + 16;
+                    document.documentElement.style.setProperty('--nav-offset', navHeight + 'px');
+                }
+            }
+            
+            // Handle anchor clicks
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start' 
+                        });
+                    }
+                });
+            });
+            
+            // Check for hash on load
+            if (window.location.hash) {
+                setTimeout(() => {
+                    const targetId = window.location.hash.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ 
+                            behavior: 'auto', 
+                            block: 'start' 
+                        });
+                    }
+                }, 100);
+            }
+            
+            updateOffset();
+            window.addEventListener('resize', updateOffset);
+        });
+    </script>
+</body>
+</html>

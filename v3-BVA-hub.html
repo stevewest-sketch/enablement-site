@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BVA Tools - Business Value Assessment</title>
+    <style>
+        /* ========================================
+           GLADLY UNIFIED DESIGN SYSTEM
+           ======================================== */
+
+        /* --- BASE RESET & TYPOGRAPHY --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #0D0D0D;
+            background: #FFFFFF;
+        }
+
+        /* --- SCROLL OFFSET FOR ANCHORS --- */
+        :root {
+            --nav-offset: 96px;
+        }
+        
+        [id] {
+            scroll-margin-top: var(--nav-offset);
+        }
+
+        /* --- CONTAINERS --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 40px;
+        }
+
+        /* --- HERO SECTIONS --- */
+        .hero {
+            background: linear-gradient(135deg, #8C69F0 0%, #7557d9 100%);
+            color: white;
+            padding: 60px 40px;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- STICKY NAVIGATION --- */
+        .quick-nav {
+            background: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-link {
+            background: #F3F3F3;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #0D0D0D;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            background: #8C69F0;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* --- SECTIONS (Matching Product Page Style) --- */
+        .section {
+            margin-bottom: 50px;
+            scroll-margin-top: var(--nav-offset);
+        }
+        
+        .section.white-bg {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .section.gray-bg {
+            background: #F3F3F3;
+            padding: 50px 40px;
+            margin-left: -40px;
+            margin-right: -40px;
+        }
+        
+        /* Section Headers with Icons */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid #E8E0F8;
+        }
+        
+        .section-icon {
+            font-size: 40px;
+        }
+        
+        .section-header-text h2 {
+            font-size: 26px;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        
+        .section-header-text p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* --- CONTENT GRIDS --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .content-grid.two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        /* --- DEMO RESOURCE CARD (Purple hover like product pages) --- */
+        .demo-card {
+            background: white;
+            border: 2px solid #F3F3F3;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        
+        .demo-card:hover {
+            border-color: #8C69F0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(140,105,240,0.15);
+        }
+        
+        .demo-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        
+        .demo-card h4 {
+            font-size: 18px;
+            color: #0D0D0D;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .demo-card p {
+            font-size: 14px;
+            color: #4A4A4A;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        
+        .demo-link {
+            color: #8C69F0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .demo-link:hover {
+            text-decoration: underline;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            display: inline-block;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: #8C69F0;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            border-color: #8C69F0;
+        }
+        
+        .btn-primary:hover {
+            background: #7557d9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #8C69F0;
+            padding: 14px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: 2px solid #8C69F0;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: #8C69F0;
+            color: white;
+        }
+
+        /* --- CTA SECTION --- */
+        .cta-section {
+            background: #C5B3F8;
+            padding: 50px 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .cta-section h2 {
+            font-size: 32px;
+            color: #0D0D0D;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            color: #4A4A4A;
+            margin-bottom: 28px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .content-grid,
+            .content-grid.two-col {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .section.gray-bg {
+                margin-left: -20px;
+                margin-right: -20px;
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Hero (Purple like original, but styled consistently) -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Business Value Assessment</h1>
+            <p>ROI calculators, value frameworks, and tools to quantify Gladly's impact</p>
+        </div>
+    </div>
+    
+    <!-- Quick Nav (Same as product pages) -->
+    <div class="quick-nav">
+        <div class="nav-links">
+            <a href="#calculators" class="nav-link">ROI Calculators</a>
+            <a href="#templates" class="nav-link">BVA Templates</a>
+            <a href="#benchmarks" class="nav-link">Industry Benchmarks</a>
+            <a href="#examples" class="nav-link">Customer Examples</a>
+            <a href="#training" class="nav-link">Training</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        
+        <!-- ROI Calculators - White card with shadow like product pages -->
+        <div id="calculators" class="section white-bg">
+            <div class="section-header">
+                <span class="section-icon">💰</span>
+                <div class="section-header-text">
+                    <h2>ROI Calculators</h2>
+                    <p>Interactive tools to quantify cost savings and efficiency gains</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">🤖</span>
+                    <h4>Sidekick ROI Calculator</h4>
+                    <p>Calculate cost savings from AI automation and resolution rates</p>
+                    <span class="demo-link">Use Calculator →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">🔄</span>
+                    <h4>Platform Migration ROI</h4>
+                    <p>Compare costs of switching from legacy platforms to Gladly</p>
+                    <span class="demo-link">Use Calculator →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">📈</span>
+                    <h4>Agent Efficiency Calculator</h4>
+                    <p>Measure productivity gains with Hero and Sidekick combined</p>
+                    <span class="demo-link">Use Calculator →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- BVA Templates - Gray background section like product pages -->
+        <div id="templates" class="section gray-bg">
+            <h2 style="font-size: 32px; margin-bottom: 24px; font-weight: 700;">BVA Templates & Frameworks</h2>
+            <p style="font-size: 16px; color: #666; margin-bottom: 32px;">Structured templates for building business cases</p>
+            
+            <div class="content-grid two-col">
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">📋</span>
+                    <h4>Full BVA Template</h4>
+                    <p>Comprehensive business value assessment framework with all metrics and assumptions</p>
+                    <span class="demo-link">Download Template →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">📝</span>
+                    <h4>Executive Summary Template</h4>
+                    <p>One-page summary template for presenting ROI to executives</p>
+                    <span class="demo-link">Download Template →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">❓</span>
+                    <h4>Discovery Question Framework</h4>
+                    <p>Questions to ask during discovery to gather data for BVA</p>
+                    <span class="demo-link">View Framework →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">📅</span>
+                    <h4>Value Realization Timeline</h4>
+                    <p>Template showing phased value delivery over implementation timeline</p>
+                    <span class="demo-link">Download Template →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Industry Benchmarks - White card with shadow -->
+        <div id="benchmarks" class="section white-bg">
+            <div class="section-header">
+                <span class="section-icon">📊</span>
+                <div class="section-header-text">
+                    <h2>Industry Benchmarks & Data</h2>
+                    <p>Reference data for building credible ROI models</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">🎯</span>
+                    <h4>AI Resolution Benchmarks</h4>
+                    <p>Industry data on typical AI resolution rates by vertical</p>
+                    <span class="demo-link">View Data →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">💵</span>
+                    <h4>Contact Center Cost Metrics</h4>
+                    <p>Average costs per interaction, agent salaries, and overhead by industry</p>
+                    <span class="demo-link">View Metrics →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">⚖️</span>
+                    <h4>Platform Comparison Costs</h4>
+                    <p>TCO comparison data for Gladly vs. competitors</p>
+                    <span class="demo-link">View Comparison →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Customer ROI Examples - Gray background section -->
+        <div id="examples" class="section gray-bg">
+            <h2 style="font-size: 32px; margin-bottom: 24px; font-weight: 700;">Customer ROI Examples</h2>
+            <p style="font-size: 16px; color: #666; margin-bottom: 32px;">Real customer results and business case studies</p>
+            
+            <div class="content-grid two-col">
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">💄</span>
+                    <h4>Beauty Retailer: $2.1M Annual Savings</h4>
+                    <p>Detailed ROI breakdown from Sidekick implementation showing 87% resolution rate impact</p>
+                    <span class="demo-link">View Case Study →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">🏔️</span>
+                    <h4>Outdoor Brand: 40% Efficiency Gain</h4>
+                    <p>Agent productivity improvements and cost reduction analysis</p>
+                    <span class="demo-link">View Case Study →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">👗</span>
+                    <h4>Fashion E-commerce: 6-Month Payback</h4>
+                    <p>Fast time-to-value with platform migration from Zendesk</p>
+                    <span class="demo-link">View Case Study →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">✈️</span>
+                    <h4>Travel Company: $850K Cost Avoidance</h4>
+                    <p>Avoided hiring 12 additional agents through AI automation</p>
+                    <span class="demo-link">View Case Study →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Training & Resources - White card with shadow -->
+        <div id="training" class="section white-bg">
+            <div class="section-header">
+                <span class="section-icon">🎓</span>
+                <div class="section-header-text">
+                    <h2>Training & Resources</h2>
+                    <p>Learn how to build and present business cases effectively</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">📹</span>
+                    <h4>BVA Workshop Recording</h4>
+                    <p>Live training session on using BVA tools and building business cases</p>
+                    <span class="demo-link">Watch Recording →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">📖</span>
+                    <h4>ROI Presentation Guide</h4>
+                    <p>Best practices for presenting financial justification to executives</p>
+                    <span class="demo-link">View Guide →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">💬</span>
+                    <h4>Common Objections & Responses</h4>
+                    <p>How to handle pushback on ROI assumptions and calculations</p>
+                    <span class="demo-link">View Responses →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- CTA Section (Same purple style as product pages) -->
+        <div class="cta-section">
+            <h2>Need Help With Your Business Case?</h2>
+            <p>The enablement team can help you build custom ROI analyses for your deals</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn-primary">Request Custom Analysis</a>
+                <a href="#" class="btn-secondary">Ask in #deal-support</a>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- Anchor Fix Script for Google Sites -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update offset based on actual nav height
+            function updateOffset() {
+                const nav = document.querySelector('.quick-nav');
+                if (nav) {
+                    const navHeight = nav.getBoundingClientRect().height + 16;
+                    document.documentElement.style.setProperty('--nav-offset', navHeight + 'px');
+                }
+            }
+            
+            // Handle anchor clicks
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start' 
+                        });
+                    }
+                });
+            });
+            
+            // Check for hash on load
+            if (window.location.hash) {
+                setTimeout(() => {
+                    const targetId = window.location.hash.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ 
+                            behavior: 'auto', 
+                            block: 'start' 
+                        });
+                    }
+                }, 100);
+            }
+            
+            updateOffset();
+            window.addEventListener('resize', updateOffset);
+        });
+    </script>
+</body>
+</html>

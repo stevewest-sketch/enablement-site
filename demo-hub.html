@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Materials</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #0D0D0D;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #8C69F0 0%, #7557d9 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            opacity: 0.95;
+        }
+        
+        /* Category Section */
+        .category-section {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .category-section.gray-bg {
+            background: #F3F3F3;
+            box-shadow: none;
+        }
+        
+        /* Section Header */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid #E8E0F8;
+        }
+        
+        .section-icon {
+            font-size: 40px;
+        }
+        
+        .section-header-text h2 {
+            font-size: 26px;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        
+        .section-header-text p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        
+        .content-grid.two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .content-card {
+            background: #FFFFFF;
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            border: 2px solid #F3F3F3;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .content-card:hover {
+            background: #E8E0F8;
+            border-color: #8C69F0;
+            transform: translateY(-2px);
+        }
+        
+        .content-card h4 {
+            font-size: 16px;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .content-card p {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            flex-grow: 1;
+        }
+        
+        .content-link {
+            color: #8C69F0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        
+        .content-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 900px) {
+            .content-grid,
+            .content-grid.two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- Hero -->
+        <div class="hero">
+            <h1>Demo Materials</h1>
+            <p>Everything you need to deliver compelling product demonstrations</p>
+        </div>
+        
+        <!-- Demo Decks -->
+        <div class="category-section">
+            <div class="section-header">
+                <span class="section-icon">📊</span>
+                <div class="section-header-text">
+                    <h2>Demo Presentations</h2>
+                    <p>Ready-to-use demo decks for all products and scenarios</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="#" class="content-card">
+                    <h4>Platform Overview Demo</h4>
+                    <p>Full platform walkthrough covering Hero and Sidekick together</p>
+                    <span class="content-link">View Deck →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Sidekick Standalone Demo</h4>
+                    <p>Demo deck for prospects using existing helpdesk platforms</p>
+                    <span class="content-link">View Deck →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Sidekick Sales Demo</h4>
+                    <p>Product demo focused on revenue-generating use cases</p>
+                    <span class="content-link">View Deck →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Sidekick Voice Demo</h4>
+                    <p>Voice AI capabilities and phone automation demo</p>
+                    <span class="content-link">View Deck →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Customer AI Deep Dive</h4>
+                    <p>Technical demo of intelligence layer and data model</p>
+                    <span class="content-link">View Deck →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Industry-Specific Demos</h4>
+                    <p>Retail, beauty, travel, and other vertical demos</p>
+                    <span class="content-link">Browse →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Demo Environments -->
+        <div class="category-section gray-bg">
+            <div class="section-header">
+                <span class="section-icon">💻</span>
+                <div class="section-header-text">
+                    <h2>Demo Environments</h2>
+                    <p>Live demo instances with sample data</p>
+                </div>
+            </div>
+            
+            <div class="content-grid two-col">
+                <a href="#" class="content-card">
+                    <h4>Retail Demo Environment</h4>
+                    <p>Pre-configured demo instance with retail customer data and product catalog</p>
+                    <span class="content-link">Access Environment →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Beauty Demo Environment</h4>
+                    <p>Beauty/personal care focused demo with relevant use cases</p>
+                    <span class="content-link">Access Environment →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Travel Demo Environment</h4>
+                    <p>Travel & hospitality demo instance with booking scenarios</p>
+                    <span class="content-link">Access Environment →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Demo Environment Setup Guide</h4>
+                    <p>Instructions for accessing and configuring demo instances</p>
+                    <span class="content-link">View Guide →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Demo Scripts & Mockups -->
+        <div class="category-section">
+            <div class="section-header">
+                <span class="section-icon">📝</span>
+                <div class="section-header-text">
+                    <h2>Scripts, Mockups & Conversation Flows</h2>
+                    <p>Demo scripts and visual mockups for walkthroughs</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="#" class="content-card">
+                    <h4>WISMO Demo Script</h4>
+                    <p>Order tracking demo script with conversation flow</p>
+                    <span class="content-link">View Script →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Returns & Exchanges Script</h4>
+                    <p>Demo walkthrough for return request handling</p>
+                    <span class="content-link">View Script →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Product Recommendation Script</h4>
+                    <p>Sidekick Sales demo showing AI-powered recommendations</p>
+                    <span class="content-link">View Script →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Voice Call Demo Script</h4>
+                    <p>Sidekick Voice phone interaction walkthrough</p>
+                    <span class="content-link">View Script →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Conversation Mockups</h4>
+                    <p>Visual mockups of Sidekick conversations for presentations</p>
+                    <span class="content-link">View Mockups →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>UI Mockup Library</h4>
+                    <p>Screenshots and mockups of Hero and Sidekick interfaces</p>
+                    <span class="content-link">Browse Library →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Video Walkthroughs -->
+        <div class="category-section gray-bg">
+            <div class="section-header">
+                <span class="section-icon">🎥</span>
+                <div class="section-header-text">
+                    <h2>Video Walkthroughs & Recordings</h2>
+                    <p>Pre-recorded demos and product videos</p>
+                </div>
+            </div>
+            
+            <div class="content-grid two-col">
+                <a href="#" class="content-card">
+                    <h4>Platform Overview Video</h4>
+                    <p>5-minute walkthrough of complete Gladly platform</p>
+                    <span class="content-link">Watch Video →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Sidekick Standalone Demo Video</h4>
+                    <p>Recorded demo showing integration with existing helpdesk</p>
+                    <span class="content-link">Watch Video →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Customer Success Stories</h4>
+                    <p>Video testimonials and customer interviews</p>
+                    <span class="content-link">Watch Videos →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Product Feature Videos</h4>
+                    <p>Short clips highlighting individual features and capabilities</p>
+                    <span class="content-link">Browse Library →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Demo Best Practices -->
+        <div class="category-section">
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <div class="section-header-text">
+                    <h2>Demo Best Practices & Training</h2>
+                    <p>Learn how to deliver effective demos</p>
+                </div>
+            </div>
+            
+            <div class="content-grid">
+                <a href="#" class="content-card">
+                    <h4>Demo Best Practices Guide</h4>
+                    <p>Comprehensive guide to delivering compelling product demos</p>
+                    <span class="content-link">View Guide →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Demo Training Recording</h4>
+                    <p>Live training session on demo techniques and best practices</p>
+                    <span class="content-link">Watch Recording →</span>
+                </a>
+                
+                <a href="#" class="content-card">
+                    <h4>Discovery-to-Demo Framework</h4>
+                    <p>How to tailor demos based on discovery insights</p>
+                    <span class="content-link">View Framework →</span>
+                </a>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

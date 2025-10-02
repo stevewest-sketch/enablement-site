@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidekick Standalone</title>
+    <style>
+        /* ========================================
+           GLADLY UNIFIED DESIGN SYSTEM
+           ======================================== */
+
+        /* --- BASE RESET & TYPOGRAPHY --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #0D0D0D;
+            background: #FFFFFF;
+        }
+
+        /* --- SCROLL OFFSET FOR ANCHORS --- */
+        :root {
+            --nav-offset: 96px;
+        }
+        
+        [id] {
+            scroll-margin-top: var(--nav-offset);
+        }
+
+        /* --- CONTAINERS --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 40px;
+        }
+
+        /* --- HERO WITH VIDEO --- */
+        .hero {
+            background: linear-gradient(135deg, #009B00 0%, #007a00 100%);
+            color: white;
+            padding: 60px 40px;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .hero-text p {
+            font-size: 20px;
+            opacity: 0.95;
+            margin-bottom: 24px;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .hero-video {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+        }
+
+        /* --- STICKY NAVIGATION --- */
+        .quick-nav {
+            background: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-link {
+            background: #F3F3F3;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #0D0D0D;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            background: #8C69F0;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* --- SECTIONS --- */
+        .section {
+            margin-bottom: 50px;
+            scroll-margin-top: var(--nav-offset);
+        }
+        
+        .section.gray-bg {
+            background: #F3F3F3;
+            padding: 50px 40px;
+            margin-left: -40px;
+            margin-right: -40px;
+        }
+        
+        .section.black-bg {
+            background: #0D0D0D;
+            color: white;
+            padding: 60px 40px;
+            margin: 0;
+        }
+        
+        .section h2 {
+            font-size: 32px;
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+        
+        .section.black-bg h2 {
+            color: white;
+        }
+        
+        .section p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        
+        .section.black-bg p {
+            color: #E5E5E5;
+            font-size: 18px;
+        }
+
+        /* --- CONTENT GRIDS --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .content-grid.two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        /* --- DEMO RESOURCE CARD --- */
+        .demo-card {
+            background: white;
+            border: 2px solid #F3F3F3;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        
+        .demo-card:hover {
+            border-color: #8C69F0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(140,105,240,0.15);
+        }
+        
+        .demo-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        
+        .demo-card h4 {
+            font-size: 18px;
+            color: #0D0D0D;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .demo-card p {
+            font-size: 14px;
+            color: #4A4A4A;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        
+        .demo-link {
+            color: #8C69F0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .demo-link:hover {
+            text-decoration: underline;
+        }
+
+        /* --- PLATFORM CARDS --- */
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .platform-card {
+            background: white;
+            border: 2px solid #F3F3F3;
+            border-radius: 8px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        
+        .platform-card:hover {
+            border-color: #8C69F0;
+            box-shadow: 0 4px 12px rgba(140,105,240,0.15);
+            transform: translateY(-2px);
+        }
+        
+        .platform-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+        
+        .platform-card h4 {
+            font-size: 18px;
+            color: #0D0D0D;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .platform-card p {
+            font-size: 13px;
+            color: #4A4A4A;
+        }
+
+        /* --- USE CASES --- */
+        .use-case-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .use-case-item {
+            background: white;
+            border-left: 4px solid #009B00;
+            padding: 20px;
+            border-radius: 4px;
+        }
+        
+        .use-case-item h4 {
+            font-size: 17px;
+            color: #0D0D0D;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .use-case-item p {
+            font-size: 14px;
+            color: #4A4A4A;
+            margin: 0;
+        }
+
+        /* --- LAUNCH STATUS --- */
+        .launch-status {
+            background: #C5B3F8;
+            padding: 32px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+        
+        .section.black-bg .launch-status {
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .launch-status h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #0D0D0D;
+        }
+        
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .status-item {
+            padding: 10px;
+            background: #9B8AC7;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 13px;
+            color: #FFFFFF;
+        }
+        
+        .status-item.active {
+            background: #8C69F0;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .launch-status p {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #0D0D0D;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            display: inline-block;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+        
+        .btn-white {
+            background: white;
+            color: #009B00;
+        }
+        
+        .btn-white:hover {
+            background: #8C69F0;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(140,105,240,0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background: #8C69F0;
+            border-color: #8C69F0;
+            color: white;
+        }
+
+        /* --- CTA SECTION --- */
+        .cta-section {
+            background: #C5B3F8;
+            padding: 50px 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .cta-section h2 {
+            font-size: 32px;
+            color: #0D0D0D;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            color: #4A4A4A;
+            margin-bottom: 28px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+        
+        .btn-primary {
+            background: #8C69F0;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-primary:hover {
+            background: #7557d9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #8C69F0;
+            padding: 14px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: 2px solid #8C69F0;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: #8C69F0;
+            color: white;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-grid,
+            .content-grid.two-col,
+            .platform-grid,
+            .use-case-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-cta,
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .status-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero-text h1 {
+                font-size: 36px;
+            }
+            
+            .section.gray-bg {
+                margin-left: -20px;
+                margin-right: -20px;
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Hero -->
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">SIDEKICK STANDALONE</div>
+                <h1>AI That Works With Your Helpdesk</h1>
+                <p>Integrate Sidekick AI with Zendesk, Salesforce, Kustomer, or any existing platform to automate customer support</p>
+                <div class="hero-cta">
+                    <a href="#overview" class="btn btn-white">Learn More</a>
+                    <a href="#demos" class="btn btn-outline">View Demos</a>
+                </div>
+            </div>
+            <div class="hero-video">
+                <script src="https://fast.wistia.com/player.js" async></script>
+                <script src="https://fast.wistia.com/embed/mwar81dg26.js" async type="module"></script>
+                <style>wistia-player[media-id='mwar81dg26']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/mwar81dg26/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
+                <wistia-player media-id="mwar81dg26" aspect="1.7777777777777777"></wistia-player>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Quick Nav -->
+    <div class="quick-nav">
+        <div class="nav-links">
+            <a href="#overview" class="nav-link">Overview</a>
+            <a href="#platforms" class="nav-link">Platforms</a>
+            <a href="#use-cases" class="nav-link">Use Cases</a>
+            <a href="#content" class="nav-link">Content</a>
+            <a href="#demos" class="nav-link">Demos</a>
+            <a href="#competitive" class="nav-link">Competitive</a>
+        </div>
+    </div>
+    
+    <!-- What Is Section - Black BG -->
+    <div id="overview" class="section black-bg">
+        <div class="container" style="padding: 0;">
+            <h2>What is Sidekick Standalone?</h2>
+            <p>Sidekick Standalone is an AI agent that integrates with your existing helpdesk platform to automate customer support inquiries. It works alongside your current setup—whether you use Zendesk, Salesforce Service Cloud, Kustomer, or another platform.</p>
+            <p>Unlike other AI solutions that require you to replace your entire tech stack, Sidekick Standalone plugs into what you already have and starts resolving customer inquiries on day one.</p>
+            
+            <!-- Launch Status -->
+            <div class="launch-status">
+                <h3>🚀 Launch Status</h3>
+                <div class="status-grid">
+                    <div class="status-item">Initial research</div>
+                    <div class="status-item">Added to roadmap</div>
+                    <div class="status-item">Discovery and design</div>
+                    <div class="status-item">Build in progress</div>
+                </div>
+                <div class="status-grid">
+                    <div class="status-item active">➡️ Prototyping ⬅️</div>
+                    <div class="status-item">Limited rollout</div>
+                    <div class="status-item">Broader rollout</div>
+                    <div class="status-item">Open Access</div>
+                </div>
+                <p>Working version available internally. Early demos and testing happening with trusted customers.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="container">
+        
+        <!-- Platforms Section -->
+        <div id="platforms" class="section gray-bg">
+            <h2>Works With Your Platform</h2>
+            <div class="platform-grid">
+                <a href="#" class="platform-card">
+                    <div class="platform-icon">🎫</div>
+                    <h4>Zendesk</h4>
+                    <p>Native integration with Zendesk Support and Sunshine Conversations</p>
+                </a>
+                
+                <a href="#" class="platform-card">
+                    <div class="platform-icon">☁️</div>
+                    <h4>Salesforce</h4>
+                    <p>Works with Service Cloud and Einstein Bot</p>
+                </a>
+                
+                <a href="#" class="platform-card">
+                    <div class="platform-icon">🔧</div>
+                    <h4>Kustomer</h4>
+                    <p>Seamless integration with Kustomer CRM</p>
+                </a>
+                
+                <a href="#" class="platform-card">
+                    <div class="platform-icon">💬</div>
+                    <h4>Intercom</h4>
+                    <p>Connect Sidekick to Intercom messenger</p>
+                </a>
+                
+                <a href="#" class="platform-card">
+                    <div class="platform-icon">🌱</div>
+                    <h4>Freshdesk</h4>
+                    <p>Integration with Freshworks products</p>
+                </a>
+                
+                <a href="#" class="platform-card">
+                    <div class="platform-icon">🔌</div>
+                    <h4>Other Platforms</h4>
+                    <p>Custom integrations available via API</p>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Use Cases Section -->
+        <div id="use-cases" class="section">
+            <h2>Common Use Cases</h2>
+            <div class="use-case-list">
+                <div class="use-case-item">
+                    <h4>Where Is My Order (WISMO)</h4>
+                    <p>Automate order status inquiries with real-time tracking updates</p>
+                </div>
+                
+                <div class="use-case-item">
+                    <h4>Returns & Exchanges</h4>
+                    <p>Handle return requests, generate labels, and process exchanges</p>
+                </div>
+                
+                <div class="use-case-item">
+                    <h4>Account Management</h4>
+                    <p>Password resets, profile updates, subscription changes</p>
+                </div>
+                
+                <div class="use-case-item">
+                    <h4>Product Recommendations</h4>
+                    <p>Suggest products based on customer history and preferences</p>
+                </div>
+                
+                <div class="use-case-item">
+                    <h4>FAQs & Self-Service</h4>
+                    <p>Answer common questions about policies, shipping, products</p>
+                </div>
+                
+                <div class="use-case-item">
+                    <h4>Appointment Scheduling</h4>
+                    <p>Book, reschedule, and cancel appointments automatically</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Content Library -->
+        <div id="content" class="section gray-bg">
+            <h2>Content & Resources</h2>
+            <div class="content-grid">
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">📄</span>
+                    <h4>One-Pagers</h4>
+                    <p>Quick product overviews and value propositions</p>
+                    <span class="demo-link">View One-Pagers →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">📊</span>
+                    <h4>Presentation Decks</h4>
+                    <p>Full product decks and platform-specific presentations</p>
+                    <span class="demo-link">View Decks →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">⭐</span>
+                    <h4>Case Studies</h4>
+                    <p>Customer success stories by industry and use case</p>
+                    <span class="demo-link">Browse Stories →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Demo Resources -->
+        <div id="demos" class="section">
+            <h2>Demo Materials</h2>
+            <div class="content-grid two-col">
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">💻</span>
+                    <h4>Demo Environments</h4>
+                    <p>Access live Sidekick demo environments with sample data</p>
+                    <span class="demo-link">Access Demos →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">📝</span>
+                    <h4>Demo Scripts & Mockups</h4>
+                    <p>Conversation scripts and visual mockups for walkthroughs</p>
+                    <span class="demo-link">View Mockups →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">🎥</span>
+                    <h4>Video Library</h4>
+                    <p>Product walkthrough videos and recorded demos</p>
+                    <span class="demo-link">Watch Videos →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">💰</span>
+                    <h4>ROI Calculator</h4>
+                    <p>Calculate cost savings and efficiency gains</p>
+                    <span class="demo-link">Use Calculator →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Competitive Section -->
+        <div id="competitive" class="section gray-bg">
+            <h2>Competitive Intelligence</h2>
+            <div class="content-grid">
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">⚔️</span>
+                    <h4>Battle Cards</h4>
+                    <p>Positioning against Zendesk AI, Einstein, and other competitors</p>
+                    <span class="demo-link">View Battle Cards →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">🔄</span>
+                    <h4>Migration Stories</h4>
+                    <p>Customer success stories from competitive replacements</p>
+                    <span class="demo-link">Read Stories →</span>
+                </a>
+                
+                <a href="#" class="demo-card">
+                    <span class="demo-icon">💬</span>
+                    <h4>Objection Handling</h4>
+                    <p>Responses to common competitive objections</p>
+                    <span class="demo-link">View Responses →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Need Help With Sidekick?</h2>
+            <p>Can't find what you're looking for? Reach out to the enablement team</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn-primary">Ask in #enablement-resources</a>
+                <a href="#" class="btn-secondary">Browse All Products</a>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- Anchor Fix Script for Google Sites -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update offset based on actual nav height
+            function updateOffset() {
+                const nav = document.querySelector('.quick-nav');
+                if (nav) {
+                    const navHeight = nav.getBoundingClientRect().height + 16;
+                    document.documentElement.style.setProperty('--nav-offset', navHeight + 'px');
+                }
+            }
+            
+            // Handle anchor clicks
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start' 
+                        });
+                    }
+                });
+            });
+            
+            // Check for hash on load
+            if (window.location.hash) {
+                setTimeout(() => {
+                    const targetId = window.location.hash.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ 
+                            behavior: 'auto', 
+                            block: 'start' 
+                        });
+                    }
+                }, 100);
+            }
+            
+            updateOffset();
+            window.addEventListener('resize', updateOffset);
+        });
+    </script>
+</body>
+</html>
