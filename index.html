@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gladly Revenue Enablement</title>
+    <link rel="stylesheet" href="assets/nav-fixed.css">
+    <link rel="stylesheet" href="assets/search.css">
     <style>
         * {
             margin: 0;
@@ -17,11 +19,16 @@
             color: #333;
             background: #f8f9fa;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
         /* Header */
@@ -29,47 +36,48 @@
             text-align: center;
             margin-bottom: 50px;
         }
-        
+
         .header h1 {
-            font-size: 42px;
+            font-size: 72px;
             color: #1a1a1a;
-            margin-bottom: 12px;
-            font-weight: 600;
+            margin-bottom: 16px;
+            font-weight: 800;
+            letter-spacing: -1px;
         }
-        
+
         .header p {
-            font-size: 18px;
+            font-size: 20px;
             color: #666;
         }
-        
+
         /* Search Bar */
         .search-section {
-            background: white;
-            padding: 24px 32px;
-            border-radius: 12px;
-            margin-bottom: 50px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            background: transparent;
+            padding: 0;
+            margin-bottom: 60px;
         }
-        
+
         .search-box {
             position: relative;
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
         }
-        
+
         .search-box input {
             width: 100%;
             padding: 16px 24px;
             font-size: 16px;
-            border: 2px solid #E5E7EB;
-            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            border-radius: 50px;
             transition: all 0.2s;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
         }
-        
+
         .search-box input:focus {
             outline: none;
             border-color: #34a853;
-            box-shadow: 0 0 0 3px rgba(52,168,83,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
         
         .search-help {
@@ -233,7 +241,7 @@
         
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 16px;
         }
         
@@ -475,20 +483,19 @@
 </head>
 <body>
     <div class="container">
-        
+        <div class="main-content">
+
         <!-- Header -->
         <div class="header">
-            <h1>Revenue Enablement</h1>
+            <h1>The GTM Hub</h1>
             <p>Your central hub for selling, supporting, and growing with Gladly</p>
         </div>
         
         <!-- Search -->
         <div class="search-section">
             <div class="search-box">
-                <input type="text" placeholder="Search for battle cards, templates, demos, product info...">
-            </div>
-            <div class="search-help">
-                Can't find it? <a href="#">Browse by content type</a> or ask in <a href="https://gladly.slack.com/archives/C06T8V6TJUA">#enablement-resources</a>
+                <input type="text" id="site-search" placeholder="Search for battle cards, templates, demos, product info...">
+                <div id="search-results" class="search-results"></div>
             </div>
         </div>
         
@@ -498,25 +505,25 @@
             <p class="section-subtitle">Everything you need, organized for your job</p>
             
             <div class="toolkit-grid">
-                <a href="#" class="toolkit-card sales">
+                <a href="enablement/toolkits/sales/index.html" class="toolkit-card sales">
                     <span class="toolkit-icon">💼</span>
                     <h3>Sales Toolkit</h3>
                     <p>Demos, battle cards, plays, and sales materials</p>
                 </a>
-                
-                <a href="#" class="toolkit-card csm">
+
+                <a href="enablement/toolkits/csm/index.html" class="toolkit-card csm">
                     <span class="toolkit-icon">🎯</span>
                     <h3>CSM Toolkit</h3>
                     <p>QBRs, adoption, value tools, and renewal resources</p>
                 </a>
-                
-                <a href="#" class="toolkit-card sc">
+
+                <a href="enablement/toolkits/success/index.html" class="toolkit-card sc">
                     <span class="toolkit-icon">🔧</span>
                     <h3>SC Toolkit</h3>
                     <p>Demo environments, technical docs, and POC materials</p>
                 </a>
-                
-                <a href="#" class="toolkit-card marketing">
+
+                <a href="enablement/toolkits/marketing/index.html" class="toolkit-card marketing">
                     <span class="toolkit-icon">📣</span>
                     <h3>Marketing Toolkit</h3>
                     <p>Campaigns, content, templates, and brand assets</p>
@@ -529,42 +536,42 @@
             <h2 class="section-title">What do you need to do today?</h2>
             
             <div class="task-grid">
-                <a href="#" class="task-card">
+                <a href="enablement/demo/index.html" class="task-card">
                     <span class="task-icon">🎬</span>
                     <div>
                         <h4>Prepare for Demo</h4>
                     </div>
                 </a>
-                
-                <a href="#" class="task-card">
+
+                <a href="https://docs.google.com/presentation/d/11EMqR6s3KOlnRafjzgITBmt4QyUFgvlC2zRxfvsmydU/edit?slide=id.g35df72a2580_0_132#slide=id.g35df72a2580_0_132" class="task-card" target="_blank">
                     <span class="task-icon">📊</span>
                     <div>
                         <h4>Run a QBR</h4>
                     </div>
                 </a>
-                
-                <a href="#" class="task-card">
+
+                <a href="enablement/competitive/index.html" class="task-card">
                     <span class="task-icon">⚔️</span>
                     <div>
                         <h4>Handle Competitor</h4>
                     </div>
                 </a>
-                
-                <a href="#" class="task-card">
+
+                <a href="enablement/bva/index.html" class="task-card">
                     <span class="task-icon">💰</span>
                     <div>
                         <h4>Build Business Case</h4>
                     </div>
                 </a>
-                
-                <a href="#" class="task-card">
+
+                <a href="coe/index.html" class="task-card">
                     <span class="task-icon">🚀</span>
                     <div>
                         <h4>Drive Adoption</h4>
                     </div>
                 </a>
-                
-                <a href="#" class="task-card">
+
+                <a href="enablement/training/index.html" class="task-card">
                     <span class="task-icon">🎓</span>
                     <div>
                         <h4>Access Training</h4>
@@ -579,42 +586,37 @@
             <p class="section-subtitle">Learn about our products and features</p>
             
             <div class="product-grid">
-                <a href="#" class="product-card">
+                <a href="product/sidekick-standalone/index.html" class="product-card">
                     <span class="product-icon">🤖</span>
                     <h4>Sidekick Standalone</h4>
                 </a>
-                
-                <a href="#" class="product-card">
+
+                <a href="product/sidekick-voice/index.html" class="product-card">
                     <span class="product-icon">📞</span>
                     <h4>Sidekick Voice</h4>
                 </a>
-                
-                <a href="#" class="product-card">
+
+                <a href="product/sidekick-email/index.html" class="product-card">
                     <span class="product-icon">✉️</span>
                     <h4>Sidekick Email</h4>
                 </a>
-                
-                <a href="#" class="product-card">
+
+                <a href="product/sidekick-sales/index.html" class="product-card">
                     <span class="product-icon">💵</span>
                     <h4>Sidekick Sales</h4>
                 </a>
-                
-                <a href="#" class="product-card">
+
+                <a href="product/customer-ai/index.html" class="product-card">
                     <span class="product-icon">🧠</span>
                     <h4>Customer AI</h4>
                 </a>
-                
-                <a href="#" class="product-card">
-                    <span class="product-icon">🦸</span>
-                    <h4>Hero Platform</h4>
-                </a>
-                
-                <a href="#" class="product-card">
+
+                <a href="product/guides-journeys/index.html" class="product-card">
                     <span class="product-icon">🗺️</span>
                     <h4>Guides & Journeys</h4>
                 </a>
-                
-                <a href="#" class="product-card">
+
+                <a href="product/app-platform/index.html" class="product-card">
                     <span class="product-icon">🔌</span>
                     <h4>App Platform</h4>
                 </a>
@@ -678,42 +680,42 @@
             <h2 class="section-title">Most Useful Resources</h2>
             
             <div class="resource-grid">
-                <a href="#" class="resource-card">
+                <a href="coe/index.html" class="resource-card">
                     <span class="resource-icon">🎯</span>
                     <div>
                         <h4>Center of Excellence</h4>
                     </div>
                 </a>
-                
-                <a href="#" class="resource-card">
+
+                <a href="enablement/competitive/index.html" class="resource-card">
                     <span class="resource-icon">⚔️</span>
                     <div>
                         <h4>Competitive Battle Cards</h4>
                     </div>
                 </a>
-                
-                <a href="#" class="resource-card">
+
+                <a href="enablement/demo/index.html" class="resource-card">
                     <span class="resource-icon">🎬</span>
                     <div>
                         <h4>Demo Hub</h4>
                     </div>
                 </a>
-                
-                <a href="#" class="resource-card">
+
+                <a href="enablement/bva/index.html" class="resource-card">
                     <span class="resource-icon">💰</span>
                     <div>
                         <h4>ROI & BVA Tools</h4>
                     </div>
                 </a>
-                
-                <a href="#" class="resource-card">
+
+                <a href="enablement/playbooks/index.html" class="resource-card">
                     <span class="resource-icon">📖</span>
                     <div>
                         <h4>Sales Playbooks</h4>
                     </div>
                 </a>
-                
-                <a href="#" class="resource-card">
+
+                <a href="resources/templates/index.html" class="resource-card">
                     <span class="resource-icon">📋</span>
                     <div>
                         <h4>Templates Library</h4>
@@ -731,7 +733,15 @@
                 <a href="#" class="help-button secondary">Browse All Content</a>
             </div>
         </div>
-        
+
+        </div>
     </div>
+
+    <script src="assets/nav.js"></script>
+    <script src="assets/search.js"></script>
+    <script>
+        initNav('index.html');
+        initSearch('site-search', 'search-results', 'index.html');
+    </script>
 </body>
 </html>
